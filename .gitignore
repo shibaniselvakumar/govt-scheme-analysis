@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+.env
+
+# Large models
+models/*.gguf
+
+# FAISS indexes
+faiss_index_*.pkl
+
+# OS files
+.DS_Store
+Thumbs.db
+
+schemes_data.csv
