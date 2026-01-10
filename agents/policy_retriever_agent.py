@@ -3,51 +3,98 @@
 from .ai_agents_base import AIBaseAgent
 from pymongo import MongoClient
 import numpy as np
-
+import json
+import re
 
 class PolicyRetrieverAgent(AIBaseAgent):
-    def __init__(self, faiss_indexes, llm):
+    def __init__(self, faiss_indexes, llm, max_context_chars: int = 500):
         super().__init__(faiss_indexes, llm)
 
+        # Fields to retrieve and embed
         self.policy_fields = [
             "description",
             "eligibility_text",
+            "documents_required_text",
+            "benefits_text",
         ]
 
-        # MongoDB connection
+        # MongoDB setup
         client = MongoClient("mongodb://localhost:27017/")
         self.db = client["policy_db"]
         self.collection = self.db["schemes"]
 
-    def answer_policy_query(self, query_vector: np.ndarray, top_k: int = 3) -> str:
-        context_chunks = []
+        self.max_context_chars = max_context_chars
 
-        for field in self.policy_fields:
-            doc_ids = self.retrieve_similar_docs(query_vector, field, top_k)
+    # ---------------------------
+    # JSON cleaning utils
+    # ---------------------------
+    def clean_json_text(self, text: str) -> str:
+        text = re.sub(r"^```.*?\n", "", text)
+        text = re.sub(r"```$", "", text)
+        text = re.sub(r"//.*?\n", "", text)
+        text = re.sub(r",(\s*[}\]])", r"\1", text)
+        match = re.search(r"\{.*\}", text, flags=re.DOTALL)
+        if match:
+            text = match.group(0)
+        return text.strip()
 
-            for doc_id in doc_ids:
-                scheme = self.collection.find_one({"_id": doc_id})
+    def robust_json_parse(self, text: str) -> dict:
+        cleaned = self.clean_json_text(text)
+        try:
+            return json.loads(cleaned)
+        except json.JSONDecodeError:
+            return {"error": "LLM produced incomplete JSON", "raw_output": text}
 
-                if scheme and field in scheme:
-                    context_chunks.append(
-                        f"{field.upper()}:\n{scheme[field]}"
-                    )
+    # ---------------------------
+    # Main method
+    # ---------------------------
+    def retrieve_policies(
+    self,
+    query: str,
+    user_profile: dict,
+    top_k: int = 5
+) -> list[dict]:
 
-        if not context_chunks:
-            return "No relevant policy information found."
+        # 1. Build semantic query
+        profile_text = f"""
+        Occupation: {user_profile.get("occupation")}
+        State: {user_profile.get("state")}
+        Gender: {user_profile.get("gender")}
+        Income: {user_profile.get("monthly_income")}
+        """
+        full_query = f"{query}. {profile_text}"
 
-        context = "\n\n".join(context_chunks)
+        # 2. Embed
+        query_vector = self.llm.get_embedding(full_query)
 
-        prompt = f"""
-You are a government policy assistant.
+        # 3. Optional DB pre-filter
+        db_filter = {}
+        if "state" in user_profile:
+            db_filter["state"] = user_profile["state"]
 
-Answer the user's question strictly using the information below.
-Be accurate, concise, and factual.
+        candidate_ids = [
+            s["_id"] for s in self.collection.find(db_filter, {"_id": 1})
+        ] if db_filter else None
 
-POLICY INFORMATION:
-{context}
+        # 4. FAISS retrieval
+        doc_ids = self.retrieve_similar_docs(query_vector, "description", top_k)
 
-Answer:
-"""
+        if candidate_ids:
+            doc_ids = [d for d in doc_ids if d in candidate_ids]
 
-        return self.generate_answer(prompt)
+        # 5. Return clean structured output
+        results = []
+        for doc_id in doc_ids:
+            scheme = self.collection.find_one({"_id": doc_id})
+            if not scheme:
+                continue
+
+            results.append({
+                "scheme_id": str(scheme["_id"]),
+                "scheme_name": scheme.get("scheme_name"),
+                "state": scheme.get("state"),
+                "category": scheme.get("category"),
+                "short_description": scheme.get("description", "")[:150]
+            })
+
+        return results
