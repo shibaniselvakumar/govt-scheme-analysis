@@ -48,8 +48,8 @@ user_profile = get_user_profile()
 # Step 3: User query for policy/schemes
 # -------------------------
 
-# query = input("Enter your query (e.g., 'Policies for widow'): ").strip()
-query = "Policies for widow"
+# query = input("Enter your query: ").strip()
+query = "Policies for fishermen"
 # Step 3a: Embed query
 start = time.time()
 query_vector = llm.get_embedding(query)

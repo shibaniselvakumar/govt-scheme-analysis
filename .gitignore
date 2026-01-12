@@ -19,3 +19,4 @@ faiss_index_*.pkl
 Thumbs.db
 
 schemes_data.csv
+precomputed_rules.json

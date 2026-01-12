@@ -25,7 +25,7 @@ def get_user_profile():
         "age": 34,
         "gender": "Female",  
         "state": "Uttar Pradesh",
-        "occupation": "Farmer",    
+        "occupation": "Fisherman",    
         "monthly_income": 8000.0,
     }
     return test_profile
