@@ -3,10 +3,15 @@
 import pickle
 import time
 import json
+import sys
+
 from llm.local_llm import LocalLLM
 from agents.policy_retriever_agent import PolicyRetrieverAgent
 from agents.eligibility_agent import EligibilityAgent
+from agents.document_validation_agent import DocumentValidationAgent
 from user_interaction import get_user_profile
+from pymongo import MongoClient
+
 
 # -------------------------
 # Config
@@ -21,43 +26,58 @@ FIELDS = [
 FAISS_TOP_K = 3
 FAST_MODE = True
 
+
 # -------------------------
 # Step 0: Load FAISS indexes
 # -------------------------
 faiss_indexes = {}
 start = time.time()
+
 for field in FIELDS:
     with open(f"faiss_indexes/faiss_index_{field}.pkl", "rb") as f:
         faiss_indexes[field] = pickle.load(f)
+
 print("✅ FAISS indexes loaded in", round(time.time() - start, 2), "sec")
 
+
 # -------------------------
-# Step 1: Initialize LLM & PolicyRetrieverAgent
+# Step 1: Initialize DB, LLM & Agents
 # -------------------------
 start = time.time()
+
+client = MongoClient("mongodb://localhost:27017/")
+db = client["policy_db"]
+schemes_collection = db["schemes"]
+
 llm = LocalLLM()
+
 policy_agent = PolicyRetrieverAgent(faiss_indexes, llm)
-print("✅ LLM and PolicyRetrieverAgent initialized in", round(time.time() - start, 2), "sec")
+elig_agent = EligibilityAgent(faiss_indexes, llm)
+
+# ✅ IMPORTANT: pass llm here
+doc_agent = DocumentValidationAgent(llm)
+
+print("✅ Agents initialized in", round(time.time() - start, 2), "sec")
+
 
 # -------------------------
 # Step 2: Get user profile
 # -------------------------
 user_profile = get_user_profile()
 
-# -------------------------
-# Step 3: User query for policy/schemes
-# -------------------------
 
-# query = input("Enter your query: ").strip()
+# -------------------------
+# Step 3: User query & policy retrieval
+# -------------------------
 query = "Policies for fishermen"
-# Step 3a: Embed query
+
 start = time.time()
 query_vector = llm.get_embedding(query)
 print("⏱️ Embedding time:", round(time.time() - start, 2), "sec")
 
-# Step 3b: Retrieve top N relevant schemes
 start = time.time()
 top_k = 3 if FAST_MODE else FAISS_TOP_K
+
 retrieved_schemes = policy_agent.retrieve_policies(
     query=query,
     user_profile=user_profile,
@@ -65,65 +85,127 @@ retrieved_schemes = policy_agent.retrieve_policies(
 )
 
 print("⏱️ Policy retrieval time:", round(time.time() - start, 2), "sec")
-start = time.time()
-# Make sure retrieved_schemes is a list of dicts
-# Each dict should contain: _id, scheme_name, description, benefits (if needed)
+
 print("\n✅ Top schemes retrieved:")
 for i, s in enumerate(retrieved_schemes, 1):
     print(f"{i}. {s['scheme_name']}")
 
+
 # -------------------------
 # Step 4: Eligibility Checking
 # -------------------------
-elig_agent = EligibilityAgent(faiss_indexes, llm)
-eligible_schemes, rejected_schemes = elig_agent.validate_user_for_schemes(user_profile, retrieved_schemes)
+start = time.time()
 
-print("⏱️ Eligibility Checking time:", round(time.time() - start, 2), "sec")
+eligible_schemes, rejected_schemes = elig_agent.validate_user_for_schemes(
+    user_profile,
+    retrieved_schemes
+)
 
-print("\n✅ Eligible schemes for the user:")
+print("⏱️ Eligibility checking time:", round(time.time() - start, 2), "sec")
+
+print("\n✅ Eligible schemes:")
 if eligible_schemes:
-    for i, s in enumerate(eligible_schemes, start=1):
+    for i, s in enumerate(eligible_schemes, 1):
         print(f"{i}. {s['scheme_name']}")
-        if s.get("eligibility_rules_used"):
-            print(f"   Rules Used: {json.dumps(s['eligibility_rules_used'], indent=2)}")
 else:
     print("No eligible schemes found.")
 
-# --------------------------
-# Print Rejected Schemes
-# --------------------------
 print("\n❌ Rejected schemes:")
 if rejected_schemes:
-    for i, s in enumerate(rejected_schemes, start=1):
-        reason = s.get("reason", "Did not meet eligibility")
-        print(f"{i}. {s['scheme_name']} - Reason: {reason}")
-        if s.get("eligibility_rules_used"):
-            print(f"   Rules Used: {json.dumps(s['eligibility_rules_used'], indent=2)}")
+    for i, s in enumerate(rejected_schemes, 1):
+        print(f"{i}. {s['scheme_name']} - {s.get('reason')}")
 else:
     print("No rejected schemes.")
 
-# -------------------------
-# Step 5: Placeholder for document upload/validation
-# -------------------------
-# Example usage (dict internally):
-# user_docs = {
-#     "ID Proof": "path/to/id.pdf",
-#     "Income Certificate": "path/to/income.pdf"
-# }
-# scheme_id = eligible_schemes[0]["_id"]
-# doc_validation = elig_agent.validate_uploaded_docs(user_docs, scheme_id)
-# print("\nDocument validation status:", doc_validation)
 
 # -------------------------
-# Step 6: Convert final output to JSON for display
+# Step 5: User selects scheme
 # -------------------------
+if not eligible_schemes:
+    print("\n🚫 No eligible schemes to apply for.")
+    sys.exit(0)
 
+print("\n📌 Select a scheme to apply for:")
+for i, s in enumerate(eligible_schemes, 1):
+    print(f"{i}. {s['scheme_name']}")
+
+choice = int(input("Enter scheme number: ").strip())
+selected_scheme = eligible_schemes[choice - 1]
+scheme_id = selected_scheme["_id"]
+
+print(f"\n📝 Applying for: {selected_scheme['scheme_name']}")
+
+
+# -------------------------
+# Step 6: Fetch scheme from DB (IMPORTANT)
+# -------------------------
+scheme = schemes_collection.find_one({"_id": scheme_id})
+
+raw_documents_text = scheme.get("documents_required_text", "")
+
+
+# -------------------------
+# Step 7: Document requirement extraction (LLM)
+# -------------------------
+required_docs = doc_agent.get_required_documents(
+    scheme_id=scheme_id,
+    raw_documents_text=raw_documents_text
+)
+
+print("\n📄 Documents required:")
+if not required_docs:
+    print("No documents specified for this scheme.")
+else:
+    for doc, rule in required_docs.items():
+        tag = "(Mandatory)" if rule.get("mandatory", True) else "(Optional)"
+        print(f"- {doc} {tag}")
+
+
+# -------------------------
+# Step 8: Incremental document upload
+# -------------------------
+print("\n⬆️ Upload documents one by one:")
+
+for doc_type in required_docs.keys():
+    value = input(f"Enter value for {doc_type} (leave empty to skip): ").strip()
+
+    if not value:
+        continue
+
+    result = doc_agent.validate_single_document(
+        scheme_id=scheme_id,
+        document_type=doc_type,
+        document_payload={"value": value}
+    )
+
+    print(f"→ {doc_type}: {result['status']}")
+    if result["reason"]:
+        print(f"   Reason: {result['reason']}")
+
+
+# -------------------------
+# Step 9: Intermediate document validation status
+# -------------------------
+doc_validation_status = doc_agent.get_document_validation_status(scheme_id)
+
+print("\n📊 Document Validation Status:")
+print(json.dumps(doc_validation_status, indent=2))
+
+
+# -------------------------
+# Step 10: Final output JSON
+# -------------------------
 final_output = {
     "user_profile": user_profile,
+    "query": query,
     "top_schemes": retrieved_schemes,
     "eligible_schemes": eligible_schemes,
     "rejected_schemes": rejected_schemes,
-    # "document_validation": doc_validation  # add when implemented
+    "selected_scheme": {
+        "scheme_id": scheme_id,
+        "scheme_name": selected_scheme["scheme_name"]
+    },
+    "document_validation": doc_validation_status
 }
 
 print("\n=== FINAL OUTPUT (JSON) ===\n")

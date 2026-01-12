@@ -73,6 +73,7 @@ class EligibilityAgent(AIBaseAgent):
                 eligible.append({
                     "_id": scheme_id,
                     "scheme_name": scheme_data.get("scheme_name"),
+                    "eligibility_rules": rules,
                     "eligibility_matrix": matrix,
                     "final_decision": "ELIGIBLE"
                 })
@@ -222,15 +223,54 @@ class EligibilityAgent(AIBaseAgent):
             return {}
 
     def extract_eligibility_rules(self, eligibility_text: str) -> dict:
+        """
+        Calls LLM to extract eligibility rules as strict JSON
+        """
         if not self.llm:
             return {}
 
         prompt = f"""
-You are a data extraction assistant. Extract eligibility rules and return VALID JSON only.
+You are a data extraction assistant. Your task is to extract eligibility rules from Indian government scheme text and return them as a valid JSON object.
+
+GUIDELINES:
+1. Extract eligibility conditions mentioned in the text.
+2. Return JSON with ONLY the following keys if present:
+   - min_age (number)
+   - max_age (number)
+   - gender ("Male", "Female", "Any")
+   - state (string or list of strings)
+   - occupation (string or list of strings)
+   - max_income (number, monthly income in INR)
+   - category (string)
+3. Convert any human-readable descriptions into numeric or standard JSON format:
+   - "more than 21 years old" → "min_age": 21
+   - "up to 60 years" → "max_age": 60
+   - "income below 10,000" → "max_income": 10000
+   - Occupation descriptions like "small and marginal farmers" → "occupation": "farmer"
+4. If a key is not mentioned in the text, omit it. Do NOT guess.
+5. Output MUST be valid JSON only, no extra text, comments, or explanations.
 
 Eligibility Text:
 \"\"\"{eligibility_text}\"\"\"
+
+Return JSON only:
 """
 
         raw = self.generate_answer(prompt, max_tokens=512)
-        return self.safe_json_parse(raw)
+        rules = self.safe_json_parse(raw)
+        return rules
+    
+    def normalize_rules(self, rules: dict) -> dict:
+        """
+        Convert numeric fields from strings to numbers.
+        """
+        numeric_keys = ["min_age", "max_age", "max_income"]
+        for k in numeric_keys:
+            if k in rules and rules[k] is not None:
+                try:
+                    rules[k] = int(rules[k])
+                except ValueError:
+                    rules[k] = None  # fallback if conversion fails
+        return rules
+    
+

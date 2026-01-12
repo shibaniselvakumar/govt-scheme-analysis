@@ -16,7 +16,8 @@ class AIBaseAgent:
         self,
         query_vector: np.ndarray,
         field: str,
-        top_k: int = 5
+        top_k: int = 5,
+        max_faiss_docs: int = 100,
     ) -> List:
         if field not in self.faiss_indexes:
             raise ValueError(f"FAISS index for '{field}' not found")
@@ -26,9 +27,19 @@ class AIBaseAgent:
 
         query_vector = np.asarray(query_vector, dtype="float32").reshape(1, -1)
 
-        distances, indices = index.search(query_vector, top_k)
+         # 🔍 Search more because we'll filter
+        distances, indices = index.search(query_vector, top_k * 10)
 
-        return [ids[i] for i in indices[0] if i < len(ids)]
+        results = []
+        for i in indices[0]:
+            if i >= max_faiss_docs:   # ⛔ limit to first 100 vectors1
+                continue
+            if i < len(ids):
+                results.append(ids[i])
+            if len(results) == top_k:
+                break
+
+        return results
 
     def generate_answer(self, prompt: str, max_tokens: int = 512) -> str:
         return self.llm.generate(prompt, max_tokens=max_tokens)

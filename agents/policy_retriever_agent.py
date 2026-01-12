@@ -73,8 +73,12 @@ class PolicyRetrieverAgent(AIBaseAgent):
             db_filter["state"] = user_profile["state"]
 
         candidate_ids = [
-            s["_id"] for s in self.collection.find(db_filter, {"_id": 1})
-        ] if db_filter else None
+            s["_id"]
+            for s in self.collection
+                .find(db_filter if db_filter else {}, {"_id": 1})
+                .limit(100)
+        ]
+
 
         # 4. FAISS retrieval
         doc_ids = self.retrieve_similar_docs(query_vector, "description", top_k)
@@ -92,9 +96,6 @@ class PolicyRetrieverAgent(AIBaseAgent):
             results.append({
                 "scheme_id": str(scheme["_id"]),
                 "scheme_name": scheme.get("scheme_name"),
-                "state": scheme.get("state"),
-                "category": scheme.get("category"),
-                "short_description": scheme.get("description", "")[:150]
             })
 
         return results
