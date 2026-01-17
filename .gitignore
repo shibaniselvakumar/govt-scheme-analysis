@@ -40,3 +40,13 @@ uploads/
 # Environment variables
 .env
 .env.local
+.gitignore
+
+#Data
+schemes_data.csv
+precomputed_documents.json
+precomputed_rules.json
+
+# Logs
+FLOW.md
+SETUP.md
