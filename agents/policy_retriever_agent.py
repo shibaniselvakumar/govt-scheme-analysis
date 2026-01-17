@@ -81,7 +81,7 @@ class PolicyRetrieverAgent(AIBaseAgent):
 
 
         # 4. FAISS retrieval
-        doc_ids = self.retrieve_similar_docs(query_vector, "description", top_k)
+        doc_ids = self.retrieve_similar_docs(query_vector, "description")
 
         if candidate_ids:
             doc_ids = [d for d in doc_ids if d in candidate_ids]

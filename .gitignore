@@ -1,22 +1,42 @@
 # Python
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
-
-# Virtual environment
+*.py[cod]
+*$py.class
+*.so
+.Python
 venv/
-.env
+env/
+ENV/
+*.egg-info/
+dist/
+build/
 
-# Large models
-models/*.gguf
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+dist/
+dist-ssr/
+*.local
 
-# FAISS indexes
-faiss_index_*.pkl
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
 
-# OS files
+# OS
 .DS_Store
 Thumbs.db
 
-schemes_data.csv
-precomputed_rules.json
+# Project specific
+uploads/
+*.pkl
+*.gguf
+
+# Environment variables
+.env
+.env.local

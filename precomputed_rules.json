@@ -1,0 +1,429 @@
+{
+  "SCHEME_0001": {},
+  "SCHEME_0002": {},
+  "SCHEME_0003": {
+    "occupation": [
+      "construction_worker"
+    ]
+  },
+  "SCHEME_0004": {},
+  "SCHEME_0005": {
+    "state": [
+      "Andhra Pradesh"
+    ],
+    "category": "",
+    "max_income": 75000,
+    "gender": ""
+  },
+  "SCHEME_0006": {},
+  "SCHEME_0007": {},
+  "SCHEME_0008": {
+    "min_age": 18,
+    "state": [
+      "Rajasthan"
+    ],
+    "gender": "Any"
+  },
+  "SCHEME_0009": {
+    "state": [
+      "Chhattisgarh"
+    ],
+    "occupation": "construction_worker"
+  },
+  "SCHEME_0010": {
+    "min_age": null,
+    "max_age": null,
+    "gender": [
+      "Male",
+      "Female"
+    ],
+    "state": null,
+    "occupation": [
+      "farmer"
+    ],
+    "category": null
+  },
+  "SCHEME_0011": {},
+  "SCHEME_0012": {},
+  "SCHEME_0013": {
+    "min_age": null,
+    "max_age": null,
+    "gender": [
+      "Male",
+      "Female"
+    ],
+    "state": null,
+    "occupation": [
+      "hotel_unit"
+    ],
+    "max_income": null
+  },
+  "SCHEME_0014": {
+    "min_age": null,
+    "max_age": null,
+    "gender": [
+      "Male",
+      "Female"
+    ],
+    "state": null,
+    "occupation": [
+      "tourism projects",
+      "hotel units"
+    ],
+    "max_income": null
+  },
+  "SCHEME_0015": {},
+  "SCHEME_0016": {
+    "min_age": null,
+    "max_age": null,
+    "gender": [
+      "Male",
+      "Female"
+    ],
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": [
+      "tourism projects",
+      "hotel units"
+    ]
+  },
+  "SCHEME_0017": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": "tourist_project",
+    "max_income": null
+  },
+  "SCHEME_0018": {
+    "min_age": null,
+    "max_age": null,
+    "gender": [
+      "Male",
+      "Female"
+    ],
+    "state": [],
+    "occupation": [
+      "hotel_unit"
+    ],
+    "max_income": null,
+    "category": "tourism"
+  },
+  "SCHEME_0019": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0020": {},
+  "SCHEME_0021": {},
+  "SCHEME_0022": {
+    "min_age": null,
+    "max_age": null,
+    "gender": [
+      "Male",
+      "Female"
+    ],
+    "state": [],
+    "occupation": [
+      "manufacturing",
+      "processing"
+    ],
+    "max_income": null
+  },
+  "SCHEME_0023": {},
+  "SCHEME_0024": {
+    "min_age": null,
+    "max_age": null,
+    "gender": [
+      "Male",
+      "Female"
+    ],
+    "state": [],
+    "occupation": [
+      "manufacturing",
+      "processing"
+    ],
+    "max_income": null
+  },
+  "SCHEME_0025": {
+    "min_age": null,
+    "max_age": null,
+    "gender": [
+      "Male",
+      "Female"
+    ],
+    "state": [],
+    "occupation": [],
+    "max_income": null
+  },
+  "SCHEME_0026": {},
+  "SCHEME_0027": {},
+  "SCHEME_0028": {
+    "min_age": 18,
+    "max_age": 60,
+    "state": [
+      "Jammu & Kashmir"
+    ],
+    "occupation": "building/construction worker"
+  },
+  "SCHEME_0029": {
+    "min_age": 18,
+    "max_age": null
+  },
+  "SCHEME_0030": {
+    "min_age": 18,
+    "max_age": 35,
+    "state": [
+      "Puducherry"
+    ],
+    "education": ""
+  },
+  "SCHEME_0031": {
+    "min_age": 18,
+    "max_age": null
+  },
+  "SCHEME_0032": {},
+  "SCHEME_0033": {},
+  "SCHEME_0034": {},
+  "SCHEME_0035": {},
+  "SCHEME_0036": {},
+  "SCHEME_0037": {},
+  "SCHEME_0038": {},
+  "SCHEME_0039": {},
+  "SCHEME_0040": {},
+  "SCHEME_0041": {
+    "gender": [
+      "Male",
+      "Female"
+    ],
+    "category": ""
+  },
+  "SCHEME_0042": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0043": {
+    "min_age": 23,
+    "max_age": 60,
+    "gender": "Any",
+    "state": [
+      "Puducherry"
+    ],
+    "occupation": [
+      {
+        "name": "fisherman"
+      },
+      {
+        "type": "prospective entrepreneur"
+      }
+    ],
+    "category": ""
+  },
+  "SCHEME_0044": {},
+  "SCHEME_0045": {},
+  "SCHEME_0046": {},
+  "SCHEME_0047": {
+    "state": [
+      "Puducherry"
+    ]
+  },
+  "SCHEME_0048": {},
+  "SCHEME_0049": {},
+  "SCHEME_0050": {},
+  "SCHEME_0051": {
+    "occupation": [
+      "fisherman"
+    ],
+    "category": ""
+  },
+  "SCHEME_0052": {},
+  "SCHEME_0053": {},
+  "SCHEME_0054": {},
+  "SCHEME_0055": {
+    "state": [
+      "Puducherry"
+    ]
+  },
+  "SCHEME_0056": {},
+  "SCHEME_0057": {},
+  "SCHEME_0058": {},
+  "SCHEME_0059": {
+    "occupation": "cooperative industry worker",
+    "state": [
+      "Puducherry"
+    ]
+  },
+  "SCHEME_0060": {
+    "state": [
+      "Puducherry"
+    ],
+    "occupation": []
+  },
+  "SCHEME_0061": {
+    "min_age": 18,
+    "max_age": 60,
+    "gender": [
+      "Male",
+      "Female"
+    ],
+    "state": [
+      "Union territory of Puducherry"
+    ],
+    "occupation": "fisherman/fisherwoman co-operative society member",
+    "category": ""
+  },
+  "SCHEME_0062": {
+    "min_age": 18,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Puducherry"
+    ],
+    "occupation": null
+  },
+  "SCHEME_0063": {},
+  "SCHEME_0064": {},
+  "SCHEME_0065": {},
+  "SCHEME_0066": {},
+  "SCHEME_0067": {},
+  "SCHEME_0068": {},
+  "SCHEME_0069": {
+    "category": [
+      "Thrust Area",
+      "IT Sector"
+    ]
+  },
+  "SCHEME_0070": {},
+  "SCHEME_0071": {},
+  "SCHEME_0072": {},
+  "SCHEME_0073": {},
+  "SCHEME_0074": {},
+  "SCHEME_0075": {},
+  "SCHEME_0076": {
+    "category": ""
+  },
+  "SCHEME_0077": {},
+  "SCHEME_0078": {},
+  "SCHEME_0079": {},
+  "SCHEME_0080": {
+    "state": [
+      "Tripura"
+    ],
+    "occupation": [
+      null
+    ],
+    "max_income": null
+  },
+  "SCHEME_0081": {},
+  "SCHEME_0082": {
+    "category": "Industry Certificate",
+    "state": [
+      "Puducherry"
+    ]
+  },
+  "SCHEME_0083": {
+    "min_age": 23,
+    "max_age": 60,
+    "gender": "Any",
+    "state": [
+      "Puducherry"
+    ],
+    "occupation": [
+      {
+        "type": "fishermen"
+      },
+      {
+        "description": "professionally engaged in fishing/fishing trade occupation on a full-time basis or prospective entrepreneurs",
+        "occupation": [
+          "fishing",
+          "entrepreneur"
+        ]
+      }
+    ],
+    "category": ""
+  },
+  "SCHEME_0084": {
+    "min_age": null,
+    "max_age": null,
+    "gender": [
+      "Male",
+      "Female"
+    ],
+    "state": [
+      "Puducherry"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0085": {
+    "state": [
+      "Puducherry"
+    ],
+    "occupation": "farmer"
+  },
+  "SCHEME_0086": {},
+  "SCHEME_0087": {
+    "min_age": 18,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Puducherry"
+    ],
+    "occupation": null
+  },
+  "SCHEME_0088": {},
+  "SCHEME_0089": {
+    "occupation": [
+      "artisan",
+      "industrial"
+    ]
+  },
+  "SCHEME_0090": {
+    "occupation": [
+      "Industrial",
+      "Association"
+    ]
+  },
+  "SCHEME_0091": {},
+  "SCHEME_0092": {},
+  "SCHEME_0093": {},
+  "SCHEME_0094": {},
+  "SCHEME_0095": {},
+  "SCHEME_0096": {
+    "state": [
+      "Madhya Pradesh"
+    ],
+    "min_age": null,
+    "max_income": null,
+    "gender": [
+      "Any"
+    ],
+    "occupation": null
+  },
+  "SCHEME_0097": {
+    "min_age": 10,
+    "max_income": null
+  },
+  "SCHEME_0098": {},
+  "SCHEME_0099": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0100": {}
+}

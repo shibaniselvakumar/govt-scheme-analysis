@@ -1,5 +1,6 @@
 # agents/eligibility_agent.py
 
+import os
 from .ai_agents_base import AIBaseAgent
 from pymongo import MongoClient
 import json
@@ -18,9 +19,17 @@ class EligibilityAgent(AIBaseAgent):
         self.db = client["policy_db"]
         self.collection = self.db["schemes"]
 
+        # ✅ Resolve project root (one level above agents/)
+        agents_dir = os.path.dirname(os.path.abspath(__file__))
+        project_root = os.path.dirname(agents_dir)
+
+        precomputed_path = os.path.join(project_root, precomputed_rules_file)
+
+        # Load precomputed rules
         try:
-            with open(precomputed_rules_file, "r", encoding="utf-8") as f:
+            with open(precomputed_path, "r", encoding="utf-8") as f:
                 self.precomputed_rules = json.load(f)
+                print(f"✅ Loaded precomputed rules for {len(self.precomputed_rules)} schemes")
         except FileNotFoundError:
             print("⚠️ Precomputed rules file not found. Falling back to LLM extraction.")
             self.precomputed_rules = {}
@@ -72,6 +81,7 @@ class EligibilityAgent(AIBaseAgent):
             if not failed:
                 eligible.append({
                     "_id": scheme_id,
+                    "scheme_id": scheme_id,
                     "scheme_name": scheme_data.get("scheme_name"),
                     "eligibility_rules": rules,
                     "eligibility_matrix": matrix,
@@ -80,6 +90,7 @@ class EligibilityAgent(AIBaseAgent):
             else:
                 rejected.append({
                     "_id": scheme_id,
+                    "scheme_id": scheme_id,
                     "scheme_name": scheme_data.get("scheme_name"),
                     "eligibility_matrix": matrix,
                     "final_decision": "REJECTED",

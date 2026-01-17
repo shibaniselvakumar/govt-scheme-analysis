@@ -102,6 +102,7 @@ eligible_schemes, rejected_schemes = elig_agent.validate_user_for_schemes(
 )
 
 print("⏱️ Eligibility checking time:", round(time.time() - start, 2), "sec")
+start = time.time()
 
 print("\n✅ Eligible schemes:")
 if eligible_schemes:
@@ -125,6 +126,7 @@ if not eligible_schemes:
     print("\n🚫 No eligible schemes to apply for.")
     sys.exit(0)
 
+start = time.time()
 print("\n📌 Select a scheme to apply for:")
 for i, s in enumerate(eligible_schemes, 1):
     print(f"{i}. {s['scheme_name']}")
@@ -151,7 +153,7 @@ required_docs = doc_agent.get_required_documents(
     scheme_id=scheme_id,
     raw_documents_text=raw_documents_text
 )
-
+print("Document validation status:", round(time.time() - start, 2), "sec")
 print("\n📄 Documents required:")
 if not required_docs:
     print("No documents specified for this scheme.")
