@@ -24,14 +24,10 @@ class DocumentValidationAgent(AIBaseAgent):
         # In-memory user uploads
         self.user_documents = {}
 
-
-        # ✅ Resolve project root (one level above agents/)
         agents_dir = os.path.dirname(os.path.abspath(__file__))
         project_root = os.path.dirname(agents_dir)
 
         precomputed_path = os.path.join(project_root, precomputed_docs_file)
-
-        # Load precomputed documents
         try:
             with open(precomputed_path, "r", encoding="utf-8") as f:
                 self.precomputed_docs = json.load(f)
@@ -165,6 +161,14 @@ Rules:
         """
         Builds document validation matrix
         """
+
+        if scheme_id not in self.doc_rules:
+            return {
+                "scheme_id": scheme_id,
+                "document_validation_matrix": {},
+                "final_document_status": "NOT_INITIALIZED"
+            }
+    
         required_docs = self.doc_rules.get(scheme_id, {}).get("required_documents", {})
         submitted_docs = self.user_documents.get(scheme_id, {})
 

@@ -9,6 +9,7 @@ from llm.local_llm import LocalLLM
 from agents.policy_retriever_agent import PolicyRetrieverAgent
 from agents.eligibility_agent import EligibilityAgent
 from agents.document_validation_agent import DocumentValidationAgent
+from agents.pathway_generation_agent import PathwayGenerationAgent   # ✅ NEW
 from user_interaction import get_user_profile
 from pymongo import MongoClient
 
@@ -53,9 +54,10 @@ llm = LocalLLM()
 
 policy_agent = PolicyRetrieverAgent(faiss_indexes, llm)
 elig_agent = EligibilityAgent(faiss_indexes, llm)
-
-# ✅ IMPORTANT: pass llm here
 doc_agent = DocumentValidationAgent(llm)
+
+# ✅ NEW AGENT
+pathway_agent = PathwayGenerationAgent(llm=llm)
 
 print("✅ Agents initialized in", round(time.time() - start, 2), "sec")
 
@@ -102,7 +104,6 @@ eligible_schemes, rejected_schemes = elig_agent.validate_user_for_schemes(
 )
 
 print("⏱️ Eligibility checking time:", round(time.time() - start, 2), "sec")
-start = time.time()
 
 print("\n✅ Eligible schemes:")
 if eligible_schemes:
@@ -126,7 +127,6 @@ if not eligible_schemes:
     print("\n🚫 No eligible schemes to apply for.")
     sys.exit(0)
 
-start = time.time()
 print("\n📌 Select a scheme to apply for:")
 for i, s in enumerate(eligible_schemes, 1):
     print(f"{i}. {s['scheme_name']}")
@@ -139,24 +139,23 @@ print(f"\n📝 Applying for: {selected_scheme['scheme_name']}")
 
 
 # -------------------------
-# Step 6: Fetch scheme from DB (IMPORTANT)
+# Step 6: Fetch scheme from DB
 # -------------------------
 scheme = schemes_collection.find_one({"_id": scheme_id})
-
 raw_documents_text = scheme.get("documents_required_text", "")
 
 
 # -------------------------
-# Step 7: Document requirement extraction (LLM)
+# Step 7: Document requirement extraction
 # -------------------------
 required_docs = doc_agent.get_required_documents(
     scheme_id=scheme_id,
     raw_documents_text=raw_documents_text
 )
-print("Document validation status:", round(time.time() - start, 2), "sec")
+
 print("\n📄 Documents required:")
 if not required_docs:
-    print("No documents specified for this scheme.")
+    print("No documents specified.")
 else:
     for doc, rule in required_docs.items():
         tag = "(Mandatory)" if rule.get("mandatory", True) else "(Optional)"
@@ -186,7 +185,7 @@ for doc_type in required_docs.keys():
 
 
 # -------------------------
-# Step 9: Intermediate document validation status
+# Step 9: Document validation status
 # -------------------------
 doc_validation_status = doc_agent.get_document_validation_status(scheme_id)
 
@@ -195,7 +194,23 @@ print(json.dumps(doc_validation_status, indent=2))
 
 
 # -------------------------
-# Step 10: Final output JSON
+# 🆕 Step 10: Pathway Generation Agent
+# -------------------------
+print("\n🧭 Generating application guidance...\n")
+start = time.time()
+
+pathway = pathway_agent.generate_pathway(
+    eligibility_output=selected_scheme,
+    document_status=doc_validation_status
+)
+
+print("===== APPLICATION PATHWAY =====")
+print(json.dumps(pathway, indent=2, ensure_ascii=False))
+print("⏱️ Guidance time:", round(time.time() - start, 2), "sec")
+
+
+# -------------------------
+# Step 11: Final output JSON
 # -------------------------
 final_output = {
     "user_profile": user_profile,
@@ -207,7 +222,8 @@ final_output = {
         "scheme_id": scheme_id,
         "scheme_name": selected_scheme["scheme_name"]
     },
-    "document_validation": doc_validation_status
+    "document_validation": doc_validation_status,
+    "application_pathway": pathway   # ✅ INCLUDED
 }
 
 print("\n=== FINAL OUTPUT (JSON) ===\n")

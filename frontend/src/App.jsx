@@ -10,8 +10,10 @@ import Dashboard from './components/Dashboard'
 function App() {
   const [userProfile, setUserProfile] = useState(null)
   const [selectedSchemes, setSelectedSchemes] = useState([])
+  const [eligibilityOutputs, setEligibilityOutputs] = useState({});
   const [uploadedDocuments, setUploadedDocuments] = useState({})
-  const [guidanceData, setGuidanceData] = useState(null)
+  const [guidanceData, setGuidanceData] = useState([])
+
 
   return (
     <Router>
@@ -41,6 +43,7 @@ function App() {
               selectedSchemes.length > 0 && userProfile ? (
                 <DocumentUpload 
                   schemes={selectedSchemes}
+                  eligibilityOutputs={eligibilityOutputs}   // << ADD THIS
                   userProfile={userProfile}
                   onComplete={(result) => {
                     setUploadedDocuments(result.documents || {})
@@ -52,16 +55,18 @@ function App() {
               )
             } 
           />
+
           <Route 
             path="/guidance" 
             element={
-              guidanceData ? (
-                <FullGuidance data={guidanceData} />
+              guidanceData.length > 0 ? (
+                <FullGuidance guidanceData={guidanceData} />
               ) : (
                 <Navigate to="/documents" replace />
               )
-            } 
+            }
           />
+
           <Route 
             path="/map" 
             element={<GeographicalMap />} 

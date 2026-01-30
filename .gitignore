@@ -44,8 +44,8 @@ uploads/
 
 #Data
 schemes_data.csv
-precomputed_documents.json
-precomputed_rules.json
+#precomputed_documents.json
+#precomputed_rules.json
 
 # Logs
 FLOW.md

@@ -24,7 +24,7 @@ def get_user_profile():
         "name": "Asha Devi",
         "age": 34,
         "gender": "Female",  
-        "state": "Uttar Pradesh",
+        "state": "Puducherry",
         "occupation": "Fisherman",    
         "monthly_income": 8000.0,
     }
