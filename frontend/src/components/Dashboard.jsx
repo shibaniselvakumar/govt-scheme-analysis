@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { User, FileText, Map, CheckCircle2, ArrowRight } from 'lucide-react'
+import { User, FileText, Map, CheckCircle2, ArrowRight, BarChart3 } from 'lucide-react'
 
 function Dashboard({ userProfile, selectedSchemes, guidanceData }) {
   return (

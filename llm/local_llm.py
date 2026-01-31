@@ -8,12 +8,14 @@ from pathlib import Path
 
 class LocalLLM:
     def __init__(self):
+        # Create models directory if it doesn't exist
+        models_dir = Path("../models")
+        models_dir.mkdir(exist_ok=True)
+
         self.model = GPT4All(
             model_name="Phi-3.5-mini-instruct-Q4_K_M.gguf",
-            model_path=Path(
-                "C:\\Users\\shibs\\OneDrive\\Desktop\\Projects\\CIP\\models"
-            ),
-            allow_download=False
+            model_path=models_dir,
+            allow_download=True  # Allow download if model not found
         )
 
         self.embedder = SentenceTransformer(

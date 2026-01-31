@@ -2,7 +2,7 @@ flask==3.0.0
 flask-cors==4.0.0
 werkzeug==3.0.1
 pymongo==4.6.0
-numpy==1.24.3
-faiss-cpu==1.7.4
-sentence-transformers==2.2.2
-gpt4all==2.5.0
+numpy>=2.0.0
+faiss-cpu>=1.8.0
+sentence-transformers>=3.0.0
+gpt4all>=2.8.0

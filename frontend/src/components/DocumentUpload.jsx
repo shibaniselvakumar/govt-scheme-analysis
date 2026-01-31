@@ -1,12 +1,21 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Upload, File, X, CheckCircle2, AlertCircle, ArrowRight, Loader2 } from 'lucide-react';
+import {
+  Upload,
+  File,
+  X,
+  CheckCircle2,
+  AlertCircle,
+  ArrowRight,
+  Loader2,
+  FileText
+} from 'lucide-react';
 import { useDropzone } from 'react-dropzone';
-import axios from 'axios';
+import api from '../utils/api';
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 
-function DocumentUpload({ schemes = [], eligibilityOutputs = {}, onComplete }) {
+function DocumentUpload({ schemes, onComplete, userProfile }) {
   const navigate = useNavigate();
 
   const [requiredDocs, setRequiredDocs] = useState({});
@@ -16,92 +25,70 @@ function DocumentUpload({ schemes = [], eligibilityOutputs = {}, onComplete }) {
   const [uploading, setUploading] = useState(false);
   const [generatingGuidance, setGeneratingGuidance] = useState(false);
 
-  /* ===========================
-     FETCH REQUIRED DOCUMENTS
-  ============================ */
+  // ---------------- FETCH REQUIRED DOCUMENTS ----------------
   useEffect(() => {
-    console.log('[INIT] Schemes received:', schemes);
-
     const fetchDocs = async () => {
       try {
         const docsObj = {};
-
         for (const scheme of schemes) {
           const schemeId = scheme.scheme_id || scheme._id;
-          console.log(`[DOC_FETCH] Fetching docs for scheme: ${schemeId}`);
-
-          const res = await axios.post('/api/get-required-documents', {
-            scheme_id: schemeId,
+          const res = await api.post('/api/get-required-documents', {
+            scheme_id: schemeId
           });
-
-          console.log(`[DOC_FETCH] Response for ${schemeId}:`, res.data);
           docsObj[schemeId] = res.data.required_documents || {};
         }
-
         setRequiredDocs(docsObj);
       } catch (err) {
-        console.error('[DOC_FETCH_ERROR]', err);
         alert('Failed to load required documents');
       } finally {
         setLoading(false);
       }
     };
-
-    if (schemes.length) fetchDocs();
-    else setLoading(false);
+    fetchDocs();
   }, [schemes]);
 
-  /* ===========================
-     FILE DROP HANDLER
-  ============================ */
+  // ---------------- FILE DROP ----------------
   const onDrop = async (acceptedFiles, docType, schemeId) => {
     const file = acceptedFiles[0];
     if (!file) return;
 
-    console.log('[UPLOAD] File dropped:', { schemeId, docType, file });
-
     setUploading(true);
-
     try {
       const formData = new FormData();
       formData.append('file', file);
       formData.append('scheme_id', schemeId);
       formData.append('document_type', docType);
 
-      const res = await axios.post('/api/validate-document', formData);
-
-      console.log('[UPLOAD] Validation response:', res.data);
+      const res = await api.post('/api/validate-document', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' }
+      });
 
       setUploadedFiles(prev => ({
         ...prev,
-        [`${schemeId}_${docType}`]: file,
+        [`${schemeId}_${docType}`]: file
       }));
 
       setValidationStatus(prev => ({
         ...prev,
         [`${schemeId}_${docType}`]: {
           status: res.data.status,
-          reason: res.data.reason,
-        },
+          reason: res.data.reason
+        }
       }));
     } catch (err) {
-      console.error('[UPLOAD_ERROR]', err);
-      alert('Document upload failed');
+      alert('Upload failed');
     } finally {
       setUploading(false);
     }
   };
 
   const removeFile = (schemeId, docType) => {
-    console.log('[REMOVE_FILE]', schemeId, docType);
     const key = `${schemeId}_${docType}`;
-
     setUploadedFiles(prev => {
       const copy = { ...prev };
       delete copy[key];
       return copy;
     });
-
     setValidationStatus(prev => {
       const copy = { ...prev };
       delete copy[key];
@@ -109,208 +96,201 @@ function DocumentUpload({ schemes = [], eligibilityOutputs = {}, onComplete }) {
     });
   };
 
-  /* ===========================
-     CONTINUE → GENERATE GUIDANCE
-  ============================ */
+  // ---------------- CONTINUE ----------------
   const handleContinue = async () => {
-    console.log('[CONTINUE_CLICKED]');
-    console.log('[STATE] eligibilityOutputs:', eligibilityOutputs);
-    console.log('[STATE] validationStatus:', validationStatus);
-
-    if (!schemes.length) {
-      alert('No schemes selected');
-      return;
-    }
-
     setGeneratingGuidance(true);
-
     try {
-      const guidanceResults = [];
-
-      for (const scheme of schemes) {
-        const schemeId = scheme.scheme_id || scheme._id;
-        const schemeDocs = requiredDocs[schemeId] || {};
-
-        console.log(`\n[SCHEME_START] ${schemeId}`, scheme);
-
-        /* ---- BUILD DOCUMENT STATUS (BACKEND FORMAT) ---- */
-        const document_validation_matrix = {};
-
-        Object.entries(schemeDocs).forEach(([docType, docInfo]) => {
-          const frontendKey = `${schemeId}_${docType}`;
-          const validation = validationStatus[frontendKey];
-
-          document_validation_matrix[docType] = {
-            mandatory: docInfo.mandatory !== false,
-            user_submitted: !!validation,
-            status: validation?.status === 'valid' ? 'PASS' : 'FAIL',
-            reason:
-              validation?.reason ||
-              (!validation ? 'Document not submitted' : null),
-          };
-        });
-
-        const final_document_status = Object.values(document_validation_matrix)
-          .some(d => d.mandatory && d.status === 'FAIL')
-          ? 'INCOMPLETE'
-          : 'COMPLETE';
-
-        const document_status = {
-          scheme_id: schemeId,
-          document_validation_matrix,
-          final_document_status,
+      const documentMeta = {};
+      Object.entries(uploadedFiles).forEach(([key, file]) => {
+        documentMeta[key] = {
+          filename: file.name,
+          size: file.size,
+          type: file.type
         };
+      });
 
-        console.log('[DOCUMENT_STATUS]', document_status);
-
-        /* ---- CALL BACKEND ---- */
-        console.log('[API_CALL] /api/generate-guidance payload:', {
-          eligibility_output: scheme,
-          document_status,
-        });
-
-        const res = await axios.post('/api/generate-guidance', {
-          eligibility_output: scheme,
-          document_status,
-        });
-
-        console.log('[API_RESPONSE] Guidance:', res.data);
-
-        guidanceResults.push({
-          scheme_id: schemeId,
-          scheme_name: scheme.scheme_name,
-          guidance: res.data.pathway || res.data,
-          document_status,
-        });
-      }
-
-      console.log('[FINAL_GUIDANCE_RESULTS]', guidanceResults);
-
-      console.log('[NAVIGATE] Passing guidanceData to /guidance');
+      const res = await api.post('/api/generate-guidance', {
+        userProfile,
+        selectedSchemes: schemes,
+        documents: documentMeta,
+        validationStatus
+      });
 
       onComplete({
         documents: uploadedFiles,
-        guidanceData: guidanceResults,
+        validationStatus,
+        guidanceData: res.data
       });
 
       navigate('/guidance');
-
-
     } catch (err) {
-      console.error('[GUIDANCE_ERROR]', err);
-      alert('Failed to generate guidance');
+      alert('Guidance generation failed');
     } finally {
       setGeneratingGuidance(false);
     }
   };
 
-  if (loading)
-    return <Loader2 className="w-8 h-8 animate-spin text-blue-600 m-auto" />;
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-blue-50">
+        <Loader2 className="w-12 h-12 animate-spin text-blue-600" />
+      </div>
+    );
+  }
 
-  /* ===========================
-     UI
-  ============================ */
   return (
-    <div className="min-h-screen p-6">
-      {schemes.map(scheme => {
-        const schemeId = scheme.scheme_id || scheme._id;
-        const docs = requiredDocs[schemeId] || {};
+    <div className="min-h-screen bg-blue-50 py-10">
+      <div className="max-w-6xl mx-auto px-4">
 
-        return (
-          <div key={schemeId} className="card mb-6">
-            <h2 className="text-xl font-semibold mb-4">
-              {scheme.scheme_name}
-            </h2>
-
-            {Object.entries(docs).map(([docType, docInfo]) => {
-              const key = `${schemeId}_${docType}`;
-              const file = uploadedFiles[key];
-              const validation = validationStatus[key];
-
-              return (
-                <div key={docType} className="border p-4 rounded mb-4">
-                  <div className="flex justify-between items-center mb-2">
-                    <div>
-                      <h3 className="capitalize font-medium">
-                        {docType.replace(/_/g, ' ')}
-                        {docInfo.mandatory !== false && (
-                          <span className="text-red-600 ml-1">*</span>
-                        )}
-                      </h3>
-                      <p className="text-sm text-gray-600">
-                        {docInfo.description}
-                      </p>
-                    </div>
-
-                    {validation &&
-                      (validation.status === 'valid' ? (
-                        <CheckCircle2 className="text-green-600" />
-                      ) : (
-                        <AlertCircle className="text-red-600" />
-                      ))}
-                  </div>
-
-                  {file ? (
-                    <div className="flex justify-between items-center bg-gray-50 p-3 rounded">
-                      <div className="flex gap-2 items-center">
-                        <File className="text-blue-600" />
-                        {file.name}
-                      </div>
-                      <button onClick={() => removeFile(schemeId, docType)}>
-                        <X className="text-red-600" />
-                      </button>
-                    </div>
-                  ) : (
-                    <Dropzone
-                      onDrop={files => onDrop(files, docType, schemeId)}
-                      disabled={uploading}
-                    />
-                  )}
-
-                  {validation?.reason && (
-                    <p className="text-sm mt-2 text-gray-600">
-                      {validation.reason}
-                    </p>
-                  )}
-                </div>
-              );
-            })}
+        {/* HEADER */}
+        <div className="text-center mb-10">
+          <div className="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+            <Upload className="text-white w-10 h-10" />
           </div>
-        );
-      })}
+          <h1 className="text-4xl font-bold text-blue-900 mb-2">
+            Document Verification
+          </h1>
+          <p className="text-blue-700">
+            Upload required documents for selected government schemes
+          </p>
+        </div>
 
-      <button
-        onClick={handleContinue}
-        disabled={uploading || generatingGuidance}
-        className="btn-primary flex items-center gap-2"
-      >
-        {generatingGuidance ? 'Generating...' : 'Continue'} <ArrowRight />
-      </button>
+        {/* SCHEME CARDS */}
+        <div className="space-y-8">
+          {schemes.map(scheme => {
+            const schemeId = scheme.scheme_id || scheme._id;
+            const docs = requiredDocs[schemeId] || {};
+
+            return (
+              <div
+                key={schemeId}
+                className="bg-white border border-blue-200 rounded-xl shadow p-6"
+              >
+                <div className="flex items-center mb-6">
+                  <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                    <FileText className="text-blue-600" />
+                  </div>
+                  <h2 className="text-xl font-semibold text-blue-900">
+                    {scheme.scheme_name}
+                  </h2>
+                </div>
+
+                {Object.entries(docs).map(([docType, docInfo]) => {
+                  const key = `${schemeId}_${docType}`;
+                  const file = uploadedFiles[key];
+                  const validation = validationStatus[key];
+
+                  return (
+                    <div
+                      key={docType}
+                      className="border border-blue-200 bg-blue-50 p-4 rounded-lg mb-4"
+                    >
+                      <div className="flex justify-between items-center mb-2">
+                        <div>
+                          <h3 className="font-medium text-blue-900 capitalize">
+                            {docType.replace(/_/g, ' ')}
+                            {docInfo.mandatory !== false && (
+                              <span className="text-red-600 ml-1">*</span>
+                            )}
+                          </h3>
+                          <p className="text-sm text-blue-700">
+                            {docInfo.description}
+                          </p>
+                        </div>
+
+                        {validation &&
+                          (validation.status === 'valid' ? (
+                            <CheckCircle2 className="text-green-600" />
+                          ) : (
+                            <AlertCircle className="text-red-600" />
+                          ))}
+                      </div>
+
+                      {file ? (
+                        <div className="flex justify-between items-center bg-white p-3 rounded border border-blue-200">
+                          <div className="flex gap-2 items-center text-blue-900">
+                            <File className="w-5 h-5 text-blue-600" />
+                            {file.name}
+                          </div>
+                          <button
+                            onClick={() =>
+                              removeFile(schemeId, docType)
+                            }
+                          >
+                            <X className="text-red-600" />
+                          </button>
+                        </div>
+                      ) : (
+                        <Dropzone
+                          onDrop={files =>
+                            onDrop(files, docType, schemeId)
+                          }
+                          disabled={uploading}
+                        />
+                      )}
+
+                      {validation?.reason && (
+                        <p className="text-sm mt-2 text-blue-700">
+                          {validation.reason}
+                        </p>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* CONTINUE BUTTON */}
+        <div className="flex justify-center mt-10">
+          <button
+            onClick={handleContinue}
+            disabled={uploading || generatingGuidance}
+            className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-semibold disabled:opacity-50"
+          >
+            {generatingGuidance ? (
+              <>
+                <Loader2 className="animate-spin" />
+                Generating...
+              </>
+            ) : (
+              <>
+                Continue
+                <ArrowRight />
+              </>
+            )}
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
 
-/* ===========================
-   DROPZONE
-=========================== */
+// ---------------- DROPZONE ----------------
 function Dropzone({ onDrop, disabled }) {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     maxFiles: 1,
     maxSize: MAX_FILE_SIZE,
-    disabled,
+    disabled
   });
 
   return (
     <div
       {...getRootProps()}
-      className={`border-2 border-dashed p-6 rounded-lg text-center cursor-pointer
-        ${isDragActive ? 'border-blue-500 bg-blue-50' : 'border-gray-300'}
-        ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
+      className={`border-2 border-dashed rounded-lg p-6 text-center cursor-pointer transition
+        ${
+          isDragActive
+            ? 'border-blue-500 bg-blue-100'
+            : 'border-blue-300 bg-white'
+        }
+        ${disabled ? 'opacity-50 cursor-not-allowed' : ''}
+      `}
     >
       <input {...getInputProps()} />
-      <Upload className="mx-auto mb-2 text-gray-400" />
-      <p className="text-sm text-gray-600">
+      <Upload className="mx-auto mb-2 text-blue-600" />
+      <p className="text-sm text-blue-700">
         Click or drag file (PDF / JPG / PNG, max 5MB)
       </p>
     </div>
