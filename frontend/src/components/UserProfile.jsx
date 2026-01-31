@@ -61,7 +61,7 @@ function UserProfile({ onComplete }) {
     } catch (err) {}
 
     onComplete(profile)
-    navigate('/relevant-schemes')
+    navigate('/schemes')
   }
 
   return (
