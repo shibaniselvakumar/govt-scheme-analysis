@@ -1,0 +1,8054 @@
+{
+  "SCHEME_0001": {
+    "state": [
+      "Puducherry"
+    ],
+    "min_age": 18,
+    "max_age": 60,
+    "category": "Missing Fisherman"
+  },
+  "SCHEME_0002": {
+    "category": "AICTE Approved"
+  },
+  "SCHEME_0003": {
+    "state": [
+      "Madhya Pradesh"
+    ],
+    "occupation": [
+      "Construction Worker"
+    ]
+  },
+  "SCHEME_0004": {
+    "occupation": [
+      "Micro & Small Enterprises"
+    ],
+    "category": [
+      "Registered with NSIC under SPRS",
+      "Applying to get registered with NSIC under SPRS"
+    ]
+  },
+  "SCHEME_0005": {
+    "gender": "Any",
+    "state": [
+      "Andhra Pradesh"
+    ],
+    "community": "Brahmin",
+    "max_income": 75000
+  },
+  "SCHEME_0006": {
+    "state": [
+      "Karnataka"
+    ],
+    "gender": "Any",
+    "occupation": [],
+    "min_age": 0,
+    "max_age": 0,
+    "category": "Scheduled Tribe",
+    "max_income": 200000
+  },
+  "SCHEME_0007": {
+    "occupation": [
+      "private sector",
+      "cooperative sector",
+      "joint sector undertaking",
+      "companies/undertakings owned and managed by the State Government"
+    ],
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "category": "MSMEs in the powerloom sector",
+    "max_income": null
+  },
+  "SCHEME_0008": {
+    "min_age": 18,
+    "state": [
+      "Rajasthan"
+    ]
+  },
+  "SCHEME_0009": {
+    "state": [
+      "Chhattisgarh"
+    ],
+    "occupation": [
+      "construction worker"
+    ],
+    "min_age": 18
+  },
+  "SCHEME_0010": {
+    "rules": [
+      {
+        "condition": "The applicant must be registered as a beneficiary with the Building and Other Construction Workers Welfare Board.",
+        "keys": []
+      },
+      {
+        "condition": "The applicant must have a savings bank account in their name.",
+        "keys": [
+          "min_age",
+          "max_age",
+          "gender",
+          "state",
+          "occupation",
+          "max_income"
+        ]
+      },
+      {
+        "condition": "The applicant must be eligible for membership under the following schemes: Pradhan Mantri Suraksha Bima Yojana (PMSBY) Pradhan Mantri Jeevan Jyoti Bima Yojana (PMJJBY) Atal Pension Yojana (APY)",
+        "keys": [
+          "occupation",
+          "category"
+        ]
+      },
+      {
+        "condition": "The applicant must provide consent to their bank for the deduction of premium/contribution from their savings account.",
+        "keys": []
+      },
+      {
+        "condition": "The applicant must have gotten the annual premium/contribution amount deducted from their savings account.",
+        "keys": [
+          "max_income"
+        ]
+      }
+    ]
+  },
+  "SCHEME_0011": {
+    "min_age": 6,
+    "max_age": 10,
+    "occupation": [
+      "Student"
+    ],
+    "max_income": null,
+    "gender": "Any",
+    "state": null,
+    "category": "Educational Scholarship",
+    "conditions": [
+      "parents/guardians should not be income taxpayers",
+      "parents/guardians should not own more than 10 acres of land"
+    ]
+  },
+  "SCHEME_0012": {
+    "occupation": [
+      "sanitation worker"
+    ]
+  },
+  "SCHEME_0013": {
+    "eligibility_rules": [
+      {
+        "min_age": null,
+        "max_age": null,
+        "gender": "Any",
+        "state": null,
+        "occupation": [
+          "Private sector",
+          "Cooperative sector",
+          "Joint sector",
+          "Companies/undertakings owned or managed by the State Government"
+        ],
+        "max_income": null,
+        "category": "Eligible tourism projects/units/expansion projects"
+      },
+      {
+        "min_age": null,
+        "max_age": null,
+        "gender": "Any",
+        "state": [
+          "Government"
+        ],
+        "occupation": [
+          "Hotels"
+        ],
+        "max_income": null,
+        "category": "Eligible Hotel Units"
+      }
+    ]
+  },
+  "SCHEME_0014": {
+    "eligibility_rules": [
+      {
+        "min_age": null,
+        "max_age": null,
+        "gender": "Any",
+        "state": null,
+        "occupation": [
+          "Private sector",
+          "Cooperative sector",
+          "Joint sector",
+          "Companies/undertakings owned or managed by the State Government"
+        ],
+        "max_income": null,
+        "category": "Eligible tourism projects/units/expansion projects"
+      },
+      {
+        "min_age": null,
+        "max_age": null,
+        "gender": "Any",
+        "state": [
+          "Government"
+        ],
+        "occupation": [
+          "Hotels"
+        ],
+        "max_income": null,
+        "category": "Eligible Hotel Units"
+      }
+    ]
+  },
+  "SCHEME_0015": {
+    "eligibility_rules": [
+      {
+        "min_age": null,
+        "max_age": null,
+        "gender": "Any",
+        "state": null,
+        "occupation": [
+          "private sector",
+          "cooperative sector",
+          "joint sector",
+          "companies/undertakings owned or managed by the State Government"
+        ],
+        "max_income": null,
+        "category": "eligible tourism projects/units, expansion projects of existing units"
+      },
+      {
+        "min_age": null,
+        "max_age": null,
+        "gender": "Any",
+        "state": [
+          "private sector",
+          "cooperative sector",
+          "joint sector"
+        ],
+        "occupation": [
+          "hotels"
+        ],
+        "max_income": null,
+        "category": "[units who started their commercial operation on or after 7th January, 2015 to 31st December, 2020 but could not apply under previous scheme 2015 due to absence of a Bar in the Hotel]"
+      }
+    ]
+  },
+  "SCHEME_0016": {
+    "eligibility_rules": [
+      {
+        "min_age": null,
+        "max_age": null,
+        "gender": "Any",
+        "state": null,
+        "occupation": [
+          "private sector",
+          "cooperative sector",
+          "joint sector",
+          "companies/ undertakings owned or managed by the State Government"
+        ],
+        "max_income": null,
+        "category": "eligible tourism projects/units, expansion projects of existing units"
+      },
+      {
+        "min_age": null,
+        "max_age": null,
+        "gender": "Any",
+        "state": [
+          "private sector",
+          "cooperative sector",
+          "joint sector"
+        ],
+        "occupation": [
+          "companies/ undertakings owned or managed by the State Government"
+        ],
+        "max_income": null,
+        "category": "[Eligible Hotel Units]"
+      }
+    ]
+  },
+  "SCHEME_0017": {
+    "eligibility_rules": [
+      {
+        "min_age": null,
+        "max_age": null,
+        "gender": "Any",
+        "state": null,
+        "occupation": [
+          "Private sector",
+          "Cooperative sector",
+          "Joint sector",
+          "Companies/undertakings owned or managed by the State Government"
+        ],
+        "max_income": null,
+        "category": "Eligible tourism projects/units/expansion projects"
+      },
+      {
+        "min_age": null,
+        "max_age": null,
+        "gender": "Any",
+        "state": [
+          "Government"
+        ],
+        "occupation": [
+          "Hotels"
+        ],
+        "max_income": null,
+        "category": "Eligible Hotel Units"
+      }
+    ]
+  },
+  "SCHEME_0018": {
+    "eligibility_rules": [
+      {
+        "min_age": null,
+        "max_age": null,
+        "gender": "Any",
+        "state": null,
+        "occupation": [
+          "private sector",
+          "cooperative sector",
+          "joint sector",
+          "companies/undertakings owned or managed by the State Government"
+        ],
+        "max_income": null,
+        "category": "eligible tourism projects/units, expansion projects of existing units"
+      },
+      {
+        "min_age": null,
+        "max_age": null,
+        "gender": "Any",
+        "state": [
+          "private sector",
+          "cooperative sector",
+          "joint sector"
+        ],
+        "occupation": [
+          "hotels"
+        ],
+        "max_income": null,
+        "category": "[units who started their commercial operation on or after 7th January, 2015 to 31st December, 2020 but could not apply under previous scheme 2015 due to absence of a Bar in the Hotel]"
+      }
+    ]
+  },
+  "SCHEME_0019": {
+    "eligibility_rules": [
+      {
+        "min_age": null,
+        "max_age": null,
+        "gender": "Any",
+        "state": null,
+        "occupation": [
+          "Private sector",
+          "Cooperative sector",
+          "Joint sector",
+          "Companies/undertakings owned or managed by the State Government"
+        ],
+        "max_income": null,
+        "category": "Eligible tourism projects/units/expansion projects"
+      },
+      {
+        "min_age": null,
+        "max_age": null,
+        "gender": "Any",
+        "state": [
+          "Government"
+        ],
+        "occupation": [
+          "Hotels"
+        ],
+        "max_income": null,
+        "category": "Eligible Hotel Units"
+      }
+    ]
+  },
+  "SCHEME_0020": {
+    "eligibility_rules": [
+      {
+        "min_age": null,
+        "max_age": null,
+        "gender": "Any",
+        "state": null,
+        "occupation": [
+          "private sector",
+          "cooperative sector",
+          "joint sector",
+          "companies/undertakings owned or managed by the State Government"
+        ],
+        "max_income": null,
+        "category": "eligible tourism projects/units, expansion projects of existing units"
+      },
+      {
+        "min_age": null,
+        "max_age": null,
+        "gender": "Any",
+        "state": [
+          "private sector",
+          "cooperative sector",
+          "joint sector"
+        ],
+        "occupation": [
+          "hotels"
+        ],
+        "max_income": null,
+        "category": "[units who started their commercial operation on or after 7th January, 2015 to 31st December, 2020 but could not apply under previous scheme 2015 due to absence of a Bar in the Hotel]"
+      }
+    ]
+  },
+  "SCHEME_0021": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [],
+    "occupation": [
+      "private sector",
+      "cooperative sector",
+      "joint sector",
+      "companies/undertakings owned or managed by the State Government"
+    ],
+    "max_income": null,
+    "category": "eligible tourism projects/units/expansion projects"
+  },
+  "SCHEME_0022": {
+    "category": "Textiles, apparel and technical textiles",
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "West Bengal"
+    ],
+    "occupation": [
+      "Manufacturing and processing"
+    ],
+    "max_income": null
+  },
+  "SCHEME_0023": {
+    "occupation": [
+      "manufacturing",
+      "processing"
+    ],
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "category": "Textiles, apparel and technical textiles products",
+    "max_income": null,
+    "started_production_after": "1st April 2022"
+  },
+  "SCHEME_0024": {
+    "occupation": [
+      "manufacturing",
+      "processing"
+    ],
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "category": "Textiles, apparel and technical textiles products",
+    "max_income": null,
+    "started_production_after": "1st April 2022"
+  },
+  "SCHEME_0025": {
+    "occupation": [
+      "manufacturing",
+      "processing"
+    ],
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "category": "Textiles, apparel and technical textiles products",
+    "max_income": null,
+    "started_production_after": "1st April 2022"
+  },
+  "SCHEME_0026": {
+    "occupation": [
+      "manufacturing",
+      "processing"
+    ],
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "category": "Textiles, apparel and technical textiles products",
+    "max_income": null,
+    "started_production_after": "1st April 2022"
+  },
+  "SCHEME_0027": {
+    "category": "Textiles, apparel and technical textiles",
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "West Bengal"
+    ],
+    "occupation": [
+      "Manufacturing and processing"
+    ],
+    "max_income": null
+  },
+  "SCHEME_0028": {},
+  "SCHEME_0029": {
+    "min_age": 18,
+    "max_age": 35,
+    "state": [
+      "Puducherry"
+    ]
+  },
+  "SCHEME_0030": {
+    "min_age": 18,
+    "max_age": 35,
+    "occupation": [],
+    "gender": "Any",
+    "state": [
+      "Puducherry"
+    ],
+    "category": "",
+    "max_income": null
+  },
+  "SCHEME_0031": {
+    "min_age": 18,
+    "max_age": 35,
+    "state": [
+      "Union Territory of Puducherry"
+    ],
+    "occupation": [],
+    "max_income": null,
+    "category": ""
+  },
+  "SCHEME_0032": {},
+  "SCHEME_0033": {
+    "occupation": [
+      "Micro",
+      "Small",
+      "Medium",
+      "Large Industries"
+    ],
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Union territory of Puducherry"
+    ],
+    "max_income": null,
+    "category": "Not mentioned in the text"
+  },
+  "SCHEME_0034": {},
+  "SCHEME_0035": {
+    "rules": [
+      {
+        "min_age": null,
+        "max_age": null,
+        "gender": "Any",
+        "state": [
+          "Puducherry"
+        ],
+        "occupation": null,
+        "max_income": null,
+        "category": "New or Existing Industrial Units",
+        "conditions": [
+          {
+            "employment": {
+              "percentage": 60,
+              "local_population": true
+            }
+          },
+          {
+            "asset_transfer": false,
+            "duration": 5
+          },
+          {
+            "additional_investments": true
+          }
+        ]
+      }
+    ]
+  },
+  "SCHEME_0036": {
+    "state": [
+      "Puducherry"
+    ],
+    "occupation": [
+      "Farmer"
+    ]
+  },
+  "SCHEME_0037": {
+    "categories": [
+      "Micro",
+      "Small",
+      "Medium",
+      "Large",
+      "Women",
+      "SC"
+    ],
+    "min_age": null,
+    "max_age": null,
+    "gender": [
+      "Female",
+      "SC",
+      "ST"
+    ],
+    "state": [
+      "Union territory of Puducherry"
+    ],
+    "occupation": [],
+    "max_income": null,
+    "category": "Micro, Small, Medium and Large Enterprises, Women/SC/ST Entrepreneurs"
+  },
+  "SCHEME_0038": {
+    "occupation": [
+      "Industrial Unit"
+    ],
+    "state": [
+      "Puducherry",
+      "Karaikal"
+    ]
+  },
+  "SCHEME_0039": {
+    "occupation": [
+      "IT",
+      "ITES"
+    ],
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "category": "New IT/ITES industrial unit",
+    "max_income": null
+  },
+  "SCHEME_0040": {
+    "category": [
+      "Physically Handicapped"
+    ]
+  },
+  "SCHEME_0041": {},
+  "SCHEME_0042": {
+    "category": "Exhibition Participant"
+  },
+  "SCHEME_0043": {
+    "min_age": 23,
+    "max_age": 60,
+    "gender": "Any",
+    "state": [
+      "Puducherry"
+    ],
+    "occupation": [
+      "fishermen",
+      "professionally engaged in fishing/fish trade"
+    ],
+    "max_income": null,
+    "category": "Fisherman"
+  },
+  "SCHEME_0044": {
+    "occupation": [
+      "Craftsperson",
+      "Artisan"
+    ],
+    "state": [
+      "Puducherry"
+    ]
+  },
+  "SCHEME_0045": {
+    "occupation": [
+      "Micro",
+      "Small",
+      "Medium",
+      "Large Industries"
+    ],
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Union territory of Puducherry"
+    ],
+    "max_income": null,
+    "category": "Industrial Units",
+    "employment_requirement": {
+      "local_employment_percentage": 60,
+      "min_local_employees": 10
+    },
+    "provident_fund": true,
+    "asset_transfer_restriction": true,
+    "additional_investments": true
+  },
+  "SCHEME_0046": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "UT of Puducherry"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": "Unit which commences production after 2-8-2004"
+  },
+  "SCHEME_0047": {
+    "state": [
+      "Puducherry"
+    ]
+  },
+  "SCHEME_0048": {
+    "occupation": [
+      "Entrepreneur"
+    ]
+  },
+  "SCHEME_0049": {
+    "state": [
+      "Puducherry"
+    ]
+  },
+  "SCHEME_0050": {},
+  "SCHEME_0051": {
+    "occupation": [
+      "Fisherman"
+    ],
+    "state": [
+      "Union territory of Puducherry"
+    ]
+  },
+  "SCHEME_0052": {
+    "occupation": [
+      "Micro",
+      "Small",
+      "Medium",
+      "Large Industries"
+    ],
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Union territory of Puducherry"
+    ],
+    "max_income": null,
+    "category": "Not specified in the text"
+  },
+  "SCHEME_0053": {
+    "occupation": [
+      "micro",
+      "small",
+      "medium"
+    ],
+    "sector": [
+      "manufacturing",
+      "service"
+    ]
+  },
+  "SCHEME_0054": {
+    "category": "Handicrafts Society",
+    "state": [
+      "Puducherry"
+    ],
+    "occupation": [
+      "artisan"
+    ]
+  },
+  "SCHEME_0055": {
+    "location": [
+      "Puducherry"
+    ]
+  },
+  "SCHEME_0056": {
+    "state": [
+      "Puducherry"
+    ],
+    "min_income": 100000
+  },
+  "SCHEME_0057": {
+    "occupation": [
+      "Coir product activities"
+    ],
+    "category": "Cluster/society/agency"
+  },
+  "SCHEME_0058": {
+    "category": "Society/Agency",
+    "occupation": [
+      "silk-weaving"
+    ],
+    "state": [
+      "Puducherry"
+    ]
+  },
+  "SCHEME_0059": {
+    "occupation": [
+      "Coir Industry"
+    ]
+  },
+  "SCHEME_0060": {
+    "category": "Green and eco-friendly industries as per DSTE standards"
+  },
+  "SCHEME_0061": {
+    "state": [
+      "Puducherry"
+    ],
+    "min_age": 18,
+    "max_age": 60,
+    "gender": "Any",
+    "occupation": [
+      "Fisherman"
+    ],
+    "category": "Deceased Fisherman"
+  },
+  "SCHEME_0062": {
+    "min_age": 18,
+    "max_age": 35,
+    "occupation": [
+      "Unemployed"
+    ],
+    "state": [
+      "Union Territory of Puducherry"
+    ]
+  },
+  "SCHEME_0063": {
+    "category": "IT industries, Industrial use for manufacturer of computer systems, Software/ITES, BPO, KPO",
+    "state": [
+      "Union territory of Puducherry"
+    ],
+    "occupation": [
+      "infrastructure developers/industries"
+    ],
+    "min_employment": 60
+  },
+  "SCHEME_0064": {},
+  "SCHEME_0065": {
+    "category": "Not Applicable",
+    "occupation": [
+      "Not Applicable"
+    ],
+    "state": [
+      "Puducherry"
+    ],
+    "max_age": 0,
+    "min_age": 0,
+    "gender": "Any",
+    "max_income": 0
+  },
+  "SCHEME_0066": {
+    "state": [
+      "Odisha"
+    ],
+    "conditions": [
+      "resident of Odisha",
+      "has a bank account in his/her name in Odisha",
+      "farmer pond excavated under various Government schemes including Watershed Development Projects & MGNREGA through the Directorate of Soil Conservation & Watershed Development"
+    ]
+  },
+  "SCHEME_0067": {
+    "category": "coconut farmers"
+  },
+  "SCHEME_0068": {
+    "occupation": [
+      "Micro",
+      "Small",
+      "Medium",
+      "Large Industries"
+    ],
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Union territory of Puducherry"
+    ],
+    "max_income": null,
+    "category": "Not specified in the text",
+    "loan": true
+  },
+  "SCHEME_0069": {
+    "conditions": [
+      {
+        "eligibility_criteria": [
+          "SC",
+          "ST",
+          "Women"
+        ],
+        "min_loan_date": "2-8-2004"
+      },
+      {
+        "industry_type": [
+          "Thrust Area Industry",
+          "IT Sector Industry"
+        ],
+        "production_start_date": "2-8-2004"
+      },
+      {
+        "eligibility_criteria": [
+          "SC",
+          "ST",
+          "Women",
+          "Physically Handicapped",
+          "Ex-Servicemen"
+        ],
+        "min_loan_date": "24-8-2011"
+      },
+      {
+        "industry_type": [
+          "Thrust Area Industry",
+          "IT Sector Industry"
+        ],
+        "production_start_date": "24-8-2011"
+      }
+    ]
+  },
+  "SCHEME_0070": {
+    "occupation": [
+      "Entrepreneurs",
+      "Industrialists"
+    ]
+  },
+  "SCHEME_0071": {
+    "occupation": [
+      "Micro",
+      "Small",
+      "Medium",
+      "Large Industries"
+    ],
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Union territory of Puducherry"
+    ],
+    "max_income": null,
+    "category": "Participants in the exhibition",
+    "conditions": [
+      {
+        "rule": "The unit should have made the investment on or after 1st April 2017.",
+        "compliance": "Complied if the investment was made after 1st April 2017."
+      },
+      {
+        "rule": "The unit should provide at least 60% of employment to the people of the Union territory of Puducherry.",
+        "compliance": null,
+        "key_for_compliance": "employment_percentage"
+      },
+      {
+        "rule": "This 60% of the local employment will have to be maintained by the industrial unit during the period specified in the Affidavit.",
+        "compliance": null,
+        "key_for_compliance": "maintained_employment"
+      },
+      {
+        "rule": "The unit should obtain prior approval from the Director of Industries about participating in the exhibition.",
+        "compliance": null,
+        "key_for_compliance": "approval_from_director"
+      },
+      {
+        "rule": "The industrial unit shall not transfer or dispose of the fixed asset including plant and machinery in any manner till the completion of 5 years from the date of submitting the application/disbursement of the subsidy whichever is later.",
+        "compliance": null,
+        "key_for_compliance": "asset_transfer"
+      }
+    ]
+  },
+  "SCHEME_0072": {
+    "min_age": 60,
+    "state": [
+      "Union Territory of Puducherry"
+    ],
+    "occupation": [
+      "artisan"
+    ],
+    "max_income": 40000,
+    "category": "N/A"
+  },
+  "SCHEME_0073": {
+    "occupation": [
+      "Artisan"
+    ]
+  },
+  "SCHEME_0074": {
+    "category": "Not Applicable"
+  },
+  "SCHEME_0075": {
+    "category": "Export Industry",
+    "state": [
+      "Puducherry"
+    ]
+  },
+  "SCHEME_0076": {
+    "category": "Not Mentioned",
+    "min_age": null,
+    "max_age": null,
+    "gender": "Scheduled Caste/ Scheduled Tribe",
+    "state": [
+      "UT of Puducherry"
+    ],
+    "occupation": "Entrepreneur",
+    "max_income": null
+  },
+  "SCHEME_0077": {
+    "state": [
+      "Puducherry"
+    ],
+    "occupation": [
+      "Farmer"
+    ]
+  },
+  "SCHEME_0078": {
+    "occupation": [
+      "Primary Fisherman Cooperative Society (PFCS)"
+    ],
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "category": "Active PFCS",
+    "conditions": [
+      {
+        "rule": "The PFCS should have completed at least 1 year from the date of its registration under 'The Odisha Cooperative Societies Act-1962'",
+        "compliance": "Completed one year after registration"
+      },
+      {
+        "rule": "The PFCS should be in working condition",
+        "compliance": "In good working order"
+      },
+      {
+        "rule": "The PFCS should not have availed the revolving fund before",
+        "compliance": "No previous usage of revolving fund"
+      },
+      {
+        "rule": "The PFCS should be conducting Committee of Management meetings and AGB meetings in time as per the OCS Act and Rules framed there under the Bylaws of the Society",
+        "compliance": "Regularly holds required meetings"
+      },
+      {
+        "rule": "The PFCS should have paid the Government lease value of the reservoir/ pond if taken on lease as per the Rules",
+        "compliance": "Has made necessary lease payments"
+      }
+    ],
+    "max_income": null
+  },
+  "SCHEME_0079": {
+    "occupation": [
+      "Entrepreneur"
+    ],
+    "gender": [
+      "Female",
+      "Scheduled Caste",
+      "Scheduled Tribe"
+    ],
+    "min_age": null,
+    "max_age": null,
+    "state": null,
+    "category": "Woman, Scheduled Caste, Scheduled Tribe",
+    "max_income": null
+  },
+  "SCHEME_0080": {
+    "state": [
+      "Tripura"
+    ],
+    "occupation": [
+      "Student"
+    ],
+    "gender": "Any",
+    "min_age": 0,
+    "max_age": 0,
+    "category": [
+      "Scheduled Tribe",
+      "Scheduled Caste",
+      "Person with Disability"
+    ],
+    "max_income": 100000
+  },
+  "SCHEME_0081": {
+    "state": [
+      "Puducherry"
+    ],
+    "occupation": [
+      "Farmer"
+    ]
+  },
+  "SCHEME_0082": {
+    "eligibility_rules": [
+      {
+        "occupation": [
+          "Micro",
+          "Small",
+          "Medium",
+          "Large Industries"
+        ],
+        "min_age": null,
+        "max_age": null,
+        "gender": "Any",
+        "state": [
+          "Union territory of Puducherry"
+        ],
+        "max_income": null,
+        "category": null
+      },
+      {
+        "made_investment_on": "1st April 2017",
+        "employment_rules": {
+          "local_employment_percentage": 60,
+          "maintainance_period": "The period specified in the Affidavit"
+        },
+        "certificate_cost_components": [
+          "fees charged by the certification agency"
+        ],
+        "transfer_disposal_rules": {
+          "fixed_assets": [
+            "plant and machinery"
+          ],
+          "prohibition_period": "5 years from the date of submitting the application/disbursement of the subsidy whichever is later"
+        }
+      }
+    ]
+  },
+  "SCHEME_0083": {
+    "gender": "Male",
+    "min_age": 23,
+    "max_age": 60,
+    "state": [
+      "Puducherry"
+    ],
+    "occupation": [
+      "fishing/fish trade"
+    ]
+  },
+  "SCHEME_0084": {
+    "category": "Not mentioned in text"
+  },
+  "SCHEME_0085": {
+    "state": [
+      "Puducherry"
+    ],
+    "occupation": [
+      "Farmer"
+    ]
+  },
+  "SCHEME_0086": {
+    "state": [
+      "Puducherry"
+    ],
+    "min_age": 18,
+    "max_age": 35
+  },
+  "SCHEME_0087": {
+    "min_age": 18,
+    "max_age": 35,
+    "gender": "Any",
+    "state": [
+      "Puducherry"
+    ],
+    "occupation": [
+      "Any"
+    ],
+    "max_income": null,
+    "category": "Not Mentioned"
+  },
+  "SCHEME_0088": {
+    "min_age": 18,
+    "max_age": 35,
+    "gender": "Any",
+    "state": [
+      "Puducherry"
+    ],
+    "occupation": [
+      "Unemployed"
+    ]
+  },
+  "SCHEME_0089": {
+    "occupation": [
+      "Artisan",
+      "Unit Industrialist"
+    ],
+    "state": [
+      "Puducherry"
+    ]
+  },
+  "SCHEME_0090": {
+    "occupation": [
+      "Industrial Association",
+      "CII",
+      "Industrial NGO"
+    ]
+  },
+  "SCHEME_0091": {
+    "occupation": [
+      "Artisan",
+      "Unit Industrialist"
+    ],
+    "state": [
+      "Puducherry"
+    ]
+  },
+  "SCHEME_0092": {
+    "occupation": [
+      "Sales Emporium/Showroom"
+    ]
+  },
+  "SCHEME_0093": {
+    "occupation": [
+      "Construction Worker"
+    ],
+    "state": [
+      "Andhra Pradesh"
+    ]
+  },
+  "SCHEME_0094": {},
+  "SCHEME_0095": {
+    "rules": [
+      {
+        "eligibility_conditions": [
+          "purchase from NHDC, Yarn Deports sanctioned by NHDC and APCO"
+        ],
+        "min_age": null,
+        "max_age": null,
+        "gender": null,
+        "state": null,
+        "occupation": [
+          "Handloom Weaver"
+        ],
+        "max_income": null,
+        "category": [
+          "self-consumption of Handloom Weaver Cooperative Societies"
+        ]
+      }
+    ],
+    "notes": [
+      {
+        "note_number": 1,
+        "conditions": [
+          "purchase from private yarn dealers, Mills etc."
+        ]
+      },
+      {
+        "note_number": 2,
+        "conditions": []
+      }
+    ]
+  },
+  "SCHEME_0096": {
+    "state": [
+      "Madhya Pradesh"
+    ],
+    "min_age": 6
+  },
+  "SCHEME_0097": {
+    "state": [
+      "Tripura"
+    ],
+    "gender": "Any",
+    "min_age": 10,
+    "max_income": 100000,
+    "category": "Person with Disability",
+    "disability_percentage": 60
+  },
+  "SCHEME_0098": {
+    "state": [
+      "Union Territory of Jammu & Kashmir"
+    ],
+    "max_income": 75000
+  },
+  "SCHEME_0099": {
+    "category": "ESM or his widow"
+  },
+  "SCHEME_0100": {
+    "state": [
+      "Gujarat"
+    ],
+    "occupation": [
+      "farmer"
+    ]
+  },
+  "SCHEME_0101": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Gujarat"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": [
+      "Scheduled Tribe"
+    ]
+  },
+  "SCHEME_0102": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Gujarat"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": [
+      "Scheduled Caste"
+    ]
+  },
+  "SCHEME_0103": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Gujarat"
+    ],
+    "occupation": [
+      "Farmer"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0104": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "Farmers"
+    ],
+    "max_income": null,
+    "category": "Agricultural Education Institutions, PACS Farmer Groups, Farmer Producer Companies, Cooperative Institutions, Self-Help Groups, Sakhi Mandals"
+  },
+  "SCHEME_0105": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "Highly qualified superannuated Professional"
+  },
+  "SCHEME_0106": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "Technical",
+      "Engineering"
+    ],
+    "max_income": null,
+    "category": "Government"
+  },
+  "SCHEME_0107": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Not mentioned"
+    ],
+    "occupation": [
+      "Full-time regular faculty"
+    ],
+    "max_income": null,
+    "category": "AICTE approved Technical Institutions/University Departments"
+  },
+  "SCHEME_0108": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "Full-time regular faculty"
+    ],
+    "max_income": null,
+    "category": "Institute"
+  },
+  "SCHEME_0109": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "Faculty member"
+    ],
+    "max_income": null,
+    "category": "AICTE approved Institutions in the field of Technical Education"
+  },
+  "SCHEME_0110": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "Full-time regular faculty"
+    ],
+    "max_income": null,
+    "category": "ASME or Civil Engineering"
+  },
+  "SCHEME_0111": {
+    "min_age": 18,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "Student"
+    ],
+    "max_income": null,
+    "category": "Undergraduate Student"
+  },
+  "SCHEME_0112": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "Degree level course"
+    ],
+    "max_income": 800000,
+    "category": null
+  },
+  "SCHEME_0113": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": null,
+    "max_income": 800000,
+    "category": null
+  },
+  "SCHEME_0114": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0115": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "AICTE Approved"
+  },
+  "SCHEME_0116": {
+    "min_age": 10,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "Engineering"
+    ],
+    "max_income": null,
+    "category": "AICTE-approved engineering colleges/ university departments"
+  },
+  "SCHEME_0117": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "Industry Experts"
+    ],
+    "max_income": null,
+    "category": "Distinguished Visiting Professor"
+  },
+  "SCHEME_0118": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "Pre-final/final year student",
+      "First/second-year student",
+      "MS Research student",
+      "M.Sc. in Engineering student",
+      "Dual degree B.Tech and M.Tech student"
+    ],
+    "max_income": null,
+    "category": "Engineering Student"
+  },
+  "SCHEME_0119": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "AICTE approved institutions/University departments"
+  },
+  "SCHEME_0120": {
+    "min_age": null,
+    "max_age": null,
+    "gender": [
+      "Female"
+    ],
+    "state": null,
+    "occupation": [
+      "students",
+      "faculty"
+    ],
+    "max_income": null,
+    "category": "women empowerment"
+  },
+  "SCHEME_0121": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "University",
+      "Institute",
+      "College"
+    ],
+    "max_income": null,
+    "category": "AICTE Approved"
+  },
+  "SCHEME_0122": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "Teacher"
+    ],
+    "max_income": null,
+    "category": "Technical Education"
+  },
+  "SCHEME_0123": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [],
+    "occupation": [
+      "Full time regular faculty",
+      "Assistant Director",
+      "above"
+    ],
+    "max_income": null,
+    "category": "Faculty, AICTE officers"
+  },
+  "SCHEME_0124": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "Full time regular/permanent faculty members"
+    ],
+    "max_income": null,
+    "category": "AICTE recognized Degree Level Colleges Faculty Members"
+  },
+  "SCHEME_0125": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "teachers",
+      "supporting technical staff",
+      "administrative staff"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0126": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "Orphan",
+      "Parents died due to Covid 19",
+      "Ward of Armed Forces and Central Paramilitary Forces martyred in action (Shaheed)"
+    ],
+    "max_income": 800000,
+    "category": null
+  },
+  "SCHEME_0127": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "Faculty",
+      "Researcher"
+    ],
+    "max_income": null,
+    "category": "Academic"
+  },
+  "SCHEME_0128": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "Technical"
+  },
+  "SCHEME_0129": {
+    "min_age": 18,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Puducherry"
+    ],
+    "occupation": null,
+    "max_income": 24000,
+    "category": null
+  },
+  "SCHEME_0130": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "ASEAN Member Countries"
+    ],
+    "occupation": [
+      "Master's Degree holder in Natural Sciences or equivalent degree in Technology/Engineering/Medicine / allied disciplines"
+    ],
+    "max_income": null,
+    "category": "Fellowship"
+  },
+  "SCHEME_0131": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Female",
+    "state": [
+      "Madhya Pradesh"
+    ],
+    "occupation": [],
+    "max_income": null,
+    "category": ""
+  },
+  "SCHEME_0132": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Bihar"
+    ],
+    "occupation": [
+      "Farmer"
+    ],
+    "max_income": null,
+    "category": [
+      "General",
+      "Scheduled Castes",
+      "Scheduled Tribes"
+    ]
+  },
+  "SCHEME_0133": {
+    "min_age": 18,
+    "max_age": 59,
+    "gender": "Any",
+    "state": null,
+    "occupation": {
+      "identified_group": true
+    },
+    "max_income": null,
+    "category": "BPL or Marginally Above Poverty Line"
+  },
+  "SCHEME_0134": {
+    "min_age": 18,
+    "max_age": 59,
+    "gender": null,
+    "state": [
+      "Maharashtra"
+    ],
+    "occupation": [
+      "landless labourer"
+    ],
+    "max_income": null,
+    "category": "Not specified"
+  },
+  "SCHEME_0135": {
+    "min_age": 18,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Assam"
+    ],
+    "occupation": [
+      "Unemployed"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0136": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "All"
+    ],
+    "occupation": [
+      "All"
+    ],
+    "max_income": null,
+    "category": {
+      "BPL": true,
+      "Scheduled Caste": true
+    }
+  },
+  "SCHEME_0137": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Female",
+    "state": [
+      "Rajasthan"
+    ],
+    "occupation": [],
+    "max_income": null,
+    "category": "BPL"
+  },
+  "SCHEME_0138": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Rajasthan"
+    ],
+    "occupation": null,
+    "max_income": 120000,
+    "category": null
+  },
+  "SCHEME_0139": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0140": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0141": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0142": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "Thrust sectors"
+  },
+  "SCHEME_0143": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "Thrust sectors"
+  },
+  "SCHEME_0144": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "New large industrial undertaking",
+      "Existing industrial unit undergoing expansion and/or diversification"
+    ],
+    "max_income": null,
+    "category": "Industrial"
+  },
+  "SCHEME_0145": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "New employee"
+    ],
+    "max_income": null,
+    "category": "Large industrial undertaking undergoing expansion and/or diversification"
+  },
+  "SCHEME_0146": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "Industrial"
+    ],
+    "max_income": null,
+    "category": "Large Industrial Undertakings"
+  },
+  "SCHEME_0147": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "Micro/Small/Medium enterprise"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0148": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "Service sector"
+    ],
+    "max_income": null,
+    "category": "MSME"
+  },
+  "SCHEME_0149": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "Micro/Small/Medium enterprises"
+    ],
+    "max_income": null,
+    "category": "Assistance"
+  },
+  "SCHEME_0150": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [],
+    "occupation": [
+      "MSME"
+    ],
+    "max_income": null,
+    "category": "MSME"
+  },
+  "SCHEME_0151": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "Micro/Small/Medium enterprise"
+    ],
+    "max_income": null,
+    "category": "Manufacturing Enterprise"
+  },
+  "SCHEME_0152": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "Micro/Small/Medium enterprises"
+    ],
+    "max_income": null,
+    "category": "Assistance for equity capital through an SME Exchange"
+  },
+  "SCHEME_0153": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "Micro and Small Enterprises"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0154": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "Micro/Small/Medium enterprise"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0155": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "Manufacturing"
+    ],
+    "max_income": null,
+    "category": "Enterprise"
+  },
+  "SCHEME_0156": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "Manufacturing"
+    ],
+    "max_income": null,
+    "category": "Enterprise"
+  },
+  "SCHEME_0157": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "Manufacturing"
+    ],
+    "max_income": null,
+    "category": "MSEs involved in manufacturing activities"
+  },
+  "SCHEME_0158": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "Micro/Small/Medium enterprise"
+    ],
+    "max_income": null,
+    "category": "Manufacturing enterprises: New or existing for expansion or diversification"
+  },
+  "SCHEME_0159": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "Manufacturing"
+    ],
+    "max_income": null,
+    "category": "Enterprise"
+  },
+  "SCHEME_0160": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "Manufacturing"
+    ],
+    "max_income": null,
+    "category": "Enterprise"
+  },
+  "SCHEME_0161": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "Micro/Small/Medium enterprise"
+    ],
+    "max_income": null,
+    "category": "Enterprises undergoing commercial production during the scheme's operative period"
+  },
+  "SCHEME_0162": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "Micro/Small/Medium enterprise"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0163": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Madhya Pradesh"
+    ],
+    "occupation": [
+      "Student"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0164": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [],
+    "occupation": [
+      "Student"
+    ],
+    "max_income": 600000,
+    "category": "Scheduled Caste"
+  },
+  "SCHEME_0165": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "India"
+    ],
+    "occupation": [
+      "engineering profession"
+    ],
+    "max_income": null,
+    "category": "Indian nationals, Overseas Citizens of India"
+  },
+  "SCHEME_0166": {
+    "min_age": 50,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Kerala"
+    ],
+    "occupation": null,
+    "max_income": 100000,
+    "category": null
+  },
+  "SCHEME_0167": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Assam"
+    ],
+    "occupation": [
+      "Student"
+    ],
+    "max_income": null,
+    "category": "Education Loans"
+  },
+  "SCHEME_0168": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "All"
+    ],
+    "occupation": [],
+    "max_income": null,
+    "category": "Specially vulnerable groups, Natural calamity victims, Released bonded laborers"
+  },
+  "SCHEME_0169": {
+    "min_age": 18,
+    "max_age": 60,
+    "gender": null,
+    "state": [
+      "Jammu & Kashmir"
+    ],
+    "occupation": [
+      "Building/ Construction Worker"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0170": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "Agencies",
+      "Industry Associations",
+      "Sectoral Industry Associations",
+      "Export Promotion Councils",
+      "Chambers of Commerce and Industry",
+      "Central Government Departments",
+      "State Government Departments",
+      "Technical Consultancy Organizations",
+      "National R&D Institutions and Organizations",
+      "SIROs recognized by DSIR",
+      "PFRIs registered with DSIR",
+      "Approved Universities and Colleges"
+    ],
+    "max_income": null,
+    "category": [
+      "Agencies",
+      "Industry Associations",
+      "Sectoral Industry Associations",
+      "Export Promotion Councils",
+      "Chambers of Commerce and Industry",
+      "Central Government Departments",
+      "State Government Departments",
+      "Technical Consultancy Organizations",
+      "National R&D Institutions and Organizations",
+      "SIROs recognized by DSIR",
+      "PFRIs registered with DSIR",
+      "Approved Universities and Colleges"
+    ]
+  },
+  "SCHEME_0171": {
+    "min_age": 18,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Karnataka"
+    ],
+    "occupation": [
+      "Building/ Construction Worker"
+    ],
+    "max_income": null,
+    "category": "Building and Other Construction Workers"
+  },
+  "SCHEME_0172": {
+    "min_age": 18,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Puducherry"
+    ],
+    "occupation": [
+      "Construction Worker"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0173": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "BPL"
+  },
+  "SCHEME_0174": {
+    "min_age": 18,
+    "max_age": 60,
+    "gender": null,
+    "state": [
+      "West Bengal"
+    ],
+    "occupation": [
+      "Building/ Construction Worker"
+    ],
+    "max_income": null,
+    "category": "Building and Other Construction Workers Welfare"
+  },
+  "SCHEME_0175": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "Building or other construction work"
+    ],
+    "max_income": null,
+    "category": "Construction Worker"
+  },
+  "SCHEME_0176": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "Worker"
+    ],
+    "max_income": null,
+    "category": "Worker's Death Benefit"
+  },
+  "SCHEME_0177": {
+    "min_age": 18,
+    "max_age": 60,
+    "gender": null,
+    "state": [
+      "Delhi"
+    ],
+    "occupation": [
+      "Building/Construction Worker"
+    ],
+    "max_income": null,
+    "category": "Worker"
+  },
+  "SCHEME_0178": {
+    "min_age": 18,
+    "max_age": 60,
+    "gender": "Any",
+    "state": [],
+    "occupation": [
+      "Construction Worker"
+    ],
+    "max_income": null,
+    "category": "Deceased Construction Worker"
+  },
+  "SCHEME_0179": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "Individuals",
+      "Cow Shelters"
+    ],
+    "max_income": null,
+    "category": "Gau Samvardhan"
+  },
+  "SCHEME_0180": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "cleaning"
+    ],
+    "max_income": null,
+    "category": [
+      "SC",
+      "ST",
+      "OBC",
+      "EBC",
+      "EBC"
+    ]
+  },
+  "SCHEME_0181": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Haryana"
+    ],
+    "occupation": [
+      "Armed Forces"
+    ],
+    "max_income": null,
+    "category": "Ex-serviceman"
+  },
+  "SCHEME_0182": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Haryana"
+    ],
+    "occupation": [
+      "Armed Forces"
+    ],
+    "max_income": null,
+    "category": "Ex-Serviceman"
+  },
+  "SCHEME_0183": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Female",
+    "state": [
+      "Haryana"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": "Widow of Ex-serviceman"
+  },
+  "SCHEME_0184": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Female",
+    "state": [
+      "Haryana"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": "Widow of Ex-Serviceman"
+  },
+  "SCHEME_0185": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Tamil Nadu"
+    ],
+    "occupation": [
+      "Student"
+    ],
+    "max_income": null,
+    "category": "Adi Dravidar/ Tribal"
+  },
+  "SCHEME_0186": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Tamil Nadu"
+    ],
+    "occupation": [
+      "Student"
+    ],
+    "max_income": null,
+    "category": [
+      "Adi Dravidar/ Tribal/ Adi Dravidar (converted to Christianity)"
+    ]
+  },
+  "SCHEME_0187": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Tamil Nadu"
+    ],
+    "occupation": [
+      "Student"
+    ],
+    "max_income": null,
+    "category": [
+      "Adi Dravidar/Tribal",
+      "Christian"
+    ]
+  },
+  "SCHEME_0188": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Tamil Nadu"
+    ],
+    "occupation": [
+      "Student"
+    ],
+    "max_income": null,
+    "category": "Adi Dravidar/Tribal/Adi Dravidar converted to Christianity"
+  },
+  "SCHEME_0189": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Tamil Nadu"
+    ],
+    "occupation": [
+      "Student"
+    ],
+    "max_income": null,
+    "category": [
+      "Adi Dravidar/Tribal/Adi Dravidar converted to Christianity"
+    ]
+  },
+  "SCHEME_0190": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Tamil Nadu"
+    ],
+    "occupation": [
+      "Student"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0191": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "Tribal Village Development"
+  },
+  "SCHEME_0192": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "Backward Class"
+  },
+  "SCHEME_0193": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Tamil Nadu"
+    ],
+    "occupation": [
+      "Student"
+    ],
+    "max_income": 100000,
+    "category": [
+      "Adi Dravidar/Tribal"
+    ]
+  },
+  "SCHEME_0194": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": [
+      "paragraph 7.02",
+      "(b)",
+      "(c)",
+      "(d)",
+      "(e)",
+      "(f)",
+      "(g)"
+    ]
+  },
+  "SCHEME_0195": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Arunachal Pradesh"
+    ],
+    "occupation": [
+      "Building and Other Construction works"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0196": {
+    "min_age": 18,
+    "max_age": 60,
+    "gender": null,
+    "state": [
+      "Goa"
+    ],
+    "occupation": [
+      "Worker"
+    ],
+    "max_income": null,
+    "category": "Workers Welfare"
+  },
+  "SCHEME_0197": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Madhya Pradesh"
+    ],
+    "occupation": [
+      "progressive cattle breeder",
+      "trained cow-helper"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0198": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Kerala"
+    ],
+    "occupation": [
+      "Law Graduate",
+      "Advocate"
+    ],
+    "max_income": 100000,
+    "category": null
+  },
+  "SCHEME_0199": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Tamil Nadu"
+    ],
+    "occupation": [
+      "Unemployed"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0200": {
+    "min_age": 17,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0201": {
+    "min_age": 18,
+    "max_age": 60,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "Graduates",
+      "Diploma holders",
+      "Post Graduate Diploma holders"
+    ],
+    "max_income": null,
+    "category": "Agriculture and allied subjects"
+  },
+  "SCHEME_0202": {
+    "min_age": 18,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Haryana"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0203": {
+    "min_age": 18,
+    "max_age": 60,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "Agriculture",
+      "Horticulture",
+      "Sericulture",
+      "Dairy",
+      "Animal Husbandry",
+      "Fisheries",
+      "Home/ Community Sciences",
+      "Biotechnology",
+      "Agricultural Engineering",
+      "Forestry",
+      "Food Technology",
+      "Food Nutrition",
+      "Dietetics"
+    ],
+    "max_income": null,
+    "category": [
+      "Graduates"
+    ]
+  },
+  "SCHEME_0204": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [],
+    "occupation": [],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0205": {
+    "min_age": null,
+    "max_age": null,
+    "gender": [
+      "Female",
+      "Male"
+    ],
+    "state": [
+      "Gujarat"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0206": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Meghalaya"
+    ],
+    "occupation": [
+      "Agriculture",
+      "Horticulture"
+    ],
+    "max_income": null,
+    "category": {
+      "General/OBC": {
+        "min_age": null,
+        "max_age": null,
+        "marks": 55,
+        "subjects": [
+          "Physics",
+          "Chemistry",
+          "Biology",
+          "English"
+        ]
+      },
+      "SC": {
+        "min_age": null,
+        "max_age": null,
+        "marks": 45,
+        "subjects": [
+          "Physics",
+          "Chemistry",
+          "Biology",
+          "English"
+        ]
+      },
+      "ST": {
+        "min_age": null,
+        "max_age": null,
+        "marks": 45,
+        "subjects": [
+          "Physics",
+          "Chemistry",
+          "Biology",
+          "English"
+        ]
+      }
+    }
+  },
+  "SCHEME_0207": {
+    "min_age": null,
+    "max_age": null,
+    "gender": [
+      "Any"
+    ],
+    "state": [
+      "All States"
+    ],
+    "occupation": [],
+    "max_income": null,
+    "category": "APEDA registered Exporters, Central and state government institutions, public sector enterprises"
+  },
+  "SCHEME_0208": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Meghalaya"
+    ],
+    "occupation": [
+      "farmer"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0209": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Meghalaya"
+    ],
+    "occupation": [
+      "farmer"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0210": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "Lending Institutions"
+    ],
+    "max_income": null,
+    "category": "Government Scheme"
+  },
+  "SCHEME_0211": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Meghalaya"
+    ],
+    "occupation": [
+      "farmer"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0212": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "All"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0213": {
+    "min_age": 21,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Karnataka"
+    ],
+    "occupation": [],
+    "max_income": 500000,
+    "category": "Scheduled caste"
+  },
+  "SCHEME_0214": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "West Bengal"
+    ],
+    "occupation": [
+      "State Govt. employees"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0215": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Madhya Pradesh"
+    ],
+    "occupation": [],
+    "max_income": null,
+    "category": "Scheduled Tribe"
+  },
+  "SCHEME_0216": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "Unspecified Technical or Professional Contributions"
+  },
+  "SCHEME_0217": {
+    "min_age": 18,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Haryana"
+    ],
+    "occupation": [],
+    "max_income": null,
+    "category": ""
+  },
+  "SCHEME_0218": {
+    "min_age": 18,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Haryana"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0219": {
+    "min_age": 10,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Tripura"
+    ],
+    "occupation": null,
+    "max_income": 100000,
+    "category": null
+  },
+  "SCHEME_0220": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Madhya Pradesh"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": "Minority"
+  },
+  "SCHEME_0221": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Madhya Pradesh"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": "Minority"
+  },
+  "SCHEME_0222": {
+    "min_age": 18,
+    "max_age": 50,
+    "gender": "Female",
+    "state": [
+      "Bihar"
+    ],
+    "occupation": null,
+    "max_income": 400000,
+    "category": [
+      "Divorced",
+      "Abandoned by husband for more than 2 years",
+      "Husband is completely mentally handicapped"
+    ]
+  },
+  "SCHEME_0223": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "West Bengal"
+    ],
+    "occupation": [
+      "Farmers"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0224": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Rajasthan"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": [
+      "Scheduled Caste",
+      "Scheduled Tribe",
+      "Other Backward Class",
+      "Most Backward Class",
+      "Economically Weaker Section"
+    ]
+  },
+  "SCHEME_0225": {
+    "min_age": null,
+    "max_age": 35,
+    "gender": null,
+    "state": [
+      "Rajasthan"
+    ],
+    "occupation": [],
+    "max_income": 250000,
+    "category": "Scheduled Caste (SC)"
+  },
+  "SCHEME_0226": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "Handloom sector",
+      "Silk Sector",
+      "Jute Sector",
+      "Technical textiles",
+      "Madeup/garment manufacturing",
+      "Processing fibres, fabrics, made-up, garments and yarns",
+      "Weaving preparatory and knitting"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0227": {
+    "min_age": 18,
+    "max_age": 40,
+    "gender": "Female",
+    "state": [
+      "Tamil Nadu"
+    ],
+    "occupation": [],
+    "max_income": null,
+    "category": ""
+  },
+  "SCHEME_0228": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Andaman & Nicobar Islands"
+    ],
+    "occupation": [
+      "Owner/Promoter"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0229": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Andaman & Nicobar Islands"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": [
+      "BPL"
+    ]
+  },
+  "SCHEME_0230": {
+    "min_age": 60,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Uttarakhand"
+    ],
+    "occupation": [
+      "Anganwadi Worker/Helper"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0231": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Tamil Nadu"
+    ],
+    "occupation": [
+      "Farmer"
+    ],
+    "max_income": null,
+    "category": [
+      "Adi Dravidar/Tribal"
+    ]
+  },
+  "SCHEME_0232": {
+    "min_age": 18,
+    "max_age": null,
+    "gender": "Female",
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0233": {
+    "min_age": 18,
+    "max_age": null,
+    "gender": "Female",
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0234": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Tamil Nadu"
+    ],
+    "occupation": [],
+    "max_income": null,
+    "category": "SC/ST"
+  },
+  "SCHEME_0235": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Tamil Nadu"
+    ],
+    "occupation": [
+      "Student"
+    ],
+    "max_income": null,
+    "category": [
+      "SC/ST (Hindu Adi Dravidar)"
+    ]
+  },
+  "SCHEME_0236": {
+    "min_age": 0,
+    "max_age": 18,
+    "gender": null,
+    "state": [
+      "Jharkhand"
+    ],
+    "occupation": [
+      "Registered Worker with JBOCWW Board"
+    ],
+    "max_income": null,
+    "category": "Deceased Pensioner's Child"
+  },
+  "SCHEME_0237": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Bihar"
+    ],
+    "occupation": [
+      "Worker"
+    ],
+    "max_income": null,
+    "category": "Building or Construction Worker"
+  },
+  "SCHEME_0238": {
+    "min_age": 18,
+    "max_age": 50,
+    "gender": "Any",
+    "state": [
+      "Puducherry"
+    ],
+    "occupation": [],
+    "max_income": 75000,
+    "category": ""
+  },
+  "SCHEME_0239": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Bihar"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": "poor families"
+  },
+  "SCHEME_0240": {
+    "min_age": 18,
+    "max_age": 60,
+    "gender": null,
+    "state": [
+      "Jharkhand"
+    ],
+    "occupation": [
+      "Mason",
+      "Carpenter",
+      "Electrician",
+      "Porter",
+      "Painter"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0241": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "All States"
+    ],
+    "occupation": [
+      "Voluntary Organization"
+    ],
+    "max_income": null,
+    "category": "destitute and helpless individuals"
+  },
+  "SCHEME_0242": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Rajasthan"
+    ],
+    "occupation": [
+      "Farmer"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0243": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "Construction worker"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0244": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": 300000,
+    "category": "Scheduled Tribe"
+  },
+  "SCHEME_0245": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Assam"
+    ],
+    "occupation": null,
+    "max_income": 2000000,
+    "category": null
+  },
+  "SCHEME_0246": {
+    "min_age": 20,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0247": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "All States"
+    ],
+    "occupation": null,
+    "max_income": 800000,
+    "category": "State Religious Minority"
+  },
+  "SCHEME_0248": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Kerala"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0249": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Female",
+    "state": [
+      "Telangana"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": "Pregnancy"
+  },
+  "SCHEME_0250": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Chhattisgarh"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0251": {
+    "min_age": 0,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Uttar Pradesh"
+    ],
+    "occupation": [],
+    "max_income": null,
+    "category": "Person with Disabilities"
+  },
+  "SCHEME_0252": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Delhi"
+    ],
+    "occupation": [
+      "Artisan"
+    ],
+    "max_income": null,
+    "category": [
+      "Scheduled Castes",
+      "Other Backward Classes",
+      "Minority",
+      "Safai Karamchari",
+      "Persons with Disabilities"
+    ]
+  },
+  "SCHEME_0253": {
+    "min_age": null,
+    "max_age": null,
+    "gender": [
+      "Female",
+      "poor farmers"
+    ],
+    "state": [
+      "Arunachal Pradesh"
+    ],
+    "occupation": [
+      "pig-rearing individual farmers/ Self Help Groups (SHGs)"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0254": {
+    "min_age": 18,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Arunachal Pradesh"
+    ],
+    "occupation": [
+      "Entrepreneur"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0255": {
+    "min_age": 18,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "Arundhati Gold Scheme"
+  },
+  "SCHEME_0256": {
+    "min_age": 18,
+    "max_age": 60,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "Unorganized workers"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0257": {
+    "min_age": 18,
+    "max_age": 50,
+    "gender": "Female",
+    "state": null,
+    "occupation": [
+      "sew",
+      "embroider",
+      "weave",
+      "tailor"
+    ],
+    "max_income": null,
+    "category": "Women in Construction and Tailoring Sector"
+  },
+  "SCHEME_0258": {
+    "min_age": 18,
+    "max_age": 60,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "Beneficiary of unorganized workers under Section 10 of the Act"
+  },
+  "SCHEME_0259": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "unorganized worker"
+    ],
+    "max_income": null,
+    "category": "Engineering or Medical Education"
+  },
+  "SCHEME_0260": {
+    "min_age": null,
+    "max_age": null,
+    "gender": [
+      "Male",
+      "Female"
+    ],
+    "state": null,
+    "occupation": [
+      "unorganized worker"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0261": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": "*",
+    "occupation": [
+      "Newspaper delivery worker",
+      "hawker"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0262": {
+    "min_age": 21,
+    "max_age": 60,
+    "gender": "Any",
+    "state": [
+      "Tripura"
+    ],
+    "occupation": [
+      "wage-employed",
+      "self-employed"
+    ],
+    "max_income": 10000,
+    "category": ""
+  },
+  "SCHEME_0263": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Karnataka"
+    ],
+    "occupation": [
+      "private-sector industry or establishment"
+    ],
+    "max_income": null,
+    "category": [
+      "Scheduled Castes",
+      "Scheduled Tribe"
+    ]
+  },
+  "SCHEME_0264": {
+    "min_age": 18,
+    "max_age": null,
+    "gender": "Female",
+    "state": [
+      "Punjab"
+    ],
+    "occupation": null,
+    "max_income": 32790,
+    "category": [
+      "Scheduled Castes/Christian girls",
+      "Backward Classes/Castes",
+      "Economically weaker sections girls",
+      "daughters of widows"
+    ]
+  },
+  "SCHEME_0265": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Madhya Pradesh"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": [
+      "Scheduled Tribe"
+    ]
+  },
+  "SCHEME_0266": {
+    "min_age": null,
+    "max_age": 55,
+    "gender": "Any",
+    "state": [
+      "State",
+      "Central"
+    ],
+    "occupation": [
+      "Employee"
+    ],
+    "max_income": null,
+    "category": "Scheduled Tribe"
+  },
+  "SCHEME_0267": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Assam"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0268": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Assam"
+    ],
+    "occupation": null,
+    "max_income": 500000,
+    "category": "All Indian citizens"
+  },
+  "SCHEME_0269": {
+    "min_age": null,
+    "max_age": null,
+    "gender": [
+      "Female"
+    ],
+    "state": null,
+    "occupation": null,
+    "max_income": 200000,
+    "category": null
+  },
+  "SCHEME_0270": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "Differently Abled"
+  },
+  "SCHEME_0271": {
+    "min_age": 18,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Karnataka"
+    ],
+    "occupation": [
+      "Building/ Construction Worker"
+    ],
+    "max_income": null,
+    "category": "Welfare"
+  },
+  "SCHEME_0272": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "Differently-abled"
+  },
+  "SCHEME_0273": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "UT",
+      "Chandigarh"
+    ],
+    "occupation": null,
+    "max_income": 150000,
+    "category": null
+  },
+  "SCHEME_0274": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "Dependent of Unregistered Worker"
+  },
+  "SCHEME_0275": {
+    "min_age": 18,
+    "max_age": 60,
+    "gender": null,
+    "state": [
+      "Rajasthan"
+    ],
+    "occupation": [
+      "Construction Worker"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0276": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Rajasthan"
+    ],
+    "occupation": [
+      "Construction Worker"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0277": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "All states where Micro Enterprises are set up"
+    ],
+    "occupation": [
+      "Micro Enterprises engaged in handicraft sector"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0278": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "Construction Worker"
+    ],
+    "max_income": null,
+    "category": "Disability"
+  },
+  "SCHEME_0279": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Rajasthan"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": "SMEs"
+  },
+  "SCHEME_0280": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "Farmer"
+    ],
+    "max_income": null,
+    "category": [
+      "Schedule Caste"
+    ]
+  },
+  "SCHEME_0281": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Female",
+    "state": [
+      "Rajasthan"
+    ],
+    "occupation": [],
+    "max_income": null,
+    "category": "Ex-Serviceman/Widow"
+  },
+  "SCHEME_0282": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Female",
+    "state": null,
+    "occupation": [
+      "Folk Artist"
+    ],
+    "max_income": null,
+    "category": "Registered Female Folk Artist"
+  },
+  "SCHEME_0283": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Rajasthan"
+    ],
+    "occupation": [
+      "MSME in production"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0284": {
+    "min_age": 18,
+    "max_age": 60,
+    "gender": null,
+    "state": [
+      "Odisha"
+    ],
+    "occupation": [
+      "Building/ Construction Worker"
+    ],
+    "max_income": null,
+    "category": "Building and Other Construction Workers"
+  },
+  "SCHEME_0285": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Tamil Nadu"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": "SC/ST (Adi Dravidar/Tribal)"
+  },
+  "SCHEME_0286": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Puducherry"
+    ],
+    "occupation": [
+      "Marginal Farmer",
+      "Small farmer",
+      "Scheduled Caste Farmer",
+      "Schedule Tribe Farmer",
+      "Women Farmer",
+      "Big Farmers",
+      "Institutions"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0287": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "Differently Abled"
+  },
+  "SCHEME_0288": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Gujarat"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": "General"
+  },
+  "SCHEME_0289": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Gujarat"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": [
+      "Scheduled Caste"
+    ]
+  },
+  "SCHEME_0290": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Gujarat"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": [
+      "Scheduled Tribe"
+    ]
+  },
+  "SCHEME_0291": {
+    "min_age": null,
+    "max_age": null,
+    "gender": [
+      "Male",
+      "Female"
+    ],
+    "state": null,
+    "occupation": [
+      "dairy farming"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0292": {
+    "min_age": 18,
+    "max_age": 60,
+    "gender": null,
+    "state": [
+      "Odisha"
+    ],
+    "occupation": [
+      "Building/ Construction Worker"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0293": {
+    "min_age": null,
+    "max_age": 52,
+    "gender": "Any",
+    "state": [
+      "Haryana"
+    ],
+    "occupation": [
+      "Building & Other Construction Workers"
+    ],
+    "max_income": null,
+    "category": "Workers"
+  },
+  "SCHEME_0294": {
+    "min_age": 18,
+    "max_age": 60,
+    "gender": null,
+    "state": [
+      "Odisha"
+    ],
+    "occupation": [
+      "Building/ Construction Worker"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0295": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "Folk Artist"
+  },
+  "SCHEME_0296": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Rajasthan"
+    ],
+    "occupation": [
+      "Micro and Small Enterprises"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0297": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Gujarat"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": [
+      "General Category"
+    ]
+  },
+  "SCHEME_0298": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Gujarat"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": [
+      "Scheduled Caste"
+    ]
+  },
+  "SCHEME_0299": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Gujarat"
+    ],
+    "occupation": [
+      "Individual farmer",
+      "Farmer groups",
+      "Cooperative Societies"
+    ],
+    "max_income": null,
+    "category": "Agriculture"
+  },
+  "SCHEME_0300": {
+    "min_age": 18,
+    "max_age": 60,
+    "gender": null,
+    "state": [
+      "Odisha"
+    ],
+    "occupation": [
+      "Building/ Construction Worker"
+    ],
+    "max_income": null,
+    "category": "Building and Other Construction Workers"
+  },
+  "SCHEME_0301": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "Livestock Owner"
+    ],
+    "max_income": null,
+    "category": [
+      "General"
+    ]
+  },
+  "SCHEME_0302": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "Factory Worker",
+      "Construction Site Worker"
+    ],
+    "max_income": null,
+    "category": "Silicosis"
+  },
+  "SCHEME_0303": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Gujarat"
+    ],
+    "occupation": [
+      "farmer"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0304": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Puducherry"
+    ],
+    "occupation": [
+      "Farmer"
+    ],
+    "max_income": null,
+    "category": "General"
+  },
+  "SCHEME_0305": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Puducherry"
+    ],
+    "occupation": [],
+    "max_income": null,
+    "category": "Applicant with land under command area"
+  },
+  "SCHEME_0306": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "Law Graduate"
+  },
+  "SCHEME_0307": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Tamil Nadu"
+    ],
+    "occupation": [
+      "lawyer"
+    ],
+    "max_income": 100000,
+    "category": "Adi Dravidar/Tribal"
+  },
+  "SCHEME_0308": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Gujarat"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": "Kerosene Card Holder"
+  },
+  "SCHEME_0309": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Rajasthan"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0310": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Puducherry"
+    ],
+    "occupation": [
+      "Farmer"
+    ],
+    "max_income": null,
+    "category": "Scheduled Caste"
+  },
+  "SCHEME_0311": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Puducherry"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": "Scheduled Caste Community"
+  },
+  "SCHEME_0312": {
+    "min_age": 18,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "Fisherman"
+    ],
+    "max_income": null,
+    "category": [
+      "Schedule Caste(SC)"
+    ]
+  },
+  "SCHEME_0313": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Kerala"
+    ],
+    "occupation": [
+      "traditional pottery-making"
+    ],
+    "max_income": 100000,
+    "category": null
+  },
+  "SCHEME_0314": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "Ministry of MSME"
+  },
+  "SCHEME_0315": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "Registration under Societies Registration Act, 1860 (XXI of 1860) or any relevant State/Union Territory/Public trust Act"
+  },
+  "SCHEME_0316": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "Scheduled Caste"
+  },
+  "SCHEME_0317": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Madhya Pradesh"
+    ],
+    "occupation": [
+      "Scavenger",
+      "Flayers",
+      "Tanner"
+    ],
+    "max_income": null,
+    "category": "Scheduled Caste or other deprived categories"
+  },
+  "SCHEME_0318": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "Disability"
+  },
+  "SCHEME_0319": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Goa"
+    ],
+    "occupation": null,
+    "max_income": 300000,
+    "category": null
+  },
+  "SCHEME_0320": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Uttar Pradesh"
+    ],
+    "occupation": [
+      "Construction Worker"
+    ],
+    "max_income": null,
+    "category": "Children of Construction Workers"
+  },
+  "SCHEME_0321": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0322": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Madhya Pradesh"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0323": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "Open"
+  },
+  "SCHEME_0324": {
+    "min_age": 18,
+    "max_age": 40,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0325": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "All"
+    ],
+    "occupation": [
+      "Urban Local Bodies (ULBs)"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0326": {
+    "min_age": 0,
+    "max_age": 60,
+    "gender": "Any",
+    "state": [],
+    "occupation": [],
+    "max_income": null,
+    "category": "Newborn"
+  },
+  "SCHEME_0327": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Arunachal Pradesh"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0328": {
+    "min_age": null,
+    "max_age": null,
+    "gender": [
+      "Female",
+      "Members of self-help groups"
+    ],
+    "state": [
+      "Arunachal Pradesh"
+    ],
+    "occupation": [
+      "Farmer"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0329": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Female",
+    "state": [
+      "Punjab"
+    ],
+    "occupation": [
+      "Rural girl students"
+    ],
+    "max_income": 5000,
+    "category": "Disability"
+  },
+  "SCHEME_0330": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "Farmer"
+    ],
+    "max_income": null,
+    "category": "Farmer"
+  },
+  "SCHEME_0331": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Meghalaya"
+    ],
+    "occupation": [
+      "Student"
+    ],
+    "max_income": null,
+    "category": "Tribal"
+  },
+  "SCHEME_0332": {
+    "min_age": 21,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Odisha"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0333": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "Guru's Student"
+    ],
+    "max_income": null,
+    "category": "Advanced Training"
+  },
+  "SCHEME_0334": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "Students"
+    ],
+    "max_income": 5432,
+    "category": [
+      "V.J.N.T.",
+      "S.B.C"
+    ]
+  },
+  "SCHEME_0335": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0336": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Puducherry"
+    ],
+    "occupation": [
+      "Student"
+    ],
+    "max_income": null,
+    "category": "Scheduled Caste"
+  },
+  "SCHEME_0337": {
+    "min_age": 11,
+    "max_age": 14,
+    "gender": "Female",
+    "state": [
+      "Puducherry"
+    ],
+    "occupation": [
+      "Student"
+    ],
+    "max_income": 75000,
+    "category": null
+  },
+  "SCHEME_0338": {
+    "min_age": 6,
+    "max_age": 12,
+    "gender": "Female",
+    "state": [
+      "Puducherry"
+    ],
+    "occupation": [],
+    "max_income": 24000,
+    "category": "Scheduled Caste"
+  },
+  "SCHEME_0339": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Puducherry"
+    ],
+    "occupation": [
+      "Student"
+    ],
+    "max_income": 200000,
+    "category": "Scheduled Caste"
+  },
+  "SCHEME_0340": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Puducherry"
+    ],
+    "occupation": null,
+    "max_income": 75000,
+    "category": "OEBC"
+  },
+  "SCHEME_0341": {
+    "min_age": null,
+    "max_age": null,
+    "gender": [
+      "Male",
+      "Female"
+    ],
+    "state": [
+      "Union Territory of Puducherry"
+    ],
+    "occupation": null,
+    "max_income": 24000,
+    "category": null
+  },
+  "SCHEME_0342": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Union Territory of Puducherry"
+    ],
+    "occupation": [
+      "Scavenger",
+      "Flayer",
+      "Tarner"
+    ],
+    "max_income": null,
+    "category": "Scheduled Caste"
+  },
+  "SCHEME_0343": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Puducherry"
+    ],
+    "occupation": null,
+    "max_income": 75000,
+    "category": null
+  },
+  "SCHEME_0344": {
+    "min_age": 30,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Puduche"
+    ],
+    "occupation": [
+      "artist",
+      "author/writer"
+    ],
+    "max_income": null,
+    "category": "literature, music, dance, drama, painting and sculpture, folk arts"
+  },
+  "SCHEME_0345": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Puducherry"
+    ],
+    "occupation": [],
+    "max_income": 75000,
+    "category": "Student with Disabilities"
+  },
+  "SCHEME_0346": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Puducherry"
+    ],
+    "occupation": [
+      "Student"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0347": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Union Territory of Puducherry"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": "National Child Award for Exceptional Achievements, Other National / International Merit Awards"
+  },
+  "SCHEME_0348": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0349": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Tamil Nadu"
+    ],
+    "occupation": [
+      "Writer"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0350": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Gujarat"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": "Scheduled Castes"
+  },
+  "SCHEME_0351": {
+    "min_age": 60,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Puducherry"
+    ],
+    "occupation": [
+      "Author",
+      "Writer"
+    ],
+    "max_income": null,
+    "category": "Literature and Research"
+  },
+  "SCHEME_0352": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Tamil Nadu"
+    ],
+    "occupation": [
+      "Student"
+    ],
+    "max_income": null,
+    "category": [
+      "Adi Dravidar",
+      "Tribal",
+      "Adi Dravidar Converted to Christianity"
+    ]
+  },
+  "SCHEME_0353": {
+    "min_age": 6,
+    "max_age": 14,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "Construction Worker"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0354": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [],
+    "max_income": null,
+    "category": [
+      "Destitute/ living on alms",
+      "Manual scavenger households",
+      "Primitive tribal group",
+      "Legally released bonded labour",
+      "Landless households"
+    ]
+  },
+  "SCHEME_0355": {
+    "min_age": 11,
+    "max_age": null,
+    "gender": "Female",
+    "state": [
+      "Bihar"
+    ],
+    "occupation": [],
+    "max_income": 300000,
+    "category": [
+      "Backward Class",
+      "Extremely Backward Class"
+    ]
+  },
+  "SCHEME_0356": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Chhattisgarh"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": [
+      "General Category"
+    ]
+  },
+  "SCHEME_0357": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Chhattisgarh"
+    ],
+    "occupation": [
+      "Student"
+    ],
+    "max_income": null,
+    "category": "Higher Education Department"
+  },
+  "SCHEME_0358": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "Faculty members"
+    ],
+    "max_income": null,
+    "category": "Faculty members in science and technology"
+  },
+  "SCHEME_0359": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "Micro and Small Enterprises"
+    ],
+    "max_income": null,
+    "category": [
+      "Technology upgradation/modernization schemes",
+      "National Equity Funds Scheme",
+      "ISO Certification / R & D",
+      "NSIC -SIDCO Consortium",
+      "Credit Guarantee Fund Trust Scheme"
+    ]
+  },
+  "SCHEME_0360": {
+    "min_age": null,
+    "max_age": 43,
+    "gender": "Female",
+    "state": [
+      "Kerala"
+    ],
+    "occupation": [],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0361": {
+    "min_age": null,
+    "max_age": 45,
+    "gender": "Female",
+    "state": [
+      "Kerala"
+    ],
+    "occupation": [],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0362": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Madhya Pradesh"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": "backward class"
+  },
+  "SCHEME_0363": {
+    "min_age": null,
+    "max_age": 35,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "Student"
+    ],
+    "max_income": null,
+    "category": "Research Degree Holder or Research Experience"
+  },
+  "SCHEME_0364": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Uttarakhand"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": [
+      "General",
+      "Scheduled Caste",
+      "Scheduled Tribe"
+    ]
+  },
+  "SCHEME_0365": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Jammu & Kashmir"
+    ],
+    "occupation": [
+      "Social worker"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0366": {
+    "min_age": 0,
+    "max_age": 30,
+    "gender": "Any",
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": [
+      "Below Poverty Line",
+      "Scheduled Caste"
+    ]
+  },
+  "SCHEME_0367": {
+    "min_age": 15,
+    "max_age": null,
+    "gender": "Female",
+    "state": [
+      "Pondicherry"
+    ],
+    "occupation": null,
+    "max_income": 15000,
+    "category": null
+  },
+  "SCHEME_0368": {
+    "min_age": 18,
+    "max_age": 60,
+    "gender": null,
+    "state": [
+      "Punjab"
+    ],
+    "occupation": [
+      "Building/ Construction Worker"
+    ],
+    "max_income": 15000,
+    "category": null
+  },
+  "SCHEME_0369": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "Indian citizen, houseless or living in kutcha/dilapidated house"
+  },
+  "SCHEME_0370": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0371": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0372": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0373": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0374": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0375": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0376": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0377": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0378": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0379": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0380": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "Pursuing primary education",
+      "Reading in middle & high schools",
+      "Not covered by Govt. of India Scholarship",
+      "Reading in colleges/universities",
+      "Reading in special schools registered under PWD, Act 1995",
+      "Pursuing distance education through recognized universities/Govt. institutes",
+      "Pursuing technical/ vocational/ professional education"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0381": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "Scheduled Caste / Scheduled Tribe"
+  },
+  "SCHEME_0382": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "Scheduled Caste / Scheduled Tribe"
+  },
+  "SCHEME_0383": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Punjab"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": "Scheduled Caste"
+  },
+  "SCHEME_0384": {
+    "min_age": null,
+    "max_age": 60,
+    "gender": "Any",
+    "state": [
+      "Kerala"
+    ],
+    "occupation": [
+      "traditional barber"
+    ],
+    "max_income": 100000,
+    "category": "State Other Backward Communities"
+  },
+  "SCHEME_0385": {
+    "min_age": 60,
+    "max_age": 75,
+    "gender": "Any",
+    "state": [
+      "Odisha"
+    ],
+    "occupation": [],
+    "max_income": null,
+    "category": ""
+  },
+  "SCHEME_0386": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0387": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "Muscular Dystrophy, Tetraplegia"
+  },
+  "SCHEME_0388": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Female",
+    "state": [
+      "Punjab"
+    ],
+    "occupation": [],
+    "max_income": null,
+    "category": "Girls from orphanages and Children's Homes"
+  },
+  "SCHEME_0389": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": [
+      "Gold",
+      "Silver"
+    ]
+  },
+  "SCHEME_0390": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Bihar"
+    ],
+    "occupation": [
+      "Farmer"
+    ],
+    "max_income": null,
+    "category": [
+      "General",
+      "Scheduled Castes",
+      "Scheduled Tribes"
+    ]
+  },
+  "SCHEME_0391": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "Farmer"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0392": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "Student",
+      "Self-Employed",
+      "Employed Persons"
+    ],
+    "max_income": null,
+    "category": "hearing-impaired"
+  },
+  "SCHEME_0393": {
+    "min_age": 21,
+    "max_age": 35,
+    "gender": "Any",
+    "state": [
+      "Uttar Pradesh"
+    ],
+    "occupation": [],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0394": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Female",
+    "state": [
+      "Himachal Pradesh"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": "BPL"
+  },
+  "SCHEME_0395": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Female",
+    "state": null,
+    "occupation": [
+      "Scheduled Caste"
+    ],
+    "max_income": 250000,
+    "category": "SC"
+  },
+  "SCHEME_0396": {
+    "min_age": 0,
+    "max_age": null,
+    "gender": "Female",
+    "state": null,
+    "occupation": [
+      "BPL"
+    ],
+    "max_income": null,
+    "category": "Girls"
+  },
+  "SCHEME_0397": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Andhra Pradesh"
+    ],
+    "occupation": null,
+    "max_income": 300000,
+    "category": {
+      "Orphan": true,
+      "Differently Abled": true,
+      "Children of Single Parents": true
+    }
+  },
+  "SCHEME_0398": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Andhra Pradesh"
+    ],
+    "occupation": null,
+    "max_income": 300000,
+    "category": {
+      "Orphan": true,
+      "Differently Abled": true,
+      "Children of Single Parents": true
+    }
+  },
+  "SCHEME_0399": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Andhra Pradesh"
+    ],
+    "occupation": [
+      "Student"
+    ],
+    "max_income": 300000,
+    "category": null
+  },
+  "SCHEME_0400": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Andhra Pradesh"
+    ],
+    "occupation": null,
+    "max_income": 300000,
+    "category": null
+  },
+  "SCHEME_0401": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Andhra Pradesh"
+    ],
+    "occupation": [
+      "Student"
+    ],
+    "max_income": 300000,
+    "category": null
+  },
+  "SCHEME_0402": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Andhra Pradesh"
+    ],
+    "occupation": [
+      "Student"
+    ],
+    "max_income": 300000,
+    "category": null
+  },
+  "SCHEME_0403": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Andhra Pradesh"
+    ],
+    "occupation": [],
+    "max_income": 300000,
+    "category": ""
+  },
+  "SCHEME_0404": {
+    "min_age": 0,
+    "max_age": 0,
+    "gender": "Any",
+    "state": [
+      "Andhra Pradesh"
+    ],
+    "occupation": [
+      "Student"
+    ],
+    "max_income": 300000,
+    "category": "Not Specified"
+  },
+  "SCHEME_0405": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Andhra Pradesh"
+    ],
+    "occupation": null,
+    "max_income": 600000,
+    "category": "Brahmin"
+  },
+  "SCHEME_0406": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "Individuals",
+      "Groups of individuals",
+      "Associations",
+      "Organizations"
+    ],
+    "max_income": null,
+    "category": "Brahmin community"
+  },
+  "SCHEME_0407": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Maharashtra"
+    ],
+    "occupation": [
+      "Farmer"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0408": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Haryana"
+    ],
+    "occupation": [
+      "landowner",
+      "lessee",
+      "tenant farmer"
+    ],
+    "max_income": null,
+    "category": "Farmer"
+  },
+  "SCHEME_0409": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Uttarakhand"
+    ],
+    "occupation": [
+      "sheep-rearing"
+    ],
+    "max_income": null,
+    "category": [
+      "Scheduled Caste",
+      "Scheduled Tribe"
+    ]
+  },
+  "SCHEME_0410": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Odisha"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": [
+      "PWD"
+    ]
+  },
+  "SCHEME_0411": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Bihar"
+    ],
+    "occupation": [
+      "Fish Farmer"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0412": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Female",
+    "state": [
+      "Rajasthan"
+    ],
+    "occupation": [],
+    "max_income": null,
+    "category": "EWS"
+  },
+  "SCHEME_0413": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0414": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Haryana"
+    ],
+    "occupation": [
+      "Industrial or commercial establishment workers"
+    ],
+    "max_income": 18000,
+    "category": null
+  },
+  "SCHEME_0415": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Uttarakhand"
+    ],
+    "occupation": [
+      "building or construction work"
+    ],
+    "max_income": null,
+    "category": "Building and Construction Workers"
+  },
+  "SCHEME_0416": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Assam"
+    ],
+    "occupation": [
+      "State Government Employee"
+    ],
+    "max_income": 450000,
+    "category": "CLSS"
+  },
+  "SCHEME_0417": {
+    "min_age": 18,
+    "max_age": 50,
+    "gender": "Any",
+    "state": [
+      "Delhi"
+    ],
+    "occupation": [],
+    "max_income": null,
+    "category": {
+      "Scheduled Castes": {
+        "max_income": 120000
+      },
+      "Other Backward Classes": {
+        "max_income": 120000
+      },
+      "Minorities": {
+        "max_income": {
+          "<=60000": {
+            "creamy_layer": false
+          },
+          ">60000": {
+            "creamy_layer": true
+          }
+        }
+      },
+      "Safai Karamcharis": {},
+      "Persons with Disabilities": {}
+    }
+  },
+  "SCHEME_0418": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Bihar"
+    ],
+    "occupation": [],
+    "max_income": null,
+    "category": "Physically Disabled"
+  },
+  "SCHEME_0419": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "Farming"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0420": {
+    "min_age": 18,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Bihar"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": "AIDS"
+  },
+  "SCHEME_0421": {
+    "min_age": 18,
+    "max_age": 65,
+    "gender": null,
+    "state": [
+      "Bihar"
+    ],
+    "occupation": [
+      "worker",
+      "craftsman"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0422": {
+    "min_age": 18,
+    "max_age": 65,
+    "gender": null,
+    "state": [
+      "Bihar"
+    ],
+    "occupation": [
+      "Worker",
+      "Craftsman"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0423": {
+    "min_age": 18,
+    "max_age": 65,
+    "gender": null,
+    "state": [
+      "Bihar"
+    ],
+    "occupation": [
+      "Worker",
+      "Craftsman"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0424": {
+    "min_age": 18,
+    "max_age": 65,
+    "gender": null,
+    "state": [
+      "Bihar"
+    ],
+    "occupation": [
+      "worker",
+      "craftsman"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0425": {
+    "min_age": 18,
+    "max_age": 65,
+    "gender": null,
+    "state": [
+      "Bihar"
+    ],
+    "occupation": [
+      "worker",
+      "craftsman"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0426": {
+    "min_age": 18,
+    "max_age": 65,
+    "gender": null,
+    "state": [
+      "Bihar"
+    ],
+    "occupation": [
+      "worker",
+      "craftsman"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0427": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Bihar"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": "Leprosy"
+  },
+  "SCHEME_0428": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "Private Limited Company",
+      "Partnership Firm",
+      "Limited Liability Partnership"
+    ],
+    "max_income": 100000000,
+    "category": "Innovation or Development"
+  },
+  "SCHEME_0429": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Bihar"
+    ],
+    "occupation": [
+      "Student"
+    ],
+    "max_income": 600000,
+    "category": "Minority Community"
+  },
+  "SCHEME_0430": {
+    "min_age": 21,
+    "max_age": 70,
+    "gender": null,
+    "state": [
+      "Bihar"
+    ],
+    "occupation": [
+      "Journalist",
+      "Media Representative"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0431": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Bihar"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0432": {
+    "min_age": 25,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Bihar"
+    ],
+    "occupation": [],
+    "max_income": null,
+    "category": ""
+  },
+  "SCHEME_0433": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Odisha"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0434": {
+    "min_age": 45,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Odisha"
+    ],
+    "occupation": [
+      "Sports Administration",
+      "sports Support Staff (other than Coaches)"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0435": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Odisha"
+    ],
+    "occupation": [
+      "Coaching"
+    ],
+    "max_income": null,
+    "category": "Award"
+  },
+  "SCHEME_0436": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Odisha"
+    ],
+    "occupation": [
+      "Journalist"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0437": {
+    "min_age": 45,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Odisha"
+    ],
+    "occupation": [
+      "Sportsperson"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0438": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Odisha"
+    ],
+    "occupation": [
+      "Sportsperson"
+    ],
+    "max_income": null,
+    "category": "Award Recipient"
+  },
+  "SCHEME_0439": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Odisha"
+    ],
+    "occupation": [],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0440": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "All"
+    ],
+    "occupation": [
+      "Any"
+    ],
+    "max_income": null,
+    "category": "BSKY Smart Health Card, National Food Security Act (NFSA), State Food Security Scheme (SFSS)"
+  },
+  "SCHEME_0441": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Odisha"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0442": {
+    "min_age": 60,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "master craftsperson"
+    ],
+    "max_income": 100000,
+    "category": null
+  },
+  "SCHEME_0443": {
+    "min_age": 18,
+    "max_age": 60,
+    "gender": null,
+    "state": [
+      "West Bengal"
+    ],
+    "occupation": [
+      "construction",
+      "transport"
+    ],
+    "max_income": 6500,
+    "category": null
+  },
+  "SCHEME_0444": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Meghalaya"
+    ],
+    "occupation": [
+      "farmer"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0445": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": [
+      "Animal and Marine Biotechnology",
+      "Allied areas",
+      "Bioengineering and Biomaterials or allied areas",
+      "Medical Biotechnology or allied areas",
+      "Environmental Biotechnology and Bioenergy or allied areas",
+      "Plant and Agriculture Biotechnology or allied areas"
+    ]
+  },
+  "SCHEME_0446": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "Formally employed"
+    ],
+    "max_income": null,
+    "category": "Individual"
+  },
+  "SCHEME_0447": {
+    "min_age": 0,
+    "max_age": 35,
+    "gender": [
+      "Any"
+    ],
+    "state": [
+      "Kerala"
+    ],
+    "occupation": [
+      "Life Sciences",
+      "Veterinary Science",
+      "Agriculture",
+      "Forestry",
+      "Fisheries",
+      "Medicine"
+    ],
+    "max_income": null,
+    "category": "Biotechnologically relevant aspects"
+  },
+  "SCHEME_0448": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Kerala"
+    ],
+    "occupation": [
+      "Students"
+    ],
+    "max_income": null,
+    "category": "Post-graduate, Doctoral, Biotechnology or life sciences related subjects"
+  },
+  "SCHEME_0449": {
+    "min_age": 18,
+    "max_age": 50,
+    "gender": null,
+    "state": [
+      "Assam"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0450": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Jharkhand"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": "Scheduled Tribe"
+  },
+  "SCHEME_0451": {
+    "min_age": null,
+    "max_age": null,
+    "gender": [
+      "Female"
+    ],
+    "state": null,
+    "occupation": [
+      "Small or marginal farmer"
+    ],
+    "max_income": null,
+    "category": [
+      "Scheduled Castes",
+      "Scheduled Tribes",
+      "Primitive Tribes",
+      "Below Poverty Line"
+    ]
+  },
+  "SCHEME_0452": {
+    "min_age": 18,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Jharkhand"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0453": {
+    "min_age": 6,
+    "max_age": 18,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "Student"
+    ],
+    "max_income": null,
+    "category": "ST Boarders"
+  },
+  "SCHEME_0454": {
+    "min_age": 18,
+    "max_age": 50,
+    "gender": null,
+    "state": [
+      "Assam"
+    ],
+    "occupation": [],
+    "max_income": null,
+    "category": ""
+  },
+  "SCHEME_0455": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Puducherry"
+    ],
+    "occupation": [
+      "Unemployed"
+    ],
+    "max_income": null,
+    "category": "Ward of Unemployed Ex-Serviceman/Ward of Widow of Ex-Serviceman"
+  },
+  "SCHEME_0456": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Tamil Nadu"
+    ],
+    "occupation": [
+      "Student"
+    ],
+    "max_income": null,
+    "category": [
+      "Student",
+      "Adi Dravidar/ Tribal communities"
+    ]
+  },
+  "SCHEME_0457": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Tamil Nadu"
+    ],
+    "occupation": [
+      "Student"
+    ],
+    "max_income": null,
+    "category": [
+      "Student",
+      "Adi Dravidar/ Tribal communities"
+    ]
+  },
+  "SCHEME_0458": {
+    "min_age": 18,
+    "max_age": 40,
+    "gender": "Any",
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0459": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Arunachal Pradesh",
+      "Assam",
+      "Bihar",
+      "Gujarat",
+      "Himachal Pradesh",
+      "Jammu & Kashmir",
+      "Ladakh",
+      "Manipur",
+      "Meghalaya",
+      "Mizoram",
+      "Nagaland",
+      "Punjab",
+      "Rajasthan",
+      "Sikkim",
+      "Tripura",
+      "Uttar Pradesh",
+      "Uttarakhand",
+      "West Bengal"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": "Border Area Development Program"
+  },
+  "SCHEME_0460": {
+    "min_age": 0,
+    "max_age": 0,
+    "gender": "Any",
+    "state": [
+      "Border Area"
+    ],
+    "occupation": [
+      "Not Mentioned"
+    ],
+    "max_income": 0,
+    "category": "Not Mentioned"
+  },
+  "SCHEME_0461": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "Self-Employed",
+      "Employee"
+    ],
+    "max_income": null,
+    "category": "Visually Impaired"
+  },
+  "SCHEME_0462": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "Entrepreneur-aggregator",
+      "Private individual"
+    ],
+    "max_income": null,
+    "category": "Entrepreneur"
+  },
+  "SCHEME_0463": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0464": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Odisha"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": [
+      "SC"
+    ]
+  },
+  "SCHEME_0465": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Chhattisgarh"
+    ],
+    "occupation": [
+      "weaver"
+    ],
+    "max_income": null,
+    "category": "Weaver Family"
+  },
+  "SCHEME_0466": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Chhattisgarh"
+    ],
+    "occupation": [
+      "weaver"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0467": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Tamil Nadu"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": "Adi Dravidar/ Tribal communities"
+  },
+  "SCHEME_0468": {
+    "min_age": 18,
+    "max_age": 60,
+    "gender": null,
+    "state": [
+      "U.T. Administration of Dadra and Nagar Haveli and Daman and Diu"
+    ],
+    "occupation": [
+      "Building/ Construction Worker"
+    ],
+    "max_income": null,
+    "category": "Building and Other Construction Workers Welfare"
+  },
+  "SCHEME_0469": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Delhi"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": "Disability"
+  },
+  "SCHEME_0470": {
+    "min_age": 45,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "Scientist",
+      "Engineer"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0471": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Female",
+    "state": null,
+    "occupation": null,
+    "max_income": 1500,
+    "category": "Single Girl Child"
+  },
+  "SCHEME_0472": {
+    "min_age": 18,
+    "max_age": 45,
+    "gender": [
+      "Male",
+      "Female"
+    ],
+    "state": null,
+    "occupation": [
+      "unemployed youth",
+      "Youth willing to establish new ventures"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0473": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "Bachelor's Degree in the concerned field"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0474": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Rajasthan"
+    ],
+    "occupation": [],
+    "max_income": 800000,
+    "category": [
+      "Scheduled Caste",
+      "Scheduled Tribe",
+      "Other Backward Class",
+      "Extremely Backward Class",
+      "Economically Weaker Section",
+      "Minority category"
+    ]
+  },
+  "SCHEME_0475": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "All"
+    ],
+    "occupation": [],
+    "max_income": null,
+    "category": "Coaching Center, School"
+  },
+  "SCHEME_0476": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Tamil Nadu"
+    ],
+    "occupation": [],
+    "max_income": null,
+    "category": "Orthopedically Differently Abled"
+  },
+  "SCHEME_0477": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "Proprietorship",
+      "Firm",
+      "Private Limited Company",
+      "Public Limited Company"
+    ],
+    "max_income": null,
+    "category": "Units"
+  },
+  "SCHEME_0478": {
+    "min_age": 0,
+    "max_age": 18,
+    "gender": "Any",
+    "state": [
+      "Kerala"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": "BPL"
+  },
+  "SCHEME_0479": {
+    "min_age": 18,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0480": {
+    "min_age": 18,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0481": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Goa"
+    ],
+    "occupation": [
+      "Industries",
+      "Trade and Commerce"
+    ],
+    "max_income": null,
+    "category": "Permanently registered units"
+  },
+  "SCHEME_0482": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Goa"
+    ],
+    "occupation": [
+      "Proprietorship Firm",
+      "Private Limited Company",
+      "Public Limited Company",
+      "Registered Partnership Firm",
+      "Limited Liability Partnership"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0483": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Goa"
+    ],
+    "occupation": [
+      "Proprietorship Firm",
+      "Private Limited Company",
+      "Public Limited Company",
+      "Registered Partnership Firm",
+      "Limited Liability Partnership"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0484": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "Electronic Industries",
+      "Bio-technology Industries",
+      "Food Processing Industries",
+      "Agro Processing Industries Including Marine Products",
+      "Leather Products and Footwear Industries",
+      "Light Engineering Industries Including Auto Components",
+      "Textiles Industries Including Garments",
+      "New thrust area industries"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0485": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Any"
+    ],
+    "occupation": [
+      "All new micro manufacturing enterprises",
+      "All new small and medium enterprises"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0486": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Assam"
+    ],
+    "occupation": [
+      "building & other construction work"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0487": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Arunachal Pradesh"
+    ],
+    "occupation": [
+      "Building and Other Construction works"
+    ],
+    "max_income": null,
+    "category": "Children of Registered Workers with Highest Marks in Metric Examination"
+  },
+  "SCHEME_0488": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Meghalaya"
+    ],
+    "occupation": [
+      "building or other construction work"
+    ],
+    "max_income": null,
+    "category": "Construction Workers"
+  },
+  "SCHEME_0489": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Puducherry"
+    ],
+    "occupation": [
+      "Student"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0490": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Union Territory of Puducherry"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": "Disability"
+  },
+  "SCHEME_0491": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Puducherry"
+    ],
+    "occupation": [
+      "Construction Worker"
+    ],
+    "max_income": null,
+    "category": "Student of Higher Secondary course or its equivalent examination with 1st/2nd/3rd Rank at the State/Regional Level"
+  },
+  "SCHEME_0492": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Female",
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "Widow of Ex-serviceman"
+  },
+  "SCHEME_0493": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Puducherry"
+    ],
+    "occupation": [],
+    "max_income": null,
+    "category": "Ward of ESM/Widow of ESM"
+  },
+  "SCHEME_0494": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0495": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Gujarat"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": [
+      "Scheduled Caste"
+    ]
+  },
+  "SCHEME_0496": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": "Within the State",
+    "occupation": null,
+    "max_income": null,
+    "category": [
+      "Pakistan occupied Jammu & Kashmir 1947 Displaced Persons",
+      "Chhamb 1965 and 1971 (camp/non-camp) Displaced Persons"
+    ]
+  },
+  "SCHEME_0497": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "Rescued Bonded Labour"
+  },
+  "SCHEME_0498": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "Regular and full-time advanced studies/ research"
+    ],
+    "max_income": null,
+    "category": "Scheduled Caste"
+  },
+  "SCHEME_0499": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0500": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "OBCs"
+  },
+  "SCHEME_0501": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "OBC, EBC, DNT"
+  },
+  "SCHEME_0502": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": 250000,
+    "category": "pre-matric"
+  },
+  "SCHEME_0503": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "Student"
+    ],
+    "max_income": 250000,
+    "category": "Scheduled Caste"
+  },
+  "SCHEME_0504": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Goa"
+    ],
+    "occupation": [
+      "IT Industry"
+    ],
+    "max_income": null,
+    "category": "Certifications from OEM vendors or their authorized training partners"
+  },
+  "SCHEME_0505": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Kishanganj",
+      "Araria",
+      "Supaul",
+      "Purnia",
+      "Katihar"
+    ],
+    "occupation": [
+      "Farmer"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0506": {
+    "min_age": null,
+    "max_age": 50,
+    "gender": "Any",
+    "state": [
+      "Andhra Pradesh"
+    ],
+    "occupation": [
+      "Entrepreneur"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0507": {
+    "min_age": 21,
+    "max_age": 50,
+    "gender": "Any",
+    "state": [
+      "Andhra Pradesh"
+    ],
+    "occupation": [],
+    "max_income": null,
+    "category": ""
+  },
+  "SCHEME_0508": {
+    "min_age": 18,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "leather artisans",
+      "Artisans SHGs",
+      "Co-operative societies"
+    ],
+    "max_income": null,
+    "category": [
+      "Arundathiyar",
+      "Chammadiya",
+      "Chamar",
+      "Chambar",
+      "Chamagar",
+      "Madar",
+      "Madiga",
+      "Mini Madig",
+      "Jambavalu",
+      "Haralayya",
+      "Machigar",
+      "Mochigar",
+      "Mochi",
+      "muchi",
+      "Telugu Mochi",
+      "kamaati mocha",
+      "Rohidas",
+      "Dhor",
+      "kakkayya",
+      "Kankayya",
+      "Samagara",
+      "Samagar",
+      "Aadhi Anddra",
+      "Aadhi Dravida",
+      "Aadhi Karnataka"
+    ]
+  },
+  "SCHEME_0509": {
+    "min_age": null,
+    "max_age": null,
+    "gender": [
+      "Female",
+      "Male"
+    ],
+    "state": null,
+    "occupation": [
+      "Worker"
+    ],
+    "max_income": null,
+    "category": "Not Specified"
+  },
+  "SCHEME_0510": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Female",
+    "state": [
+      "Rajasthan"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0511": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Madhya Pradesh"
+    ],
+    "occupation": [
+      "Student"
+    ],
+    "max_income": null,
+    "category": "Scheduled Caste"
+  },
+  "SCHEME_0512": {
+    "min_age": null,
+    "max_age": null,
+    "gender": [
+      "Female"
+    ],
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "BPL"
+  },
+  "SCHEME_0513": {
+    "min_age": 18,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0514": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Changlang",
+      "Lohit",
+      "Namsai"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": "APST"
+  },
+  "SCHEME_0515": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": 300000,
+    "category": "BC or EBC"
+  },
+  "SCHEME_0516": {
+    "min_age": 1,
+    "max_age": 5,
+    "gender": "Female or Male",
+    "state": [
+      "Tamil Nadu"
+    ],
+    "occupation": [
+      "Student"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0517": {
+    "min_age": null,
+    "max_age": 37,
+    "gender": [
+      "Female",
+      "SC/ST"
+    ],
+    "state": [
+      "Kerala"
+    ],
+    "occupation": [
+      "scientist",
+      "faculty"
+    ],
+    "max_income": null,
+    "category": "biotechnology-related subjects"
+  },
+  "SCHEME_0518": {
+    "min_age": null,
+    "max_age": null,
+    "gender": {
+      "self_employment_loans": "Any",
+      "special_school": "Any",
+      "shelter_home": "Male/Female"
+    },
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": {
+      "self_employment_loans": null,
+      "artificial_limbs_and_equipment": null,
+      "special_school": null,
+      "shelter_home": null
+    }
+  },
+  "SCHEME_0519": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "Farmer"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0520": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Bihar"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": [
+      "Extremely Backward Class (EBC)"
+    ]
+  },
+  "SCHEME_0521": {
+    "min_age": 18,
+    "max_age": null,
+    "gender": [
+      "Female"
+    ],
+    "state": [
+      "Rajasthan"
+    ],
+    "occupation": null,
+    "max_income": 48000,
+    "category": null
+  },
+  "SCHEME_0522": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Bihar"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": "Deceased Person's Family Member or Dependent"
+  },
+  "SCHEME_0523": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "Unemployed"
+    ],
+    "max_income": null,
+    "category": [
+      "Small and marginal",
+      "Women SHGs"
+    ]
+  },
+  "SCHEME_0524": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "Government service (Class 1/2/3)",
+      "Higher category post"
+    ],
+    "max_income": null,
+    "category": "Scheduled Tribe"
+  },
+  "SCHEME_0525": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Uttarakhand"
+    ],
+    "occupation": [
+      "Student"
+    ],
+    "max_income": null,
+    "category": "Scholarship for Academic Excellence"
+  },
+  "SCHEME_0526": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Rajasthan"
+    ],
+    "occupation": [
+      "Student"
+    ],
+    "max_income": null,
+    "category": "Scholarship"
+  },
+  "SCHEME_0527": {
+    "min_age": 18,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Meghalaya"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0528": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Female",
+    "state": [
+      "Bihar"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0529": {
+    "min_age": 23,
+    "max_age": 60,
+    "gender": [
+      "Female",
+      "Married",
+      "Widows",
+      "Divorced",
+      "Abandoned"
+    ],
+    "state": [
+      "Madhya Pradesh"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0530": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Tamil Nadu"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": "Adi Dravidar/ Tribal/ Adi Dravidar converted to Christianity communities"
+  },
+  "SCHEME_0531": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Female",
+    "state": [
+      "Bihar"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0532": {
+    "min_age": null,
+    "max_age": null,
+    "gender": [
+      "Female",
+      "Any"
+    ],
+    "state": [
+      "Chhattisgarh"
+    ],
+    "occupation": [],
+    "max_income": null,
+    "category": [
+      "Senior Citizen",
+      "Widow",
+      "Abandoned Woman"
+    ]
+  },
+  "SCHEME_0533": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Madhya Pradesh"
+    ],
+    "occupation": [
+      "small trader",
+      "vendor"
+    ],
+    "max_income": null,
+    "category": "rural poor class"
+  },
+  "SCHEME_0534": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "Farmer"
+    ],
+    "max_income": null,
+    "category": "Group of Farmers"
+  },
+  "SCHEME_0535": {
+    "min_age": 0,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Rajasthan"
+    ],
+    "occupation": null,
+    "max_income": 60000,
+    "category": "Specially abled persons"
+  },
+  "SCHEME_0536": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Kokan"
+    ],
+    "occupation": [
+      "Farmer"
+    ],
+    "max_income": null,
+    "category": "Farm Pond Subsidy"
+  },
+  "SCHEME_0537": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "Not Applicable"
+  },
+  "SCHEME_0538": {
+    "min_age": 18,
+    "max_age": 60,
+    "gender": null,
+    "state": [
+      "Madhya Pradesh"
+    ],
+    "occupation": [
+      "Building/ Construction Worker"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0539": {
+    "min_age": 18,
+    "max_age": 60,
+    "gender": null,
+    "state": [
+      "Madhya Pradesh"
+    ],
+    "occupation": [
+      "Building/ Construction Worker"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0540": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Manipur"
+    ],
+    "occupation": [
+      "Street Vendor",
+      "Farmer",
+      "Daily-Wage Worker"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0541": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Tamil Nadu"
+    ],
+    "occupation": null,
+    "max_income": 120000,
+    "category": null
+  },
+  "SCHEME_0542": {
+    "min_age": 18,
+    "max_age": 37,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "agricultural practices",
+      "animal husbandry"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0543": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Arunachal Pradesh"
+    ],
+    "occupation": [
+      "Farmers"
+    ],
+    "max_income": null,
+    "category": "Farmer"
+  },
+  "SCHEME_0544": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "Farmer"
+    ],
+    "max_income": null,
+    "category": "Individual"
+  },
+  "SCHEME_0545": {
+    "min_age": null,
+    "max_age": 35,
+    "gender": "Any",
+    "state": [
+      "Telangana"
+    ],
+    "occupation": [],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0546": {
+    "min_age": 22,
+    "max_age": 35,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0547": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Sikkim"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0548": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Manipur"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": [
+      "National Award winners",
+      "Padma Awardee",
+      "Sangeet Natak Akademi Awardee",
+      "Sahitya Akademi Awardee",
+      "Lalit Kala Akademi Awardee",
+      "Zonal Cultural Centre’s Award"
+    ]
+  },
+  "SCHEME_0549": {
+    "min_age": 60,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Manipur"
+    ],
+    "occupation": [
+      "Artist"
+    ],
+    "max_income": null,
+    "category": {
+      "A": [
+        "Padma Awardee",
+        "Sangeet Natak Akademi",
+        "Sahitya Akademi",
+        "Lalit Kala Akademi",
+        "Manipur State Kala Akademi Awardee",
+        "Manipur State Film Development Society",
+        "National Award Winners in Film"
+      ],
+      "B": null
+    }
+  },
+  "SCHEME_0550": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Manipur"
+    ],
+    "occupation": [
+      "Artist"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0551": {
+    "min_age": 0,
+    "max_age": 30,
+    "gender": null,
+    "state": [
+      "Manipur"
+    ],
+    "occupation": [
+      "Student"
+    ],
+    "max_income": null,
+    "category": "Art"
+  },
+  "SCHEME_0552": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Manipur"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": [
+      "All categories mentioned above"
+    ]
+  },
+  "SCHEME_0553": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Manipur"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0554": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Manipur"
+    ],
+    "occupation": [
+      "Student"
+    ],
+    "max_income": null,
+    "category": "Person with Disability"
+  },
+  "SCHEME_0555": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [],
+    "occupation": [],
+    "max_income": null,
+    "category": "Post Metric Scholarship"
+  },
+  "SCHEME_0556": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "Not Applicable"
+  },
+  "SCHEME_0557": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "Farmer"
+    ],
+    "max_income": null,
+    "category": "Farmers"
+  },
+  "SCHEME_0558": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Manipur"
+    ],
+    "occupation": [
+      "Student"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0559": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Tamil Nadu"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0560": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "Regular State Government Employees"
+    ],
+    "max_income": null,
+    "category": "Government Employee"
+  },
+  "SCHEME_0561": {
+    "min_age": 0,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Assam"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0562": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Female",
+    "state": [
+      "Tamil Nadu"
+    ],
+    "occupation": null,
+    "max_income": 72000,
+    "category": "Girl child of native or long-term resident family"
+  },
+  "SCHEME_0563": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Female",
+    "state": [
+      "Tamil Nadu"
+    ],
+    "occupation": null,
+    "max_income": 72000,
+    "category": null
+  },
+  "SCHEME_0564": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Nagaland"
+    ],
+    "occupation": [
+      "government employee",
+      "pensioner"
+    ],
+    "max_income": null,
+    "category": [
+      "CMHIS",
+      "EP",
+      "GC"
+    ]
+  },
+  "SCHEME_0565": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Arunachal Pradesh"
+    ],
+    "occupation": [
+      "Farmers",
+      "FPOs"
+    ],
+    "max_income": null,
+    "category": "Farmers and FPOs"
+  },
+  "SCHEME_0566": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Arunachal Pradesh"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0567": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Arunachal Pradesh"
+    ],
+    "occupation": [
+      "Homestay operator",
+      "Cab Service Operator",
+      "Patisserie owner",
+      "Food court operator"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0568": {
+    "min_age": 14,
+    "max_age": 25,
+    "gender": null,
+    "state": [
+      "Arunachal Pradesh"
+    ],
+    "occupation": [
+      "trading"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0569": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Arunachal Pradesh"
+    ],
+    "occupation": [
+      "farmer"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0570": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "Consumer"
+  },
+  "SCHEME_0571": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "Proprietor",
+      "Limited Company",
+      "Registered partnership firm under Indian Partnership Act 1932",
+      "Limited Liability Partnership"
+    ],
+    "max_income": null,
+    "category": "Startup/New Industries"
+  },
+  "SCHEME_0572": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Arunachal Pradesh"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": "Arunachal Pradesh Schedule Tribe (APST)"
+  },
+  "SCHEME_0573": {
+    "min_age": null,
+    "max_age": null,
+    "gender": [
+      "Female",
+      "Poor"
+    ],
+    "state": [
+      "Arunachal Pradesh"
+    ],
+    "occupation": [
+      "Dairy Farmer"
+    ],
+    "max_income": null,
+    "category": "Dairy Development"
+  },
+  "SCHEME_0574": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Arunachal Pradesh"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0575": {
+    "min_age": 18,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Jharkhand"
+    ],
+    "occupation": [
+      "Masons",
+      "Carpenters",
+      "Electricians",
+      "Porters",
+      "Painters"
+    ],
+    "max_income": null,
+    "category": "Worker registered with JBOCWW Board"
+  },
+  "SCHEME_0576": {
+    "min_age": 18,
+    "max_age": 60,
+    "gender": null,
+    "state": [
+      "Jharkhand"
+    ],
+    "occupation": [
+      "Mason",
+      "Carpenter",
+      "Electrician",
+      "Porter",
+      "Painter"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0577": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0578": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Uttarakhand"
+    ],
+    "occupation": [
+      "building or construction work"
+    ],
+    "max_income": null,
+    "category": "Building and Construction Workers"
+  },
+  "SCHEME_0579": {
+    "min_age": 0,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Nagaland"
+    ],
+    "occupation": [
+      "Building or construction work"
+    ],
+    "max_income": null,
+    "category": "Worker and Child Education Benefit"
+  },
+  "SCHEME_0580": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0581": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "Differently-abled, Special Needs"
+  },
+  "SCHEME_0582": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "MPPSC or UPSC Examination"
+  },
+  "SCHEME_0583": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Madhya Pradesh"
+    ],
+    "occupation": [],
+    "max_income": 600000,
+    "category": "Scheduled Caste / Scheduled Tribes"
+  },
+  "SCHEME_0584": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Madhya Pradesh"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0585": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "individual farmers",
+      "farmers group",
+      "FPO",
+      "cooperative society",
+      "registered institution"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0586": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "individual farmers",
+      "farmers group",
+      "Farmers Producer Organization (FPO)",
+      "cooperative society",
+      "registered institution"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0587": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Arunachal Pradesh"
+    ],
+    "occupation": [
+      "Marginal Farmers"
+    ],
+    "max_income": null,
+    "category": "General Public"
+  },
+  "SCHEME_0588": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "Startup"
+  },
+  "SCHEME_0589": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0590": {
+    "min_age": null,
+    "max_age": null,
+    "gender": [
+      "Female"
+    ],
+    "state": [],
+    "occupation": [],
+    "max_income": null,
+    "category": "Scheduled Castes"
+  },
+  "SCHEME_0591": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [],
+    "max_income": null,
+    "category": "Scheduled Caste"
+  },
+  "SCHEME_0592": {
+    "min_age": 0,
+    "max_age": 0,
+    "gender": "Any",
+    "state": [
+      "Not Mentioned"
+    ],
+    "occupation": [
+      "Not Mentioned"
+    ],
+    "max_income": 450000,
+    "category": "Not Mentioned"
+  },
+  "SCHEME_0593": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [],
+    "occupation": [],
+    "max_income": 450000,
+    "category": "Non-Reserved"
+  },
+  "SCHEME_0594": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "Universities",
+      "Colleges"
+    ],
+    "max_income": null,
+    "category": "UGC Act, Section 12(B)"
+  },
+  "SCHEME_0595": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Madhya Pradesh"
+    ],
+    "occupation": [],
+    "max_income": 500000,
+    "category": "Scheduled Tribe"
+  },
+  "SCHEME_0596": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "Farmer"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0597": {
+    "min_age": 4,
+    "max_age": 60,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "farmer",
+      "grower"
+    ],
+    "max_income": null,
+    "category": "nut-bearing palms insurance"
+  },
+  "SCHEME_0598": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "tribal grower"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0599": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "tribal grower"
+    ],
+    "max_income": null,
+    "category": "coffee cultivator"
+  },
+  "SCHEME_0600": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "Grower"
+    ],
+    "max_income": null,
+    "category": "Tribal"
+  },
+  "SCHEME_0601": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "Tribal grower"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0602": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "SHGs",
+      "tribal growers"
+    ],
+    "max_income": null,
+    "category": [
+      "Organic",
+      "Fair Trade",
+      "Rainforest Alliance",
+      "UTZ Certified",
+      "Bird friendly/Shade grown coffee standards"
+    ]
+  },
+  "SCHEME_0603": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "Self-Help Groups (SHGs) or collectives of tribal growers"
+  },
+  "SCHEME_0604": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "Tribal grower"
+    ],
+    "max_income": null,
+    "category": "Indian Government Tribal Farming Scheme"
+  },
+  "SCHEME_0605": {
+    "min_age": 18,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "Coir sector"
+    ],
+    "max_income": null,
+    "category": "Individuals, Companies, Self Help Groups, Non Governmental Organizations, Institutions registered under Societies Registration Act 1860, Production Co-operative Societies, Joint Liability Groups and Charitable Trust"
+  },
+  "SCHEME_0606": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": [
+      "individuals/partnership firms",
+      "SHGs",
+      "Associations",
+      "small scale/medium / co-operative/ private sector / public sector"
+    ]
+  },
+  "SCHEME_0607": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "Manufacturers",
+      "Entrepreneurs"
+    ],
+    "max_income": null,
+    "category": "Coir"
+  },
+  "SCHEME_0608": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [],
+    "occupation": [
+      "Self Help Groups (SHGs)",
+      "NGOs",
+      "Government Organizations"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0609": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "Faculty"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0610": {
+    "min_age": 18,
+    "max_age": 35,
+    "gender": "Any",
+    "state": [
+      "Karnataka"
+    ],
+    "occupation": [],
+    "max_income": null,
+    "category": ""
+  },
+  "SCHEME_0611": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Female",
+    "state": "Rural areas",
+    "occupation": [
+      "Ladies",
+      "Housewives",
+      "College girls"
+    ],
+    "max_income": null,
+    "category": "Fruits and Vegetables Preservation, Small Scale Cottage Industries"
+  },
+  "SCHEME_0612": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Madhya Pradesh"
+    ],
+    "occupation": {
+      "Cattle Owner": true
+    },
+    "max_income": null,
+    "category": "Wild Animal Injury Compensation"
+  },
+  "SCHEME_0613": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "Livestock Owner/Breeder"
+  },
+  "SCHEME_0614": {
+    "min_age": null,
+    "max_age": null,
+    "gender": [
+      "Male",
+      "Female"
+    ],
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "ST"
+  },
+  "SCHEME_0615": {
+    "min_age": 18,
+    "max_age": 50,
+    "gender": "Any",
+    "state": [
+      "Delhi"
+    ],
+    "occupation": [],
+    "max_income": null,
+    "category": [
+      "Scheduled Caste",
+      "Scheduled Tribe",
+      "Other Backward Class",
+      "Minority",
+      "Persons with Disability"
+    ]
+  },
+  "SCHEME_0616": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "All"
+    ],
+    "occupation": [
+      "Student"
+    ],
+    "max_income": null,
+    "category": "Below Poverty Line (BPL)"
+  },
+  "SCHEME_0617": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "Handicrafts"
+  },
+  "SCHEME_0618": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Uttar Pradesh"
+    ],
+    "occupation": [
+      "Unemployed"
+    ],
+    "max_income": 100000,
+    "category": null
+  },
+  "SCHEME_0619": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "Individual Artist",
+      "Troupe"
+    ],
+    "max_income": null,
+    "category": "Cultural Performance"
+  },
+  "SCHEME_0620": {
+    "min_age": 60,
+    "max_age": null,
+    "gender": "Female",
+    "state": [
+      "Punjab"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0621": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Haryana"
+    ],
+    "occupation": [],
+    "max_income": null,
+    "category": "Scheduled Caste (SC)"
+  },
+  "SCHEME_0622": {
+    "min_age": 18,
+    "max_age": 60,
+    "gender": null,
+    "state": [
+      "Madhya Pradesh"
+    ],
+    "occupation": [
+      "Building/ Construction Worker",
+      "Construction worker"
+    ],
+    "max_income": null,
+    "category": ""
+  },
+  "SCHEME_0623": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Gujarat"
+    ],
+    "occupation": [
+      "Village Milk Producer Co-operative Society"
+    ],
+    "max_income": null,
+    "category": "Not Specified"
+  },
+  "SCHEME_0624": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Gujarat"
+    ],
+    "occupation": [
+      "Registered Village Milk ProduceCo-operative Society"
+    ],
+    "max_income": null,
+    "category": "Not Specified"
+  },
+  "SCHEME_0625": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Goa"
+    ],
+    "occupation": [
+      "Local body"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0626": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Tamil Nadu"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": [
+      "Scheduled Castes",
+      "Scheduled Tribes"
+    ]
+  },
+  "SCHEME_0627": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Madhya Pradesh"
+    ],
+    "occupation": [
+      "grain storage",
+      "agriculture"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0628": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "State Governments",
+      "UT Administrations"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": "Government Bodies"
+  },
+  "SCHEME_0629": {
+    "min_age": 18,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Karnataka"
+    ],
+    "occupation": [
+      "Building/ Construction Worker"
+    ],
+    "max_income": null,
+    "category": "Registered Building and Other Construction Worker"
+  },
+  "SCHEME_0630": {
+    "min_age": 18,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Union Territory of Jammu & Kashmir"
+    ],
+    "occupation": [
+      "Marginal Worker",
+      "agriculture and non-agricultural labor",
+      "rural barber",
+      "craftsman",
+      "shepherd",
+      "blacksmith",
+      "mason",
+      "weaver",
+      "etc."
+    ],
+    "max_income": 48000,
+    "category": null
+  },
+  "SCHEME_0631": {
+    "min_age": 18,
+    "max_age": 60,
+    "gender": null,
+    "state": [
+      "West Bengal"
+    ],
+    "occupation": [
+      "Building/ Construction Worker"
+    ],
+    "max_income": null,
+    "category": "Building and Other Construction Workers Welfare"
+  },
+  "SCHEME_0632": {
+    "min_age": 18,
+    "max_age": 60,
+    "gender": null,
+    "state": [
+      "West Bengal"
+    ],
+    "occupation": [
+      "Building/ Construction Worker"
+    ],
+    "max_income": null,
+    "category": "Building and Other Construction Workers Welfare"
+  },
+  "SCHEME_0633": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Maharashtra"
+    ],
+    "occupation": null,
+    "max_income": 800000,
+    "category": [
+      "Scheduled Castes",
+      "Scheduled Tribes",
+      "Freed Castes and Nomadic Tribes",
+      "Other Backward Classes",
+      "Special Backward Classes",
+      "Minority Communities",
+      "Open Category"
+    ]
+  },
+  "SCHEME_0634": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Gujarat"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0635": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "Scheduled Caste"
+  },
+  "SCHEME_0636": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "Scheduled Caste"
+  },
+  "SCHEME_0637": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "J&K"
+    ],
+    "occupation": [
+      "Artisans",
+      "Weavers"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0638": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "Manufacturing",
+      "Services"
+    ],
+    "max_income": null,
+    "category": "Government Subsidy/Grant Scheme"
+  },
+  "SCHEME_0639": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "MIG-I"
+  },
+  "SCHEME_0640": {
+    "min_age": 18,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "Individual farmers"
+    ],
+    "max_income": null,
+    "category": [
+      "commercial",
+      "bastu",
+      "viti"
+    ]
+  },
+  "SCHEME_0641": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Haryana"
+    ],
+    "occupation": [
+      "Farmer Producer Organizations (FPOs)"
+    ],
+    "max_income": null,
+    "category": "Registered under the Companies Act"
+  },
+  "SCHEME_0642": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "Voluntary organizations or NGOs"
+  },
+  "SCHEME_0643": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "Construction Worker"
+    ],
+    "max_income": null,
+    "category": "Not Specified"
+  },
+  "SCHEME_0644": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Female",
+    "state": [
+      "Madhya Pradesh"
+    ],
+    "occupation": [
+      "Student"
+    ],
+    "max_income": null,
+    "category": "Scheduled Tribe"
+  },
+  "SCHEME_0645": {
+    "min_age": 18,
+    "max_age": 60,
+    "gender": "Female",
+    "state": [
+      "Jharkhand"
+    ],
+    "occupation": [
+      "Masons",
+      "Carpenters",
+      "Electricians",
+      "Porters",
+      "Painters"
+    ],
+    "max_income": null,
+    "category": "Registered Worker with JBOCWW Board"
+  },
+  "SCHEME_0646": {
+    "min_age": 18,
+    "max_age": 60,
+    "gender": null,
+    "state": [
+      "Punjab"
+    ],
+    "occupation": [
+      "Building/ Construction Worker"
+    ],
+    "max_income": 15000,
+    "category": null
+  },
+  "SCHEME_0647": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0648": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "Puducherry Union Territory"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0649": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "Engineering Management",
+      "Law",
+      "Economics",
+      "Finance",
+      "Computers",
+      "Library Management"
+    ],
+    "max_income": null,
+    "category": "Not Mentioned"
+  },
+  "SCHEME_0650": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Female",
+    "state": [
+      "Chhattisgarh"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  }
+}

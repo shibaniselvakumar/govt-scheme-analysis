@@ -1,0 +1,1223 @@
+{
+  "SCHEME_0001": {
+    "min_age": 18,
+    "max_age": 60,
+    "gender": null,
+    "state": [
+      "puducherry"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": "Missing Fisherman"
+  },
+  "SCHEME_0002": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "AICTE Approved"
+  },
+  "SCHEME_0003": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "madhya pradesh"
+    ],
+    "occupation": [
+      "construction worker"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0004": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "micro & small enterprises"
+    ],
+    "max_income": null,
+    "category": [
+      "applying to get registered with nsic under sprs",
+      "registered with nsic under sprs"
+    ]
+  },
+  "SCHEME_0005": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "andhra pradesh"
+    ],
+    "occupation": null,
+    "max_income": 75000,
+    "category": null
+  },
+  "SCHEME_0006": {
+    "min_age": 0,
+    "max_age": 0,
+    "gender": "Any",
+    "state": [
+      "karnataka"
+    ],
+    "occupation": null,
+    "max_income": 200000,
+    "category": "Scheduled Tribe"
+  },
+  "SCHEME_0007": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "companies/undertakings owned and managed by the state government",
+      "cooperative sector",
+      "joint sector undertaking",
+      "private sector"
+    ],
+    "max_income": null,
+    "category": "MSMEs in the powerloom sector"
+  },
+  "SCHEME_0008": {
+    "min_age": 18,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "rajasthan"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0009": {
+    "min_age": 18,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "chhattisgarh"
+    ],
+    "occupation": [
+      "construction worker"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0010": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0011": {
+    "min_age": 6,
+    "max_age": 10,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "student"
+    ],
+    "max_income": null,
+    "category": "Educational Scholarship"
+  },
+  "SCHEME_0012": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "sanitation worker"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0013": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "government"
+    ],
+    "occupation": [
+      "companies/undertakings owned or managed by the state government",
+      "cooperative sector",
+      "hotels",
+      "joint sector",
+      "private sector"
+    ],
+    "max_income": null,
+    "category": "Eligible tourism projects/units/expansion projects"
+  },
+  "SCHEME_0014": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "government"
+    ],
+    "occupation": [
+      "companies/undertakings owned or managed by the state government",
+      "cooperative sector",
+      "hotels",
+      "joint sector",
+      "private sector"
+    ],
+    "max_income": null,
+    "category": "Eligible tourism projects/units/expansion projects"
+  },
+  "SCHEME_0015": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "companies/undertakings owned or managed by the state government",
+      "cooperative sector",
+      "hotels",
+      "joint sector",
+      "private sector"
+    ],
+    "max_income": null,
+    "category": "eligible tourism projects/units, expansion projects of existing units"
+  },
+  "SCHEME_0016": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "companies/ undertakings owned or managed by the state government",
+      "cooperative sector",
+      "joint sector",
+      "private sector"
+    ],
+    "max_income": null,
+    "category": "eligible tourism projects/units, expansion projects of existing units"
+  },
+  "SCHEME_0017": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "government"
+    ],
+    "occupation": [
+      "companies/undertakings owned or managed by the state government",
+      "cooperative sector",
+      "hotels",
+      "joint sector",
+      "private sector"
+    ],
+    "max_income": null,
+    "category": "Eligible tourism projects/units/expansion projects"
+  },
+  "SCHEME_0018": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "companies/undertakings owned or managed by the state government",
+      "cooperative sector",
+      "hotels",
+      "joint sector",
+      "private sector"
+    ],
+    "max_income": null,
+    "category": "eligible tourism projects/units, expansion projects of existing units"
+  },
+  "SCHEME_0019": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "government"
+    ],
+    "occupation": [
+      "companies/undertakings owned or managed by the state government",
+      "cooperative sector",
+      "hotels",
+      "joint sector",
+      "private sector"
+    ],
+    "max_income": null,
+    "category": "Eligible tourism projects/units/expansion projects"
+  },
+  "SCHEME_0020": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "companies/undertakings owned or managed by the state government",
+      "cooperative sector",
+      "hotels",
+      "joint sector",
+      "private sector"
+    ],
+    "max_income": null,
+    "category": "eligible tourism projects/units, expansion projects of existing units"
+  },
+  "SCHEME_0021": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "companies/undertakings owned or managed by the state government",
+      "cooperative sector",
+      "joint sector",
+      "private sector"
+    ],
+    "max_income": null,
+    "category": "eligible tourism projects/units/expansion projects"
+  },
+  "SCHEME_0022": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "west bengal"
+    ],
+    "occupation": [
+      "manufacturing and processing"
+    ],
+    "max_income": null,
+    "category": "Textiles, apparel and technical textiles"
+  },
+  "SCHEME_0023": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "manufacturing",
+      "processing"
+    ],
+    "max_income": null,
+    "category": "Textiles, apparel and technical textiles products"
+  },
+  "SCHEME_0024": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "manufacturing",
+      "processing"
+    ],
+    "max_income": null,
+    "category": "Textiles, apparel and technical textiles products"
+  },
+  "SCHEME_0025": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "manufacturing",
+      "processing"
+    ],
+    "max_income": null,
+    "category": "Textiles, apparel and technical textiles products"
+  },
+  "SCHEME_0026": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "occupation": [
+      "manufacturing",
+      "processing"
+    ],
+    "max_income": null,
+    "category": "Textiles, apparel and technical textiles products"
+  },
+  "SCHEME_0027": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "west bengal"
+    ],
+    "occupation": [
+      "manufacturing and processing"
+    ],
+    "max_income": null,
+    "category": "Textiles, apparel and technical textiles"
+  },
+  "SCHEME_0028": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0029": {
+    "min_age": 18,
+    "max_age": 35,
+    "gender": null,
+    "state": [
+      "puducherry"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0030": {
+    "min_age": 18,
+    "max_age": 35,
+    "gender": "Any",
+    "state": [
+      "puducherry"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": ""
+  },
+  "SCHEME_0031": {
+    "min_age": 18,
+    "max_age": 35,
+    "gender": null,
+    "state": [
+      "union territory of puducherry"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": ""
+  },
+  "SCHEME_0032": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0033": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "union territory of puducherry"
+    ],
+    "occupation": [
+      "large industries",
+      "medium",
+      "micro",
+      "small"
+    ],
+    "max_income": null,
+    "category": "Not mentioned in the text"
+  },
+  "SCHEME_0034": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0035": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0036": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "puducherry"
+    ],
+    "occupation": [
+      "farmer"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0037": {
+    "min_age": null,
+    "max_age": null,
+    "gender": [
+      "female",
+      "sc",
+      "st"
+    ],
+    "state": [
+      "union territory of puducherry"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": "Micro, Small, Medium and Large Enterprises, Women/SC/ST Entrepreneurs"
+  },
+  "SCHEME_0038": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "karaikal",
+      "puducherry"
+    ],
+    "occupation": [
+      "industrial unit"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0039": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "it",
+      "ites"
+    ],
+    "max_income": null,
+    "category": "New IT/ITES industrial unit"
+  },
+  "SCHEME_0040": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": [
+      "physically handicapped"
+    ]
+  },
+  "SCHEME_0041": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0042": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "Exhibition Participant"
+  },
+  "SCHEME_0043": {
+    "min_age": 23,
+    "max_age": 60,
+    "gender": "Any",
+    "state": [
+      "puducherry"
+    ],
+    "occupation": [
+      "fishermen",
+      "professionally engaged in fishing/fish trade"
+    ],
+    "max_income": null,
+    "category": "Fisherman"
+  },
+  "SCHEME_0044": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "puducherry"
+    ],
+    "occupation": [
+      "artisan",
+      "craftsperson"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0045": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "union territory of puducherry"
+    ],
+    "occupation": [
+      "large industries",
+      "medium",
+      "micro",
+      "small"
+    ],
+    "max_income": null,
+    "category": "Industrial Units"
+  },
+  "SCHEME_0046": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "ut of puducherry"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": "Unit which commences production after 2-8-2004"
+  },
+  "SCHEME_0047": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "puducherry"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0048": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "entrepreneur"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0049": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "puducherry"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0050": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0051": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "union territory of puducherry"
+    ],
+    "occupation": [
+      "fisherman"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0052": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "union territory of puducherry"
+    ],
+    "occupation": [
+      "large industries",
+      "medium",
+      "micro",
+      "small"
+    ],
+    "max_income": null,
+    "category": "Not specified in the text"
+  },
+  "SCHEME_0053": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "medium",
+      "micro",
+      "small"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0054": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "puducherry"
+    ],
+    "occupation": [
+      "artisan"
+    ],
+    "max_income": null,
+    "category": "Handicrafts Society"
+  },
+  "SCHEME_0055": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0056": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "puducherry"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0057": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "coir product activities"
+    ],
+    "max_income": null,
+    "category": "Cluster/society/agency"
+  },
+  "SCHEME_0058": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "puducherry"
+    ],
+    "occupation": [
+      "silk-weaving"
+    ],
+    "max_income": null,
+    "category": "Society/Agency"
+  },
+  "SCHEME_0059": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "coir industry"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0060": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "Green and eco-friendly industries as per DSTE standards"
+  },
+  "SCHEME_0061": {
+    "min_age": 18,
+    "max_age": 60,
+    "gender": "Any",
+    "state": [
+      "puducherry"
+    ],
+    "occupation": [
+      "fisherman"
+    ],
+    "max_income": null,
+    "category": "Deceased Fisherman"
+  },
+  "SCHEME_0062": {
+    "min_age": 18,
+    "max_age": 35,
+    "gender": null,
+    "state": [
+      "union territory of puducherry"
+    ],
+    "occupation": [
+      "unemployed"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0063": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "union territory of puducherry"
+    ],
+    "occupation": [
+      "infrastructure developers/industries"
+    ],
+    "max_income": null,
+    "category": "IT industries, Industrial use for manufacturer of computer systems, Software/ITES, BPO, KPO"
+  },
+  "SCHEME_0064": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0065": {
+    "min_age": 0,
+    "max_age": 0,
+    "gender": "Any",
+    "state": [
+      "puducherry"
+    ],
+    "occupation": [
+      "not applicable"
+    ],
+    "max_income": 0,
+    "category": "Not Applicable"
+  },
+  "SCHEME_0066": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "odisha"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0067": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "coconut farmers"
+  },
+  "SCHEME_0068": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "union territory of puducherry"
+    ],
+    "occupation": [
+      "large industries",
+      "medium",
+      "micro",
+      "small"
+    ],
+    "max_income": null,
+    "category": "Not specified in the text"
+  },
+  "SCHEME_0069": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0070": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "entrepreneurs",
+      "industrialists"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0071": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "union territory of puducherry"
+    ],
+    "occupation": [
+      "large industries",
+      "medium",
+      "micro",
+      "small"
+    ],
+    "max_income": null,
+    "category": "Participants in the exhibition"
+  },
+  "SCHEME_0072": {
+    "min_age": 60,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "union territory of puducherry"
+    ],
+    "occupation": [
+      "artisan"
+    ],
+    "max_income": 40000,
+    "category": "N/A"
+  },
+  "SCHEME_0073": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "artisan"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0074": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "Not Applicable"
+  },
+  "SCHEME_0075": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "puducherry"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": "Export Industry"
+  },
+  "SCHEME_0076": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Scheduled Caste/ Scheduled Tribe",
+    "state": [
+      "ut of puducherry"
+    ],
+    "occupation": "Entrepreneur",
+    "max_income": null,
+    "category": "Not Mentioned"
+  },
+  "SCHEME_0077": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "puducherry"
+    ],
+    "occupation": [
+      "farmer"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0078": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "primary fisherman cooperative society (pfcs)"
+    ],
+    "max_income": null,
+    "category": "Active PFCS"
+  },
+  "SCHEME_0079": {
+    "min_age": null,
+    "max_age": null,
+    "gender": [
+      "female",
+      "scheduled caste",
+      "scheduled tribe"
+    ],
+    "state": null,
+    "occupation": [
+      "entrepreneur"
+    ],
+    "max_income": null,
+    "category": "Woman, Scheduled Caste, Scheduled Tribe"
+  },
+  "SCHEME_0080": {
+    "min_age": 0,
+    "max_age": 0,
+    "gender": "Any",
+    "state": [
+      "tripura"
+    ],
+    "occupation": [
+      "student"
+    ],
+    "max_income": 100000,
+    "category": [
+      "person with disability",
+      "scheduled caste",
+      "scheduled tribe"
+    ]
+  },
+  "SCHEME_0081": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "puducherry"
+    ],
+    "occupation": [
+      "farmer"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0082": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "union territory of puducherry"
+    ],
+    "occupation": [
+      "large industries",
+      "medium",
+      "micro",
+      "small"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0083": {
+    "min_age": 23,
+    "max_age": 60,
+    "gender": "Male",
+    "state": [
+      "puducherry"
+    ],
+    "occupation": [
+      "fishing/fish trade"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0084": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "Not mentioned in text"
+  },
+  "SCHEME_0085": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "puducherry"
+    ],
+    "occupation": [
+      "farmer"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0086": {
+    "min_age": 18,
+    "max_age": 35,
+    "gender": null,
+    "state": [
+      "puducherry"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0087": {
+    "min_age": 18,
+    "max_age": 35,
+    "gender": "Any",
+    "state": [
+      "puducherry"
+    ],
+    "occupation": [
+      "any"
+    ],
+    "max_income": null,
+    "category": "Not Mentioned"
+  },
+  "SCHEME_0088": {
+    "min_age": 18,
+    "max_age": 35,
+    "gender": "Any",
+    "state": [
+      "puducherry"
+    ],
+    "occupation": [
+      "unemployed"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0089": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "puducherry"
+    ],
+    "occupation": [
+      "artisan",
+      "unit industrialist"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0090": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "cii",
+      "industrial association",
+      "industrial ngo"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0091": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "puducherry"
+    ],
+    "occupation": [
+      "artisan",
+      "unit industrialist"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0092": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": [
+      "sales emporium/showroom"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0093": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "andhra pradesh"
+    ],
+    "occupation": [
+      "construction worker"
+    ],
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0094": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0095": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0096": {
+    "min_age": 6,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "madhya pradesh"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": null
+  },
+  "SCHEME_0097": {
+    "min_age": 10,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "tripura"
+    ],
+    "occupation": null,
+    "max_income": 100000,
+    "category": "Person with Disability"
+  },
+  "SCHEME_0098": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "union territory of jammu & kashmir"
+    ],
+    "occupation": null,
+    "max_income": 75000,
+    "category": null
+  },
+  "SCHEME_0099": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "occupation": null,
+    "max_income": null,
+    "category": "ESM or his widow"
+  },
+  "SCHEME_0100": {
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": [
+      "gujarat"
+    ],
+    "occupation": [
+      "farmer"
+    ],
+    "max_income": null,
+    "category": null
+  }
+}

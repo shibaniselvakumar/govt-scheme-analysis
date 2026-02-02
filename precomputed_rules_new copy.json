@@ -1,0 +1,1241 @@
+{
+  "SCHEME_0001": {
+    "state": [
+      "Puducherry"
+    ],
+    "min_age": 18,
+    "max_age": 60,
+    "category": "Missing Fisherman"
+  },
+  "SCHEME_0002": {
+    "category": "AICTE Approved"
+  },
+  "SCHEME_0003": {
+    "state": [
+      "Madhya Pradesh"
+    ],
+    "occupation": [
+      "Construction Worker"
+    ]
+  },
+  "SCHEME_0004": {
+    "occupation": [
+      "Micro & Small Enterprises"
+    ],
+    "category": [
+      "Registered with NSIC under SPRS",
+      "Applying to get registered with NSIC under SPRS"
+    ]
+  },
+  "SCHEME_0005": {
+    "gender": "Any",
+    "state": [
+      "Andhra Pradesh"
+    ],
+    "community": "Brahmin",
+    "max_income": 75000
+  },
+  "SCHEME_0006": {
+    "state": [
+      "Karnataka"
+    ],
+    "gender": "Any",
+    "occupation": [],
+    "min_age": 0,
+    "max_age": 0,
+    "category": "Scheduled Tribe",
+    "max_income": 200000
+  },
+  "SCHEME_0007": {
+    "occupation": [
+      "private sector",
+      "cooperative sector",
+      "joint sector undertaking",
+      "companies/undertakings owned and managed by the State Government"
+    ],
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "category": "MSMEs in the powerloom sector",
+    "max_income": null
+  },
+  "SCHEME_0008": {
+    "min_age": 18,
+    "state": [
+      "Rajasthan"
+    ]
+  },
+  "SCHEME_0009": {
+    "state": [
+      "Chhattisgarh"
+    ],
+    "occupation": [
+      "construction worker"
+    ],
+    "min_age": 18
+  },
+  "SCHEME_0010": {
+    "rules": [
+      {
+        "condition": "The applicant must be registered as a beneficiary with the Building and Other Construction Workers Welfare Board.",
+        "keys": []
+      },
+      {
+        "condition": "The applicant must have a savings bank account in their name.",
+        "keys": [
+          "min_age",
+          "max_age",
+          "gender",
+          "state",
+          "occupation",
+          "max_income"
+        ]
+      },
+      {
+        "condition": "The applicant must be eligible for membership under the following schemes: Pradhan Mantri Suraksha Bima Yojana (PMSBY) Pradhan Mantri Jeevan Jyoti Bima Yojana (PMJJBY) Atal Pension Yojana (APY)",
+        "keys": [
+          "occupation",
+          "category"
+        ]
+      },
+      {
+        "condition": "The applicant must provide consent to their bank for the deduction of premium/contribution from their savings account.",
+        "keys": []
+      },
+      {
+        "condition": "The applicant must have gotten the annual premium/contribution amount deducted from their savings account.",
+        "keys": [
+          "max_income"
+        ]
+      }
+    ]
+  },
+  "SCHEME_0011": {
+    "min_age": 6,
+    "max_age": 10,
+    "occupation": [
+      "Student"
+    ],
+    "max_income": null,
+    "gender": "Any",
+    "state": null,
+    "category": "Educational Scholarship",
+    "conditions": [
+      "parents/guardians should not be income taxpayers",
+      "parents/guardians should not own more than 10 acres of land"
+    ]
+  },
+  "SCHEME_0012": {
+    "occupation": [
+      "sanitation worker"
+    ]
+  },
+  "SCHEME_0013": {
+    "eligibility_rules": [
+      {
+        "min_age": null,
+        "max_age": null,
+        "gender": "Any",
+        "state": null,
+        "occupation": [
+          "Private sector",
+          "Cooperative sector",
+          "Joint sector",
+          "Companies/undertakings owned or managed by the State Government"
+        ],
+        "max_income": null,
+        "category": "Eligible tourism projects/units/expansion projects"
+      },
+      {
+        "min_age": null,
+        "max_age": null,
+        "gender": "Any",
+        "state": [
+          "Government"
+        ],
+        "occupation": [
+          "Hotels"
+        ],
+        "max_income": null,
+        "category": "Eligible Hotel Units"
+      }
+    ]
+  },
+  "SCHEME_0014": {
+    "eligibility_rules": [
+      {
+        "min_age": null,
+        "max_age": null,
+        "gender": "Any",
+        "state": null,
+        "occupation": [
+          "Private sector",
+          "Cooperative sector",
+          "Joint sector",
+          "Companies/undertakings owned or managed by the State Government"
+        ],
+        "max_income": null,
+        "category": "Eligible tourism projects/units/expansion projects"
+      },
+      {
+        "min_age": null,
+        "max_age": null,
+        "gender": "Any",
+        "state": [
+          "Government"
+        ],
+        "occupation": [
+          "Hotels"
+        ],
+        "max_income": null,
+        "category": "Eligible Hotel Units"
+      }
+    ]
+  },
+  "SCHEME_0015": {
+    "eligibility_rules": [
+      {
+        "min_age": null,
+        "max_age": null,
+        "gender": "Any",
+        "state": null,
+        "occupation": [
+          "private sector",
+          "cooperative sector",
+          "joint sector",
+          "companies/undertakings owned or managed by the State Government"
+        ],
+        "max_income": null,
+        "category": "eligible tourism projects/units, expansion projects of existing units"
+      },
+      {
+        "min_age": null,
+        "max_age": null,
+        "gender": "Any",
+        "state": [
+          "private sector",
+          "cooperative sector",
+          "joint sector"
+        ],
+        "occupation": [
+          "hotels"
+        ],
+        "max_income": null,
+        "category": "[units who started their commercial operation on or after 7th January, 2015 to 31st December, 2020 but could not apply under previous scheme 2015 due to absence of a Bar in the Hotel]"
+      }
+    ]
+  },
+  "SCHEME_0016": {
+    "eligibility_rules": [
+      {
+        "min_age": null,
+        "max_age": null,
+        "gender": "Any",
+        "state": null,
+        "occupation": [
+          "private sector",
+          "cooperative sector",
+          "joint sector",
+          "companies/ undertakings owned or managed by the State Government"
+        ],
+        "max_income": null,
+        "category": "eligible tourism projects/units, expansion projects of existing units"
+      },
+      {
+        "min_age": null,
+        "max_age": null,
+        "gender": "Any",
+        "state": [
+          "private sector",
+          "cooperative sector",
+          "joint sector"
+        ],
+        "occupation": [
+          "companies/ undertakings owned or managed by the State Government"
+        ],
+        "max_income": null,
+        "category": "[Eligible Hotel Units]"
+      }
+    ]
+  },
+  "SCHEME_0017": {
+    "eligibility_rules": [
+      {
+        "min_age": null,
+        "max_age": null,
+        "gender": "Any",
+        "state": null,
+        "occupation": [
+          "Private sector",
+          "Cooperative sector",
+          "Joint sector",
+          "Companies/undertakings owned or managed by the State Government"
+        ],
+        "max_income": null,
+        "category": "Eligible tourism projects/units/expansion projects"
+      },
+      {
+        "min_age": null,
+        "max_age": null,
+        "gender": "Any",
+        "state": [
+          "Government"
+        ],
+        "occupation": [
+          "Hotels"
+        ],
+        "max_income": null,
+        "category": "Eligible Hotel Units"
+      }
+    ]
+  },
+  "SCHEME_0018": {
+    "eligibility_rules": [
+      {
+        "min_age": null,
+        "max_age": null,
+        "gender": "Any",
+        "state": null,
+        "occupation": [
+          "private sector",
+          "cooperative sector",
+          "joint sector",
+          "companies/undertakings owned or managed by the State Government"
+        ],
+        "max_income": null,
+        "category": "eligible tourism projects/units, expansion projects of existing units"
+      },
+      {
+        "min_age": null,
+        "max_age": null,
+        "gender": "Any",
+        "state": [
+          "private sector",
+          "cooperative sector",
+          "joint sector"
+        ],
+        "occupation": [
+          "hotels"
+        ],
+        "max_income": null,
+        "category": "[units who started their commercial operation on or after 7th January, 2015 to 31st December, 2020 but could not apply under previous scheme 2015 due to absence of a Bar in the Hotel]"
+      }
+    ]
+  },
+  "SCHEME_0019": {
+    "eligibility_rules": [
+      {
+        "min_age": null,
+        "max_age": null,
+        "gender": "Any",
+        "state": null,
+        "occupation": [
+          "Private sector",
+          "Cooperative sector",
+          "Joint sector",
+          "Companies/undertakings owned or managed by the State Government"
+        ],
+        "max_income": null,
+        "category": "Eligible tourism projects/units/expansion projects"
+      },
+      {
+        "min_age": null,
+        "max_age": null,
+        "gender": "Any",
+        "state": [
+          "Government"
+        ],
+        "occupation": [
+          "Hotels"
+        ],
+        "max_income": null,
+        "category": "Eligible Hotel Units"
+      }
+    ]
+  },
+  "SCHEME_0020": {
+    "eligibility_rules": [
+      {
+        "min_age": null,
+        "max_age": null,
+        "gender": "Any",
+        "state": null,
+        "occupation": [
+          "private sector",
+          "cooperative sector",
+          "joint sector",
+          "companies/undertakings owned or managed by the State Government"
+        ],
+        "max_income": null,
+        "category": "eligible tourism projects/units, expansion projects of existing units"
+      },
+      {
+        "min_age": null,
+        "max_age": null,
+        "gender": "Any",
+        "state": [
+          "private sector",
+          "cooperative sector",
+          "joint sector"
+        ],
+        "occupation": [
+          "hotels"
+        ],
+        "max_income": null,
+        "category": "[units who started their commercial operation on or after 7th January, 2015 to 31st December, 2020 but could not apply under previous scheme 2015 due to absence of a Bar in the Hotel]"
+      }
+    ]
+  },
+  "SCHEME_0021": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [],
+    "occupation": [
+      "private sector",
+      "cooperative sector",
+      "joint sector",
+      "companies/undertakings owned or managed by the State Government"
+    ],
+    "max_income": null,
+    "category": "eligible tourism projects/units/expansion projects"
+  },
+  "SCHEME_0022": {
+    "category": "Textiles, apparel and technical textiles",
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "West Bengal"
+    ],
+    "occupation": [
+      "Manufacturing and processing"
+    ],
+    "max_income": null
+  },
+  "SCHEME_0023": {
+    "occupation": [
+      "manufacturing",
+      "processing"
+    ],
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "category": "Textiles, apparel and technical textiles products",
+    "max_income": null,
+    "started_production_after": "1st April 2022"
+  },
+  "SCHEME_0024": {
+    "occupation": [
+      "manufacturing",
+      "processing"
+    ],
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "category": "Textiles, apparel and technical textiles products",
+    "max_income": null,
+    "started_production_after": "1st April 2022"
+  },
+  "SCHEME_0025": {
+    "occupation": [
+      "manufacturing",
+      "processing"
+    ],
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "category": "Textiles, apparel and technical textiles products",
+    "max_income": null,
+    "started_production_after": "1st April 2022"
+  },
+  "SCHEME_0026": {
+    "occupation": [
+      "manufacturing",
+      "processing"
+    ],
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": null,
+    "category": "Textiles, apparel and technical textiles products",
+    "max_income": null,
+    "started_production_after": "1st April 2022"
+  },
+  "SCHEME_0027": {
+    "category": "Textiles, apparel and technical textiles",
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "West Bengal"
+    ],
+    "occupation": [
+      "Manufacturing and processing"
+    ],
+    "max_income": null
+  },
+  "SCHEME_0028": {},
+  "SCHEME_0029": {
+    "min_age": 18,
+    "max_age": 35,
+    "state": [
+      "Puducherry"
+    ]
+  },
+  "SCHEME_0030": {
+    "min_age": 18,
+    "max_age": 35,
+    "occupation": [],
+    "gender": "Any",
+    "state": [
+      "Puducherry"
+    ],
+    "category": "",
+    "max_income": null
+  },
+  "SCHEME_0031": {
+    "min_age": 18,
+    "max_age": 35,
+    "state": [
+      "Union Territory of Puducherry"
+    ],
+    "occupation": [],
+    "max_income": null,
+    "category": ""
+  },
+  "SCHEME_0032": {},
+  "SCHEME_0033": {
+    "occupation": [
+      "Micro",
+      "Small",
+      "Medium",
+      "Large Industries"
+    ],
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Union territory of Puducherry"
+    ],
+    "max_income": null,
+    "category": "Not mentioned in the text"
+  },
+  "SCHEME_0034": {},
+  "SCHEME_0035": {
+    "rules": [
+      {
+        "min_age": null,
+        "max_age": null,
+        "gender": "Any",
+        "state": [
+          "Puducherry"
+        ],
+        "occupation": null,
+        "max_income": null,
+        "category": "New or Existing Industrial Units",
+        "conditions": [
+          {
+            "employment": {
+              "percentage": 60,
+              "local_population": true
+            }
+          },
+          {
+            "asset_transfer": false,
+            "duration": 5
+          },
+          {
+            "additional_investments": true
+          }
+        ]
+      }
+    ]
+  },
+  "SCHEME_0036": {
+    "state": [
+      "Puducherry"
+    ],
+    "occupation": [
+      "Farmer"
+    ]
+  },
+  "SCHEME_0037": {
+    "categories": [
+      "Micro",
+      "Small",
+      "Medium",
+      "Large",
+      "Women",
+      "SC"
+    ],
+    "min_age": null,
+    "max_age": null,
+    "gender": [
+      "Female",
+      "SC",
+      "ST"
+    ],
+    "state": [
+      "Union territory of Puducherry"
+    ],
+    "occupation": [],
+    "max_income": null,
+    "category": "Micro, Small, Medium and Large Enterprises, Women/SC/ST Entrepreneurs"
+  },
+  "SCHEME_0038": {
+    "occupation": [
+      "Industrial Unit"
+    ],
+    "state": [
+      "Puducherry",
+      "Karaikal"
+    ]
+  },
+  "SCHEME_0039": {
+    "occupation": [
+      "IT",
+      "ITES"
+    ],
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "category": "New IT/ITES industrial unit",
+    "max_income": null
+  },
+  "SCHEME_0040": {
+    "category": [
+      "Physically Handicapped"
+    ]
+  },
+  "SCHEME_0041": {},
+  "SCHEME_0042": {
+    "category": "Exhibition Participant"
+  },
+  "SCHEME_0043": {
+    "min_age": 23,
+    "max_age": 60,
+    "gender": "Any",
+    "state": [
+      "Puducherry"
+    ],
+    "occupation": [
+      "fishermen",
+      "professionally engaged in fishing/fish trade"
+    ],
+    "max_income": null,
+    "category": "Fisherman"
+  },
+  "SCHEME_0044": {
+    "occupation": [
+      "Craftsperson",
+      "Artisan"
+    ],
+    "state": [
+      "Puducherry"
+    ]
+  },
+  "SCHEME_0045": {
+    "occupation": [
+      "Micro",
+      "Small",
+      "Medium",
+      "Large Industries"
+    ],
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Union territory of Puducherry"
+    ],
+    "max_income": null,
+    "category": "Industrial Units",
+    "employment_requirement": {
+      "local_employment_percentage": 60,
+      "min_local_employees": 10
+    },
+    "provident_fund": true,
+    "asset_transfer_restriction": true,
+    "additional_investments": true
+  },
+  "SCHEME_0046": {
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "UT of Puducherry"
+    ],
+    "occupation": null,
+    "max_income": null,
+    "category": "Unit which commences production after 2-8-2004"
+  },
+  "SCHEME_0047": {
+    "state": [
+      "Puducherry"
+    ]
+  },
+  "SCHEME_0048": {
+    "occupation": [
+      "Entrepreneur"
+    ]
+  },
+  "SCHEME_0049": {
+    "state": [
+      "Puducherry"
+    ]
+  },
+  "SCHEME_0050": {},
+  "SCHEME_0051": {
+    "occupation": [
+      "Fisherman"
+    ],
+    "state": [
+      "Union territory of Puducherry"
+    ]
+  },
+  "SCHEME_0052": {
+    "occupation": [
+      "Micro",
+      "Small",
+      "Medium",
+      "Large Industries"
+    ],
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Union territory of Puducherry"
+    ],
+    "max_income": null,
+    "category": "Not specified in the text"
+  },
+  "SCHEME_0053": {
+    "occupation": [
+      "micro",
+      "small",
+      "medium"
+    ],
+    "sector": [
+      "manufacturing",
+      "service"
+    ]
+  },
+  "SCHEME_0054": {
+    "category": "Handicrafts Society",
+    "state": [
+      "Puducherry"
+    ],
+    "occupation": [
+      "artisan"
+    ]
+  },
+  "SCHEME_0055": {
+    "location": [
+      "Puducherry"
+    ]
+  },
+  "SCHEME_0056": {
+    "state": [
+      "Puducherry"
+    ],
+    "min_income": 100000
+  },
+  "SCHEME_0057": {
+    "occupation": [
+      "Coir product activities"
+    ],
+    "category": "Cluster/society/agency"
+  },
+  "SCHEME_0058": {
+    "category": "Society/Agency",
+    "occupation": [
+      "silk-weaving"
+    ],
+    "state": [
+      "Puducherry"
+    ]
+  },
+  "SCHEME_0059": {
+    "occupation": [
+      "Coir Industry"
+    ]
+  },
+  "SCHEME_0060": {
+    "category": "Green and eco-friendly industries as per DSTE standards"
+  },
+  "SCHEME_0061": {
+    "state": [
+      "Puducherry"
+    ],
+    "min_age": 18,
+    "max_age": 60,
+    "gender": "Any",
+    "occupation": [
+      "Fisherman"
+    ],
+    "category": "Deceased Fisherman"
+  },
+  "SCHEME_0062": {
+    "min_age": 18,
+    "max_age": 35,
+    "occupation": [
+      "Unemployed"
+    ],
+    "state": [
+      "Union Territory of Puducherry"
+    ]
+  },
+  "SCHEME_0063": {
+    "category": "IT industries, Industrial use for manufacturer of computer systems, Software/ITES, BPO, KPO",
+    "state": [
+      "Union territory of Puducherry"
+    ],
+    "occupation": [
+      "infrastructure developers/industries"
+    ],
+    "min_employment": 60
+  },
+  "SCHEME_0064": {},
+  "SCHEME_0065": {
+    "category": "Not Applicable",
+    "occupation": [
+      "Not Applicable"
+    ],
+    "state": [
+      "Puducherry"
+    ],
+    "max_age": 0,
+    "min_age": 0,
+    "gender": "Any",
+    "max_income": 0
+  },
+  "SCHEME_0066": {
+    "state": [
+      "Odisha"
+    ],
+    "conditions": [
+      "resident of Odisha",
+      "has a bank account in his/her name in Odisha",
+      "farmer pond excavated under various Government schemes including Watershed Development Projects & MGNREGA through the Directorate of Soil Conservation & Watershed Development"
+    ]
+  },
+  "SCHEME_0067": {
+    "category": "coconut farmers"
+  },
+  "SCHEME_0068": {
+    "occupation": [
+      "Micro",
+      "Small",
+      "Medium",
+      "Large Industries"
+    ],
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Union territory of Puducherry"
+    ],
+    "max_income": null,
+    "category": "Not specified in the text",
+    "loan": true
+  },
+  "SCHEME_0069": {
+    "conditions": [
+      {
+        "eligibility_criteria": [
+          "SC",
+          "ST",
+          "Women"
+        ],
+        "min_loan_date": "2-8-2004"
+      },
+      {
+        "industry_type": [
+          "Thrust Area Industry",
+          "IT Sector Industry"
+        ],
+        "production_start_date": "2-8-2004"
+      },
+      {
+        "eligibility_criteria": [
+          "SC",
+          "ST",
+          "Women",
+          "Physically Handicapped",
+          "Ex-Servicemen"
+        ],
+        "min_loan_date": "24-8-2011"
+      },
+      {
+        "industry_type": [
+          "Thrust Area Industry",
+          "IT Sector Industry"
+        ],
+        "production_start_date": "24-8-2011"
+      }
+    ]
+  },
+  "SCHEME_0070": {
+    "occupation": [
+      "Entrepreneurs",
+      "Industrialists"
+    ]
+  },
+  "SCHEME_0071": {
+    "occupation": [
+      "Micro",
+      "Small",
+      "Medium",
+      "Large Industries"
+    ],
+    "min_age": null,
+    "max_age": null,
+    "gender": "Any",
+    "state": [
+      "Union territory of Puducherry"
+    ],
+    "max_income": null,
+    "category": "Participants in the exhibition",
+    "conditions": [
+      {
+        "rule": "The unit should have made the investment on or after 1st April 2017.",
+        "compliance": "Complied if the investment was made after 1st April 2017."
+      },
+      {
+        "rule": "The unit should provide at least 60% of employment to the people of the Union territory of Puducherry.",
+        "compliance": null,
+        "key_for_compliance": "employment_percentage"
+      },
+      {
+        "rule": "This 60% of the local employment will have to be maintained by the industrial unit during the period specified in the Affidavit.",
+        "compliance": null,
+        "key_for_compliance": "maintained_employment"
+      },
+      {
+        "rule": "The unit should obtain prior approval from the Director of Industries about participating in the exhibition.",
+        "compliance": null,
+        "key_for_compliance": "approval_from_director"
+      },
+      {
+        "rule": "The industrial unit shall not transfer or dispose of the fixed asset including plant and machinery in any manner till the completion of 5 years from the date of submitting the application/disbursement of the subsidy whichever is later.",
+        "compliance": null,
+        "key_for_compliance": "asset_transfer"
+      }
+    ]
+  },
+  "SCHEME_0072": {
+    "min_age": 60,
+    "state": [
+      "Union Territory of Puducherry"
+    ],
+    "occupation": [
+      "artisan"
+    ],
+    "max_income": 40000,
+    "category": "N/A"
+  },
+  "SCHEME_0073": {
+    "occupation": [
+      "Artisan"
+    ]
+  },
+  "SCHEME_0074": {
+    "category": "Not Applicable"
+  },
+  "SCHEME_0075": {
+    "category": "Export Industry",
+    "state": [
+      "Puducherry"
+    ]
+  },
+  "SCHEME_0076": {
+    "category": "Not Mentioned",
+    "min_age": null,
+    "max_age": null,
+    "gender": "Scheduled Caste/ Scheduled Tribe",
+    "state": [
+      "UT of Puducherry"
+    ],
+    "occupation": "Entrepreneur",
+    "max_income": null
+  },
+  "SCHEME_0077": {
+    "state": [
+      "Puducherry"
+    ],
+    "occupation": [
+      "Farmer"
+    ]
+  },
+  "SCHEME_0078": {
+    "occupation": [
+      "Primary Fisherman Cooperative Society (PFCS)"
+    ],
+    "min_age": null,
+    "max_age": null,
+    "gender": null,
+    "state": null,
+    "category": "Active PFCS",
+    "conditions": [
+      {
+        "rule": "The PFCS should have completed at least 1 year from the date of its registration under 'The Odisha Cooperative Societies Act-1962'",
+        "compliance": "Completed one year after registration"
+      },
+      {
+        "rule": "The PFCS should be in working condition",
+        "compliance": "In good working order"
+      },
+      {
+        "rule": "The PFCS should not have availed the revolving fund before",
+        "compliance": "No previous usage of revolving fund"
+      },
+      {
+        "rule": "The PFCS should be conducting Committee of Management meetings and AGB meetings in time as per the OCS Act and Rules framed there under the Bylaws of the Society",
+        "compliance": "Regularly holds required meetings"
+      },
+      {
+        "rule": "The PFCS should have paid the Government lease value of the reservoir/ pond if taken on lease as per the Rules",
+        "compliance": "Has made necessary lease payments"
+      }
+    ],
+    "max_income": null
+  },
+  "SCHEME_0079": {
+    "occupation": [
+      "Entrepreneur"
+    ],
+    "gender": [
+      "Female",
+      "Scheduled Caste",
+      "Scheduled Tribe"
+    ],
+    "min_age": null,
+    "max_age": null,
+    "state": null,
+    "category": "Woman, Scheduled Caste, Scheduled Tribe",
+    "max_income": null
+  },
+  "SCHEME_0080": {
+    "state": [
+      "Tripura"
+    ],
+    "occupation": [
+      "Student"
+    ],
+    "gender": "Any",
+    "min_age": 0,
+    "max_age": 0,
+    "category": [
+      "Scheduled Tribe",
+      "Scheduled Caste",
+      "Person with Disability"
+    ],
+    "max_income": 100000
+  },
+  "SCHEME_0081": {
+    "state": [
+      "Puducherry"
+    ],
+    "occupation": [
+      "Farmer"
+    ]
+  },
+  "SCHEME_0082": {
+    "eligibility_rules": [
+      {
+        "occupation": [
+          "Micro",
+          "Small",
+          "Medium",
+          "Large Industries"
+        ],
+        "min_age": null,
+        "max_age": null,
+        "gender": "Any",
+        "state": [
+          "Union territory of Puducherry"
+        ],
+        "max_income": null,
+        "category": null
+      },
+      {
+        "made_investment_on": "1st April 2017",
+        "employment_rules": {
+          "local_employment_percentage": 60,
+          "maintainance_period": "The period specified in the Affidavit"
+        },
+        "certificate_cost_components": [
+          "fees charged by the certification agency"
+        ],
+        "transfer_disposal_rules": {
+          "fixed_assets": [
+            "plant and machinery"
+          ],
+          "prohibition_period": "5 years from the date of submitting the application/disbursement of the subsidy whichever is later"
+        }
+      }
+    ]
+  },
+  "SCHEME_0083": {
+    "gender": "Male",
+    "min_age": 23,
+    "max_age": 60,
+    "state": [
+      "Puducherry"
+    ],
+    "occupation": [
+      "fishing/fish trade"
+    ]
+  },
+  "SCHEME_0084": {
+    "category": "Not mentioned in text"
+  },
+  "SCHEME_0085": {
+    "state": [
+      "Puducherry"
+    ],
+    "occupation": [
+      "Farmer"
+    ]
+  },
+  "SCHEME_0086": {
+    "state": [
+      "Puducherry"
+    ],
+    "min_age": 18,
+    "max_age": 35
+  },
+  "SCHEME_0087": {
+    "min_age": 18,
+    "max_age": 35,
+    "gender": "Any",
+    "state": [
+      "Puducherry"
+    ],
+    "occupation": [
+      "Any"
+    ],
+    "max_income": null,
+    "category": "Not Mentioned"
+  },
+  "SCHEME_0088": {
+    "min_age": 18,
+    "max_age": 35,
+    "gender": "Any",
+    "state": [
+      "Puducherry"
+    ],
+    "occupation": [
+      "Unemployed"
+    ]
+  },
+  "SCHEME_0089": {
+    "occupation": [
+      "Artisan",
+      "Unit Industrialist"
+    ],
+    "state": [
+      "Puducherry"
+    ]
+  },
+  "SCHEME_0090": {
+    "occupation": [
+      "Industrial Association",
+      "CII",
+      "Industrial NGO"
+    ]
+  },
+  "SCHEME_0091": {
+    "occupation": [
+      "Artisan",
+      "Unit Industrialist"
+    ],
+    "state": [
+      "Puducherry"
+    ]
+  },
+  "SCHEME_0092": {
+    "occupation": [
+      "Sales Emporium/Showroom"
+    ]
+  },
+  "SCHEME_0093": {
+    "occupation": [
+      "Construction Worker"
+    ],
+    "state": [
+      "Andhra Pradesh"
+    ]
+  },
+  "SCHEME_0094": {},
+  "SCHEME_0095": {
+    "rules": [
+      {
+        "eligibility_conditions": [
+          "purchase from NHDC, Yarn Deports sanctioned by NHDC and APCO"
+        ],
+        "min_age": null,
+        "max_age": null,
+        "gender": null,
+        "state": null,
+        "occupation": [
+          "Handloom Weaver"
+        ],
+        "max_income": null,
+        "category": [
+          "self-consumption of Handloom Weaver Cooperative Societies"
+        ]
+      }
+    ],
+    "notes": [
+      {
+        "note_number": 1,
+        "conditions": [
+          "purchase from private yarn dealers, Mills etc."
+        ]
+      },
+      {
+        "note_number": 2,
+        "conditions": []
+      }
+    ]
+  },
+  "SCHEME_0096": {
+    "state": [
+      "Madhya Pradesh"
+    ],
+    "min_age": 6
+  },
+  "SCHEME_0097": {
+    "state": [
+      "Tripura"
+    ],
+    "gender": "Any",
+    "min_age": 10,
+    "max_income": 100000,
+    "category": "Person with Disability",
+    "disability_percentage": 60
+  },
+  "SCHEME_0098": {
+    "state": [
+      "Union Territory of Jammu & Kashmir"
+    ],
+    "max_income": 75000
+  },
+  "SCHEME_0099": {
+    "category": "ESM or his widow"
+  },
+  "SCHEME_0100": {
+    "state": [
+      "Gujarat"
+    ],
+    "occupation": [
+      "farmer"
+    ]
+  }
+}

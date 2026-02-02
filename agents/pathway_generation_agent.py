@@ -85,15 +85,12 @@ Formatting rules:
 - Do NOT add explanations outside sections
 """
 
-        # 🔍 Log prompt for debugging
         print("\n================ LLM PROMPT =================")
         print(prompt)
         print("============================================\n")
 
-        # Call the LLM
-        llm_output = self.llm.generate(prompt, max_tokens=600)
+        llm_output = self.llm.generate(prompt, max_tokens=600) #Increase tokens during demo
 
-        # 🔍 Log raw LLM output before parsing
         print("\n================ LLM RAW OUTPUT ==============")
         print(llm_output)
         print("============================================\n")
