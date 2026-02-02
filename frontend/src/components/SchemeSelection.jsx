@@ -15,27 +15,35 @@ function SchemeSelection({ userProfile, onSelect }) {
 
   // Auto-load eligible schemes when component mounts
   useEffect(() => {
-    const loadEligibleSchemes = async () => {
-      setLoading(true)
-      try {
-        const response = await api.post('/api/search-schemes', {
-          query: '', // Empty query to get all eligible schemes
-          userProfile
-        })
+  if (!userProfile) return // wait until userProfile is available
 
-        setSchemes(response.data.top_schemes || [])
-        setEligibleSchemes(response.data.eligible_schemes || [])
-        setRejectedSchemes(response.data.rejected_schemes || [])
-      } catch (error) {
-        console.error('Error loading schemes:', error)
-        alert('Error loading schemes. Please try again.')
-      } finally {
-        setLoading(false)
-      }
+  const didRequest = { current: false } // tracks if request already fired
+
+  const loadEligibleSchemes = async () => {
+    if (didRequest.current) return // prevent duplicate request in Strict Mode
+    didRequest.current = true
+
+    setLoading(true)
+    try {
+      const response = await api.post('/api/search-schemes', {
+        query: 'all', // default placeholder to fetch all eligible schemes
+        userProfile
+      })
+
+      setSchemes(response.data.top_schemes || [])
+      setEligibleSchemes(response.data.eligible_schemes || [])
+      setRejectedSchemes(response.data.rejected_schemes || [])
+    } catch (error) {
+      console.error('Error loading schemes:', error)
+      alert('Error loading schemes. Please try again.')
+    } finally {
+      setLoading(false)
     }
+  }
 
-    loadEligibleSchemes()
-  }, [userProfile])
+  loadEligibleSchemes()
+}, [userProfile])
+
 
   const handleSearch = async () => {
     if (!query.trim()) return
