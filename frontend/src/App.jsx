@@ -2,13 +2,16 @@ import { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import Header from './components/Header'
 import Footer from './components/Footer'
-import Home from './components/Home'
-import UserProfile from './components/UserProfile'
+import HomePage from './components/Home/HomePage'
+import ProfilePage from './components/Profile/ProfilePage'
+import SchemesPage from './components/RelevantSchemes/SchemesPage'
+
 import SchemeSelection from './components/SchemeSelection'
 import DocumentUpload from './components/DocumentUpload'
 import FullGuidance from './components/FullGuidance'
 import GeographicalMap from './components/GeographicalMap'
 import Dashboard from './components/Dashboard'
+import SystemUIPage from './components/SystemUI/SystemUIPage'
 
 function App() {
   const [userProfile, setUserProfile] = useState(null)
@@ -27,13 +30,27 @@ function App() {
         <main className="flex-grow">
           <Routes>
             {/* Home page */}
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<HomePage />} />
 
             {/* User Profile */}
             <Route 
               path="/profile" 
-              element={<UserProfile onComplete={setUserProfile} />} 
+              element={<ProfilePage onComplete={setUserProfile} />}
             />
+
+            {/* Relevant Schemes */}
+           <Route
+              path="/relevant-schemes"
+              element={
+                userProfile ? (
+                  <SchemesPage userProfile={userProfile} />
+                ) : (
+                  <Navigate to="/profile" replace />
+                )
+              }
+            />
+
+
 
             {/* Scheme Selection */}
             <Route 
@@ -99,6 +116,10 @@ function App() {
 
             {/* Catch all unknown routes */}
             <Route path="*" element={<Navigate to="/" replace />} />
+
+            {/* System UI for live demo */}
+            <Route path="/system-ui" element={<SystemUIPage />} />
+
           </Routes>
         </main>
 

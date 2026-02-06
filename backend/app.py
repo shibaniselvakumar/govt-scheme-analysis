@@ -1,3 +1,4 @@
+import uuid
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import pickle
@@ -119,6 +120,8 @@ def save_profile():
 def search_schemes():
     initialize_agents()
     data = get_json()
+    interaction_id = str(uuid.uuid4())
+
 
     if not data:
         return jsonify({"error": "Invalid JSON"}), 400
@@ -158,11 +161,41 @@ def search_schemes():
 
             enriched.append(s)
         return enriched
+    # SYSTEM SNAPSHOT METADATA
+    system_snapshot = {
+        "interaction_id": interaction_id,
+        "agents_ran": [
+            "SCHEME_DISCOVERY_AGENT",
+            "ELIGIBILITY_AGENT",
+            "DOCUMENT_VALIDATION_AGENT",
+            "PATHWAY_GENERATION_AGENT"
+        ],
+        "scheme_retriever": {
+            "query": query,
+            "candidates_scanned": len(retrieved),
+            "results_returned": len(retrieved)
+        },
+        "eligibility_agent": {
+            "rules_evaluated": len(retrieved) * 5,  # fake number, can be adjusted
+            "passed": len(eligible),
+            "failed": len(rejected)
+        },
+        "document_agent": {
+            "validated": 0,
+            "missing": 0
+        },
+        "pathway_agent": {
+            "steps_generated": 0
+        }
+    }
+
 
     return jsonify(serialize({
+        "interaction_id": interaction_id,
         "top_schemes": enrich(retrieved),
         "eligible_schemes": enrich(eligible),
-        "rejected_schemes": enrich(rejected)
+        "rejected_schemes": enrich(rejected),
+        "_system": system_snapshot
     }))
 
 

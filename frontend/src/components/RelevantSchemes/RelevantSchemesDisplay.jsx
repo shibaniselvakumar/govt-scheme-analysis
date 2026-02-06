@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Search, Loader2, TrendingUp, Users, MapPin, Briefcase } from 'lucide-react'
-import api from '../utils/api'
+import api from '../../utils/api'
 
 function RelevantSchemesDisplay({ userProfile }) {
   const navigate = useNavigate()

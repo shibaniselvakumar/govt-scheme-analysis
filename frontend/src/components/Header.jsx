@@ -6,7 +6,8 @@ import {
   CheckCircle,
   Map,
   BarChart3,
-  Search
+  Search,
+  TrendingUp
 } from 'lucide-react'
 
 function Header() {
@@ -14,11 +15,13 @@ function Header() {
 
   const navItems = [
     { path: '/profile', label: 'User Profile', icon: User },
-    { path: '/schemes', label: 'Find Schemes', icon: FileText },
+        { path: '/relevant-schemes', label: 'Relevant Schemes', icon: TrendingUp }, // <-- new link
+    { path: '/schemes', label: 'Eligible Schemes', icon: FileText },
     { path: '/documents', label: 'Upload Documents', icon: Upload },
     { path: '/guidance', label: 'Application Guide', icon: CheckCircle },
     { path: '/map', label: 'Scheme Map', icon: Map },
-    { path: '/dashboard', label: 'Dashboard', icon: BarChart3 }
+    { path: '/dashboard', label: 'Dashboard', icon: BarChart3 },
+    { path: '/system-ui', label: 'System UI', icon: Search }
   ]
 
   return (

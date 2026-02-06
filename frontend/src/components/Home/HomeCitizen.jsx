@@ -6,14 +6,13 @@ import {
   CheckCircle,
   Map,
   ArrowRight,
-  Star,
   Cpu,
   Layers,
   Search,
   Activity
 } from 'lucide-react'
 
-function Home() {
+function HomeCitizen() {
   const intelligenceFlow = [
     {
       icon: Search,
@@ -38,11 +37,11 @@ function Home() {
   ]
 
   return (
-    <div className="bg-gradient-to-b from-slate-950 via-blue-950 to-slate-900 text-white">
+    <div className="bg-gradient-to-b from-slate-50 via-blue-50 to-white text-slate-800">
 
       {/* HERO */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.15),_transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.12),_transparent_60%)]" />
         <div className="max-w-7xl mx-auto px-6 py-28 relative">
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -50,62 +49,62 @@ function Home() {
             {/* LEFT */}
             <div>
               <div className="flex items-center gap-3 mb-6">
-                <div className="p-3 bg-blue-600/20 rounded-lg">
-                  <Cpu className="w-6 h-6 text-blue-400" />
+                <div className="p-3 bg-blue-100 rounded-lg">
+                  <Cpu className="w-6 h-6 text-blue-700" />
                 </div>
-                <span className="text-blue-400 font-semibold tracking-wide">
-                  Multi-Agent AI Governance System
+                <span className="text-blue-700 font-semibold tracking-wide">
+                  AI-Powered Citizen Assistance Platform
                 </span>
               </div>
 
-              <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-6">
-                Intelligent Government Scheme
+              <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-6 text-slate-900">
+                Find the Right Government Schemes
                 <br />
-                <span className="text-blue-400">
-                  Eligibility & Guidance Platform
+                <span className="text-blue-700">
+                  With Clarity & Confidence
                 </span>
               </h1>
 
-              <p className="text-lg text-slate-300 max-w-xl mb-10">
-                A production-grade AI system that discovers applicable government
-                schemes, evaluates eligibility, validates documents, and generates
-                explainable application pathways — transparently and reliably.
+              <p className="text-lg text-slate-600 max-w-xl mb-10">
+                Discover government schemes relevant to you, understand your
+                eligibility clearly, and get guided through the application
+                process — all in one place.
               </p>
 
               <div className="flex gap-4">
                 <Link
                   to="/profile"
-                  className="bg-blue-600 hover:bg-blue-500 px-8 py-4 rounded-lg font-semibold inline-flex items-center gap-2 transition"
+                  className="bg-blue-700 hover:bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold inline-flex items-center gap-2 transition"
                 >
                   Start Evaluation
                   <ArrowRight className="w-5 h-5" />
                 </Link>
 
-                <div className="px-6 py-4 rounded-lg border border-blue-500/30 text-blue-300">
-                  System-Driven • Explainable • Secure
+                <div className="px-6 py-4 rounded-lg border border-blue-300 text-blue-700 bg-blue-50">
+                  Secure • Transparent • Easy to Use
                 </div>
               </div>
             </div>
 
             {/* RIGHT */}
             <div className="hidden lg:block">
-              <div className="relative bg-slate-900 border border-blue-500/20 rounded-xl p-6 shadow-2xl">
-                <div className="text-sm text-blue-400 mb-4">
-                  Live System Capabilities
+              <div className="relative bg-white border border-slate-200 rounded-xl p-6 shadow-lg">
+                <div className="text-sm text-blue-700 mb-4 font-medium">
+                  What This Platform Helps You With
                 </div>
 
-                <ul className="space-y-4 text-slate-300">
+                <ul className="space-y-4 text-slate-600">
                   <li className="flex items-center gap-3">
-                    <Activity className="w-5 h-5 text-green-400" />
-                    Real-time eligibility reasoning
+                    <Activity className="w-5 h-5 text-green-600" />
+                    Clear eligibility checks
                   </li>
                   <li className="flex items-center gap-3">
-                    <Layers className="w-5 h-5 text-green-400" />
-                    Multi-agent decision pipeline
+                    <Layers className="w-5 h-5 text-green-600" />
+                    Step-by-step application guidance
                   </li>
                   <li className="flex items-center gap-3">
-                    <Shield className="w-5 h-5 text-green-400" />
-                    Transparent & auditable logic
+                    <Shield className="w-5 h-5 text-green-600" />
+                    Trusted and explainable recommendations
                   </li>
                 </ul>
               </div>
@@ -115,48 +114,48 @@ function Home() {
         </div>
       </section>
 
-            {/* CITIZEN VALUE */}
-      <section className="py-24 border-t border-white/5">
+      {/* CITIZEN VALUE */}
+      <section className="py-24 bg-white border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">
+            <h2 className="text-4xl font-bold mb-4 text-slate-900">
               What You Can Do on This Platform
             </h2>
-            <p className="text-slate-400 max-w-2xl mx-auto">
+            <p className="text-slate-600 max-w-2xl mx-auto">
               Designed to help citizens access government benefits
               without confusion or guesswork.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <div className="bg-slate-900/70 border border-white/10 rounded-xl p-8">
-              <Search className="w-8 h-8 text-blue-400 mb-4" />
-              <h3 className="text-lg font-semibold mb-2">
+            <div className="bg-white border border-slate-200 rounded-xl p-8 shadow-sm">
+              <Search className="w-8 h-8 text-blue-700 mb-4" />
+              <h3 className="text-lg font-semibold mb-2 text-slate-900">
                 Discover Relevant Schemes
               </h3>
-              <p className="text-slate-400 text-sm">
+              <p className="text-slate-600 text-sm">
                 Find central and state government schemes applicable
                 to your personal and socio-economic profile.
               </p>
             </div>
 
-            <div className="bg-slate-900/70 border border-white/10 rounded-xl p-8">
-              <CheckCircle className="w-8 h-8 text-blue-400 mb-4" />
-              <h3 className="text-lg font-semibold mb-2">
+            <div className="bg-white border border-slate-200 rounded-xl p-8 shadow-sm">
+              <CheckCircle className="w-8 h-8 text-blue-700 mb-4" />
+              <h3 className="text-lg font-semibold mb-2 text-slate-900">
                 Check Eligibility Clearly
               </h3>
-              <p className="text-slate-400 text-sm">
+              <p className="text-slate-600 text-sm">
                 Understand eligibility upfront before spending time
                 on applications or document collection.
               </p>
             </div>
 
-            <div className="bg-slate-900/70 border border-white/10 rounded-xl p-8">
-              <Map className="w-8 h-8 text-blue-400 mb-4" />
-              <h3 className="text-lg font-semibold mb-2">
+            <div className="bg-white border border-slate-200 rounded-xl p-8 shadow-sm">
+              <Map className="w-8 h-8 text-blue-700 mb-4" />
+              <h3 className="text-lg font-semibold mb-2 text-slate-900">
                 Follow the Right Steps
               </h3>
-              <p className="text-slate-400 text-sm">
+              <p className="text-slate-600 text-sm">
                 Get a clear view of required documents, steps,
                 and where to apply — all in one place.
               </p>
@@ -166,13 +165,13 @@ function Home() {
       </section>
 
       {/* WHY IT EXISTS */}
-      <section className="py-20 bg-slate-950 border-t border-white/5">
+      <section className="py-20 bg-slate-50 border-t border-slate-200">
         <div className="max-w-5xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold mb-6">
+          <h2 className="text-3xl font-bold mb-6 text-slate-900">
             Why This Platform Was Built
           </h2>
 
-          <p className="text-slate-400 leading-relaxed">
+          <p className="text-slate-600 leading-relaxed">
             Many citizens miss out on government benefits due to lack of awareness,
             unclear eligibility rules, complex documentation, or fragmented information
             across portals. This platform brings clarity by guiding citizens through
@@ -182,15 +181,14 @@ function Home() {
         </div>
       </section>
 
-
       {/* INTELLIGENCE FLOW */}
-      <section className="py-24 border-t border-white/5">
+      <section className="py-24 bg-white border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">
+            <h2 className="text-4xl font-bold mb-4 text-slate-900">
               How the System Thinks
             </h2>
-            <p className="text-slate-400 max-w-2xl mx-auto">
+            <p className="text-slate-600 max-w-2xl mx-auto">
               Each request is processed through a structured multi-agent
               intelligence pipeline.
             </p>
@@ -202,16 +200,16 @@ function Home() {
               return (
                 <div
                   key={i}
-                  className="bg-slate-900/70 border border-blue-500/20 rounded-xl p-6 hover:border-blue-400 transition"
+                  className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm hover:border-blue-400 transition"
                 >
-                  <div className="w-12 h-12 rounded-lg bg-blue-600/20 flex items-center justify-center mb-4">
-                    <Icon className="w-6 h-6 text-blue-400" />
+                  <div className="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center mb-4">
+                    <Icon className="w-6 h-6 text-blue-700" />
                   </div>
 
-                  <h3 className="font-semibold text-lg mb-2">
+                  <h3 className="font-semibold text-lg mb-2 text-slate-900">
                     {step.title}
                   </h3>
-                  <p className="text-sm text-slate-400">
+                  <p className="text-sm text-slate-600">
                     {step.desc}
                   </p>
                 </div>
@@ -222,16 +220,16 @@ function Home() {
       </section>
 
       {/* TRUST */}
-      <section className="py-20 bg-slate-950 border-t border-white/5">
+      <section className="py-20 bg-blue-50 border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold mb-6">
-            Built for Scale, Fairness & Transparency
+          <h2 className="text-3xl font-bold mb-6 text-slate-900">
+            Built for Fairness, Transparency & Trust
           </h2>
 
-          <p className="text-slate-400 max-w-3xl mx-auto">
-            Unlike black-box recommendation systems, this platform provides
-            traceable agent decisions, auditable eligibility reasoning, and
-            structured guidance — making it suitable for real-world governance use.
+          <p className="text-slate-600 max-w-3xl mx-auto">
+            This platform focuses on clarity and explainability — helping citizens
+            understand why schemes are recommended and what steps are required,
+            rather than relying on opaque or confusing systems.
           </p>
         </div>
       </section>
@@ -240,4 +238,4 @@ function Home() {
   )
 }
 
-export default Home
+export default HomeCitizen

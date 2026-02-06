@@ -13,57 +13,29 @@ function SchemeSelection({ userProfile, onSelect }) {
   const [loading, setLoading] = useState(true)
   const [searching, setSearching] = useState(false)
 
-  // Auto-load eligible schemes when component mounts
-  useEffect(() => {
-  if (!userProfile) return // wait until userProfile is available
 
-  const didRequest = { current: false } // tracks if request already fired
 
-  const loadEligibleSchemes = async () => {
-    if (didRequest.current) return // prevent duplicate request in Strict Mode
-    didRequest.current = true
+ const handleSearch = async () => {
+  if (!query.trim()) return
+  setLoading(true)
+  setSearching(true)
+  try {
+    const response = await api.post('/api/search-schemes', {
+      query,
+      userProfile
+    })
 
-    setLoading(true)
-    try {
-      const response = await api.post('/api/search-schemes', {
-        query: 'all', // default placeholder to fetch all eligible schemes
-        userProfile
-      })
-
-      setSchemes(response.data.top_schemes || [])
-      setEligibleSchemes(response.data.eligible_schemes || [])
-      setRejectedSchemes(response.data.rejected_schemes || [])
-    } catch (error) {
-      console.error('Error loading schemes:', error)
-      alert('Error loading schemes. Please try again.')
-    } finally {
-      setLoading(false)
-    }
+    setSchemes(response.data.top_schemes || [])
+    setEligibleSchemes(response.data.eligible_schemes || [])
+    setRejectedSchemes(response.data.rejected_schemes || [])
+  } catch (error) {
+    console.error('Error searching schemes:', error)
+    alert('Error searching schemes. Please try again.')
+  } finally {
+    setLoading(false)
+    setSearching(false)
   }
-
-  loadEligibleSchemes()
-}, [userProfile])
-
-
-  const handleSearch = async () => {
-    if (!query.trim()) return
-    setSearching(true)
-    try {
-      const response = await api.post('/api/search-schemes', {
-        query,
-        userProfile
-      })
-
-      setSchemes(response.data.top_schemes || [])
-      setEligibleSchemes(response.data.eligible_schemes || [])
-      setRejectedSchemes(response.data.rejected_schemes || [])
-    } catch (error) {
-      console.error('Error searching schemes:', error)
-      alert('Error searching schemes. Please try again.')
-    } finally {
-      setSearching(false)
-    }
-  }
+}
 
   const toggleScheme = (scheme) => {
     setSelectedSchemes(prev => {
@@ -93,165 +65,161 @@ function SchemeSelection({ userProfile, onSelect }) {
   }
 
   return (
-    <div className="min-h-screen bg-blue-50 py-12">
-      <div className="min-h-screen">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-12">
-            <div className="text-center lg:text-left">
-              <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full mb-6 shadow-lg float">
-                <Search className="w-10 h-10 text-white" />
-              </div>
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4 fade-in">Discover Eligible Schemes</h1>
-              <p className="text-xl text-gray-600 max-w-2xl mx-auto lg:mx-0 slide-up animate-delay-200">Search through our comprehensive database of government welfare schemes tailored to your profile</p>
-            </div>
-            <div className="hidden lg:block">
-              <img
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
-                alt="Government Schemes Search"
-                className="w-full h-80 object-cover rounded-xl shadow-2xl slide-in-right animate-delay-300 hover-rotate"
-              />
-            </div>
-          </div>
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 via-white to-blue-100 py-12">
+  <div className="max-w-7xl mx-auto px-6 space-y-12">
 
-          <div className="card mb-6 zoom-in animate-delay-400 card-hover">
-            <div className="flex gap-4">
-              <div className="flex-1 relative">
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 icon-bounce" />
-                <input
-                  type="text"
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
-                  className="input-field pl-12 focus-pulse hover-scale"
-                  placeholder="Search for schemes (e.g., 'Policies for fishermen', 'Education schemes')"
-                />
-              </div>
-              <button
-                onClick={handleSearch}
-                disabled={searching}
-                className="btn-primary btn-animated flex items-center gap-2 whitespace-nowrap click-bounce hover-bounce"
-              >
-                {searching ? (
-                  <>
-                    <Loader2 className="w-5 h-5 animate-spin heartbeat" />
-                    Searching...
-                  </>
-                ) : (
-                  <>
-                    <Search className="w-5 h-5 icon-bounce" />
-                    Search
-                  </>
-                )}
-              </button>
-            </div>
-          </div>
+    {/* HEADER */}
+    <div className="text-center space-y-4">
+      <h1 className="text-4xl md:text-5xl font-bold text-blue-900">
+        Your Eligibility Results
+      </h1>
+      <p className="text-blue-700 max-w-3xl mx-auto text-lg">
+        Based on the profile you provided, we’ve evaluated government schemes
+        you may qualify for.
+      </p>
+    </div>
 
-          {schemes.length > 0 && (
-            <div className="space-y-6">
-              {eligibleSchemes.length > 0 && (
-                <div>
-                  <h2 className="text-2xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
-                    <CheckCircle2 className="w-6 h-6 text-green-600" />
-                    Eligible Schemes ({eligibleSchemes.length})
-                  </h2>
-                  <div className="grid gap-4">
-                    {eligibleSchemes.map((scheme) => {
-                      const schemeId = scheme.scheme_id || scheme._id
-                      const isSelected = selectedSchemes.find(s => (s.scheme_id || s._id) === schemeId)
-                      return (
-                        <div
-                          key={schemeId}
-                          className={`card cursor-pointer transition-all ${
-                            isSelected
-                              ? 'ring-2 ring-blue-600 bg-blue-50'
-                              : 'hover:shadow-xl'
-                          }`}
-                          onClick={() => toggleScheme(scheme)}
-                        >
-                          <div className="flex items-start justify-between">
-                            <div className="flex-1">
-                              <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                                {scheme.scheme_name}
-                              </h3>
-                              {scheme.description && (
-                                <p className="text-gray-600 line-clamp-2">{scheme.description}</p>
-                              )}
-                              {scheme.benefits_text && (
-                                <p className="text-sm text-gray-500 mt-2 line-clamp-1">
-                                  Benefits: {scheme.benefits_text.substring(0, 100)}...
-                                </p>
-                              )}
-                            </div>
-                            <div className="ml-4">
-                              {isSelected ? (
-                                <CheckCircle2 className="w-6 h-6 text-blue-600" />
-                              ) : (
-                                <div className="w-6 h-6 border-2 border-gray-300 rounded-full" />
-                              )}
-                            </div>
-                          </div>
-                        </div>
-                      )
-                    })}
-                  </div>
-                </div>
-              )}
+    {/* SUMMARY PANEL */}
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="bg-white rounded-2xl border border-green-200 p-6 shadow-md">
+        <p className="text-sm text-green-700">Eligible Schemes</p>
+        <p className="text-3xl font-bold text-green-800">
+          {eligibleSchemes.length}
+        </p>
+      </div>
 
-              {rejectedSchemes.length > 0 && (
-                <div>
-                  <h2 className="text-2xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
-                    <XCircle className="w-6 h-6 text-red-600" />
-                    Not Eligible ({rejectedSchemes.length})
-                  </h2>
-                  <div className="grid gap-4">
-                    {rejectedSchemes.map((scheme) => (
-                      <div
-                        key={scheme.scheme_id}
-                        className="card opacity-60"
-                      >
-                        <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                          {scheme.scheme_name}
-                        </h3>
-                        {scheme.reason && (
-                          <p className="text-red-600 text-sm">Reason: {scheme.reason}</p>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-          )}
+      <div className="bg-white rounded-2xl border border-red-200 p-6 shadow-md">
+        <p className="text-sm text-red-700">Not Eligible</p>
+        <p className="text-3xl font-bold text-red-800">
+          {rejectedSchemes.length}
+        </p>
+      </div>
 
-          {selectedSchemes.length > 0 && (
-            <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4 shadow-lg">
-              <div className="max-w-6xl mx-auto flex items-center justify-between">
-                <p className="text-gray-700">
-                  <span className="font-semibold">{selectedSchemes.length}</span> scheme(s) selected
-                </p>
-                <button onClick={handleContinue} className="btn-primary flex items-center gap-2">
-                  Continue to Document Upload
-                  <ArrowRight className="w-5 h-5" />
-                </button>
-              </div>
-            </div>
-          )}
-
-          {loading && (
-            <div className="text-center py-12">
-              <Loader2 className="w-8 h-8 animate-spin text-blue-600 mx-auto mb-4" />
-              <p className="text-gray-500 text-lg">Loading eligible schemes...</p>
-            </div>
-          )}
-
-          {schemes.length === 0 && !loading && (
-            <div className="text-center py-12">
-              <p className="text-gray-500 text-lg">No schemes found. Try adjusting your search query.</p>
-            </div>
-          )}
-        </div>
+      <div className="bg-white rounded-2xl border border-blue-200 p-6 shadow-md">
+        <p className="text-sm text-blue-700">Profile Match</p>
+        <p className="text-3xl font-bold text-blue-800">
+          High
+        </p>
       </div>
     </div>
+
+    {/* SEARCH */}
+    <div className="bg-white rounded-2xl border border-blue-200 p-6 shadow-lg">
+      <div className="flex gap-4">
+        <div className="flex-1 relative">
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+          <input
+            value={query}
+            onChange={e => setQuery(e.target.value)}
+            onKeyDown={e => e.key === 'Enter' && handleSearch()}
+            placeholder="Refine schemes (education, housing, agriculture...)"
+            className="input-field pl-12"
+          />
+        </div>
+        <button
+          onClick={handleSearch}
+          disabled={searching}
+          className="bg-blue-600 hover:bg-blue-700 text-white px-6 rounded-xl font-medium flex items-center gap-2"
+        >
+          {searching ? <Loader2 className="animate-spin" /> : <Search />}
+          Refine
+        </button>
+      </div>
+    </div>
+
+    {/* ELIGIBLE SCHEMES */}
+    {eligibleSchemes.length > 0 && (
+      <section className="space-y-6">
+        <h2 className="text-2xl font-semibold text-green-800 flex items-center gap-2">
+          <CheckCircle2 />
+          Eligible for You
+        </h2>
+
+        <div className="grid gap-6">
+          {eligibleSchemes.map(scheme => {
+            const id = scheme.scheme_id || scheme._id
+            const selected = selectedSchemes.find(s => (s.scheme_id || s._id) === id)
+
+            return (
+              <div
+                key={id}
+                onClick={() => toggleScheme(scheme)}
+                className={`cursor-pointer rounded-2xl border p-6 transition-all
+                  ${selected
+                    ? 'border-blue-600 bg-blue-50 shadow-xl'
+                    : 'border-gray-200 bg-white hover:shadow-lg'
+                  }`}
+              >
+                <div className="flex justify-between gap-6">
+                  <div>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                      {scheme.scheme_name}
+                    </h3>
+                    <p className="text-gray-600 line-clamp-2">
+                      {scheme.description}
+                    </p>
+                  </div>
+
+                  <div className="flex items-center">
+                    {selected
+                      ? <CheckCircle2 className="text-blue-600 w-6 h-6" />
+                      : <div className="w-6 h-6 border-2 rounded-full" />
+                    }
+                  </div>
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      </section>
+    )}
+
+    {/* REJECTED SCHEMES */}
+    {rejectedSchemes.length > 0 && (
+      <section className="space-y-4 opacity-80">
+        <h2 className="text-xl font-medium text-red-700 flex items-center gap-2">
+          <XCircle />
+          Not Eligible
+        </h2>
+
+        <div className="grid gap-4">
+          {rejectedSchemes.map(scheme => (
+            <div
+              key={scheme.scheme_id}
+              className="bg-white border border-gray-200 rounded-xl p-4"
+            >
+              <p className="font-medium text-gray-800">
+                {scheme.scheme_name}
+              </p>
+              <p className="text-sm text-red-600">
+                {scheme.reason}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+  </div>
+
+  {/* BOTTOM ACTION */}
+  {selectedSchemes.length > 0 && (
+    <div className="fixed bottom-0 inset-x-0 bg-white border-t shadow-lg">
+      <div className="max-w-7xl mx-auto p-4 flex justify-between items-center">
+        <p className="text-gray-700">
+          <strong>{selectedSchemes.length}</strong> scheme(s) selected
+        </p>
+        <button
+          onClick={handleContinue}
+          className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold flex items-center gap-2"
+        >
+          Continue
+          <ArrowRight />
+        </button>
+      </div>
+    </div>
+  )}
+</div>
+
   )
 }
 
