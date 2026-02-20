@@ -122,6 +122,8 @@ def search_schemes():
     data = get_json()
     interaction_id = str(uuid.uuid4())
 
+    # 🔹 SYSTEM TRACE (NEW)
+    system_trace = []
 
     if not data:
         return jsonify({"error": "Invalid JSON"}), 400
@@ -132,16 +134,29 @@ def search_schemes():
     if not query:
         return jsonify({"error": "Query required"}), 400
 
+    # 🔹 TRACE: request accepted
+    system_trace.append({
+        "step": 1,
+        "event": "SEARCH_REQUEST_ACCEPTED",
+        "node": "API_GATEWAY",
+        "details": {
+            "has_query": True,
+            "has_profile": bool(user_profile)
+        }
+    })
+
+    # 🔹 POLICY RETRIEVER (PASS TRACE)
     retrieved = policy_agent.retrieve_policies(
         query=query,
         user_profile=user_profile,
-        top_k=10
+        top_k=10,
+        system_trace=system_trace
     )
 
+    # ❗ These agents are NOT visualized yet (kept unchanged)
     eligible, rejected = elig_agent.validate_user_for_schemes(
         user_profile, retrieved
     )
-    
 
     def enrich(schemes):
         enriched = []
@@ -161,34 +176,18 @@ def search_schemes():
 
             enriched.append(s)
         return enriched
-    # SYSTEM SNAPSHOT METADATA
+
+    # 🔹 SYSTEM SNAPSHOT (UPGRADED, NOT BROKEN)
     system_snapshot = {
         "interaction_id": interaction_id,
-        "agents_ran": [
-            "SCHEME_DISCOVERY_AGENT",
-            "ELIGIBILITY_AGENT",
-            "DOCUMENT_VALIDATION_AGENT",
-            "PATHWAY_GENERATION_AGENT"
-        ],
-        "scheme_retriever": {
+        "active_phase": "SCHEME_DISCOVERY",
+        "active_agent": "POLICY_RETRIEVER_AGENT",
+        "trace": system_trace,
+        "metrics": {
             "query": query,
-            "candidates_scanned": len(retrieved),
-            "results_returned": len(retrieved)
-        },
-        "eligibility_agent": {
-            "rules_evaluated": len(retrieved) * 5,  # fake number, can be adjusted
-            "passed": len(eligible),
-            "failed": len(rejected)
-        },
-        "document_agent": {
-            "validated": 0,
-            "missing": 0
-        },
-        "pathway_agent": {
-            "steps_generated": 0
+            "schemes_found": len(retrieved)
         }
     }
-
 
     return jsonify(serialize({
         "interaction_id": interaction_id,
@@ -197,6 +196,7 @@ def search_schemes():
         "rejected_schemes": enrich(rejected),
         "_system": system_snapshot
     }))
+
 
 
 # -------------------- REQUIRED DOCUMENTS --------------------

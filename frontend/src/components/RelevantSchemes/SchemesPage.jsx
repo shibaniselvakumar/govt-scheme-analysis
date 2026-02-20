@@ -5,6 +5,11 @@ import { Cpu, User } from 'lucide-react'
 
 function SchemesPage({ userProfile }) {
   const [showSystemUI, setShowSystemUI] = useState(false)
+  const [systemSnapshot, setSystemSnapshot] = useState(null)
+const [topSchemes, setTopSchemes] = useState([])
+const [eligibleSchemes, setEligibleSchemes] = useState([])
+const [rejectedSchemes, setRejectedSchemes] = useState([])
+
 
   return (
     <div className="relative min-h-screen bg-blue-50">
@@ -31,9 +36,21 @@ function SchemesPage({ userProfile }) {
 
       {/* SWITCH CONTENT */}
       {showSystemUI ? (
-        <SchemesSystemUI userProfile={userProfile} />
+        <SchemesSystemUI
+          systemSnapshot={systemSnapshot}
+          topSchemes={topSchemes}
+          eligibleSchemes={eligibleSchemes}
+          rejectedSchemes={rejectedSchemes}
+        />
+
       ) : (
-        <RelevantSchemesDisplay userProfile={userProfile} />
+        <RelevantSchemesDisplay
+          userProfile={userProfile}
+          setSystemSnapshot={setSystemSnapshot}
+          setTopSchemes={setTopSchemes}
+          setEligibleSchemes={setEligibleSchemes}
+          setRejectedSchemes={setRejectedSchemes}
+        />
       )}
     </div>
   )

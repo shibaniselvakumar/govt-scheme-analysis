@@ -1,0 +1,103 @@
+.execution-console-container {
+  background: radial-gradient(
+    circle at top left,
+    rgba(0, 255, 255, 0.05),
+    transparent 60%
+  );
+  padding: 24px;
+  border-radius: 18px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 40px rgba(0, 255, 255, 0.05);
+}
+
+.console-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.core-brain {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #00e5ff;
+  box-shadow: 0 0 20px #00e5ff;
+}
+
+.trace-console {
+  max-height: 480px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.trace-row {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  margin-bottom: 14px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 14px;
+  transition: all 0.3s ease;
+}
+
+.trace-row.active {
+  background: rgba(255, 255, 255, 0.05);
+  transform: scale(1.02);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.15);
+}
+
+.trace-indicator {
+  width: 4px;
+  border-radius: 2px;
+  animation: pulseLine 2s infinite;
+}
+
+.trace-content {
+  flex: 1;
+}
+
+.trace-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.agent {
+  font-weight: 600;
+}
+
+.agent-active {
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.7);
+}
+
+.badge {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.trace-event {
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.trace-details {
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+@keyframes pulseLine {
+  0% { opacity: 0.4 }
+  50% { opacity: 1 }
+  100% { opacity: 0.4 }
+}
+.trace-json {
+  font-size: 13px;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 6px;
+  overflow-x: auto;
+  color: #00e5ff;
+}

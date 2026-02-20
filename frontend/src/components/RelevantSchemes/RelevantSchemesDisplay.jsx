@@ -3,7 +3,11 @@ import { useNavigate } from 'react-router-dom'
 import { Search, Loader2, TrendingUp, Users, MapPin, Briefcase } from 'lucide-react'
 import api from '../../utils/api'
 
-function RelevantSchemesDisplay({ userProfile }) {
+function RelevantSchemesDisplay({ userProfile,
+  setSystemSnapshot,
+  setTopSchemes,
+  setEligibleSchemes,
+  setRejectedSchemes }) {
   const navigate = useNavigate()
 
   const [schemes, setSchemes] = useState([])
@@ -25,6 +29,12 @@ function RelevantSchemesDisplay({ userProfile }) {
         query: searchQuery || 'all',
         userProfile
       })
+      setTopSchemes(response.data.top_schemes || [])
+      setEligibleSchemes(response.data.eligible_schemes || [])
+      setRejectedSchemes(response.data.rejected_schemes || [])
+      setSystemSnapshot(response.data._system || {})
+
+
 
       const allSchemes = response.data.top_schemes || []
       const eligibleSchemes = response.data.eligible_schemes || []

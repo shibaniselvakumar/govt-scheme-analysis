@@ -11,6 +11,8 @@ import {
 } from 'lucide-react'
 import api from '../../utils/api'
 
+const DEV_MODE = true
+
 
 const INDIAN_STATES = [
   'Andhra Pradesh','Arunachal Pradesh','Assam','Bihar','Chhattisgarh',
@@ -57,21 +59,31 @@ function ProfileCitizen({ onComplete }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    if (!validate()) return
 
-    const profile = {
-      ...formData,
-      age: Number(formData.age),
-      monthly_income: Number(formData.monthly_income)
+    let profile
+
+    if (DEV_MODE) {
+      profile = {
+        name: "Test User",
+        age: 35,
+        gender: "Female",
+        state: "Uttar Pradesh",
+        occupation: "Fisherman",
+        monthly_income: 12000
+      }
+    } else {
+      if (!validate()) return
+      profile = {
+        ...formData,
+        age: Number(formData.age),
+        monthly_income: Number(formData.monthly_income)
+      }
     }
 
-    try {
-      await api.post('/api/save-profile', profile)
-    } catch (err) {}
+  onComplete(profile)
+  navigate('/relevant-schemes')
+}
 
-    onComplete(profile)
-    navigate('/relevant-schemes')
-  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100">
