@@ -1,12 +1,20 @@
 {
   "SCHEME_0001": {
+    "scheme_name": "Input Assistance to Farmers for Taking up Fish Farming in Farm Ponds",
+    "ministry": "Ministry of Fisheries, Animal Husbandry and Dairying",
+    "description": "This scheme provides financial assistance to farmers for setting up fish farming in farm ponds. It aims to promote aquaculture and increase fish production while generating additional income for farmers.",
+    "benefits_text": "Financial assistance up to 50% of the project cost (maximum Rs. 5 lakh per farm pond). The beneficiary has to contribute 50% of the cost. Training and technical support provided.",
+    "eligibility_text": "Farmers aged 18-60 years with farm ponds or capacity to construct them. Must be resident of specified states. Preference given to SC/ST/OBC categories.",
+    "documents_required_text": "Aadhaar Card, Land ownership proof or lease deed, Bank account details, Photograph (4 x 6 cm), Certificate from Gram Panchayat, Passport size photographs (10 copies), Income certificate, Caste certificate (if applicable)",
     "documents": [
-      "Photograph of Family (Legal Heir)",
-      "Residential Certificate Missing Fishermen",
-      "Proof Of Age TheMissngFishermanns",
-      "Declaration Not Beneficiary OldAge Pension Scheme",
-      "MembershipCertificatethPresidntAdministratorfisherfolksocietyCooperativeSocietysNameRelationshipAddress",
-      "ElectoralIdentityCardAttestedCopyRationCard Attestd Copy"
+      "Aadhaar Card (self-attested copy)",
+      "Land Ownership Document/Lease Deed (3 years minimum)",
+      "Passport-size photograph (4x6 cm, 10 copies)",
+      "Bank Account Details/Passbook Copy",
+      "Gram Panchayat Certificate",
+      "Income Certificate",
+      "Caste Certificate (SC/ST/OBC)",
+      "Photograph of the farm pond (if existing)"
     ]
   },
   "SCHEME_0002": {},
@@ -19,7 +27,7 @@
   "SCHEME_0004": {
     "documents": [
       "Passport size photograph",
-      "Residential proof Self-attested copy G.P Registration Certificate Power Of Attorney (Annexure – B)",
+      "Residential proof Self-attested copy G.P Registration Certificate Power Of Attorney (Annexure \u00e2\u20ac\u201c B)",
       "/Board Resolution( Annexure - C )/Society resolution ( Annexure H ) authorizing the Partner /Director to deal with NSIC for enlistment",
       "Bank attested specimen signature of Authorized persons.",
       "Copies recent supply orders"
@@ -143,7 +151,7 @@
   "SCHEME_0023": {},
   "SCHEME_0024": {
     "documents": [
-      "Auditor’s/ Chartered Accountant's Certificate for utilization of funds",
+      "Auditor\u00e2\u20ac\u2122s/ Chartered Accountant's Certificate for utilization of funds",
       "Certificate from a Chartered Accountant (Annexure - I)",
       "Fixed Assets certificate as per Annexure-II"
     ]
@@ -216,7 +224,7 @@
     "documents": [
       "Entrepreneurs Memorandum Part-2",
       "(UAM/PMT) Registration Commencement of Production Certificate Caste certificate from the competent authority in case SC ST Entrepreneurs Loan Sanction Letter Registered Land Document Plan Approval Pollution Control Board (PPA)",
-      "Engineer’s Certificate for Building Valuation Assessed by Public Works Department PWD/PIPDIC"
+      "Engineer\u00e2\u20ac\u2122s Certificate for Building Valuation Assessed by Public Works Department PWD/PIPDIC"
     ]
   },
   "SCHEME_0038": {},
@@ -224,7 +232,7 @@
     "documents": [
       "General Document Entrepreneurs Memorandum Part-2",
       "(UAM/PMT) Registration Commencement of Production Certificate Caste certificate from the competent authority in case SC ST entrepreneurs Loan Sanction Letter Registered Land document Plan Approval Pollution Control Board (PPA)",
-      "Engineer’s Certificate for Building Valuation Assessed by Public Works Department PWD"
+      "Engineer\u00e2\u20ac\u2122s Certificate for Building Valuation Assessed by Public Works Department PWD"
     ]
   },
   "SCHEME_0040": {},
@@ -232,7 +240,7 @@
     "documents": [
       "General Documents Entrepreneurs Memorandum Part-2",
       "(UAM/PMT) Registration Commencement of Production Certificate Caste certificate from the competent authority in case SC ST entrepreneurs Loan Sanction Letter Registered Land document Plan Approval Pollution Control Board (PPA)",
-      "Engineer’s Certificate for Building Valuation Assessed by Public Works Department PWD"
+      "Engineer\u00e2\u20ac\u2122s Certificate for Building Valuation Assessed by Public Works Department PWD"
     ]
   },
   "SCHEME_0042": {
@@ -384,7 +392,7 @@
       "Loan Sanction Letter",
       "Registered Land Document",
       "Plan Approval PPA Pollution Control Board (Pollution)",
-      "Engineer’s Certificate Building Valuation Assessed by Public Works Department or Pondicherry Industrial Promotion Development and Investment Corporation"
+      "Engineer\u00e2\u20ac\u2122s Certificate Building Valuation Assessed by Public Works Department or Pondicherry Industrial Promotion Development and Investment Corporation"
     ]
   },
   "SCHEME_0064": {
@@ -394,13 +402,21 @@
       "Loan Sanction Letter",
       "Registered Land Document",
       "Plan Approval PPA Pollution Control Board (Pollution)",
-      "Engineer’s Certificate Building Valuation Assessed by Public Works Department or Development and Investment Corporation"
+      "Engineer\u00e2\u20ac\u2122s Certificate Building Valuation Assessed by Public Works Department or Development and Investment Corporation"
     ]
   },
   "SCHEME_0065": {
     "documents": []
   },
-  "SCHEME_0066": {},
+  "SCHEME_0066": {
+    "documents": [
+      "Aadhaar Card",
+      "Passport-Sized Photo of Applicant",
+      "Residence Cum Nativity Certificate, issued by the competent authority.",
+      "Age Proof (e.g., Birth certificate)",
+      "Educational certificates/Marksheets"
+    ]
+  },
   "SCHEME_0067": {
     "documents": [
       "farmer identity card",
@@ -525,13 +541,13 @@
     "documents": [
       "Entrepreneurs Memorandum Part-2",
       "(UAM/PMT) Registration Commencement of Production Certificate Caste certificate from the competent authority in case SC ST Entrepreneurs Loan Sanction Letter Registered Land Document Plan Approval Pollution Control Board (PPA)",
-      "Engineer’s Certificate for Building Valuation Assessed by Public Works Department PWD/PIPDIC"
+      "Engineer\u00e2\u20ac\u2122s Certificate for Building Valuation Assessed by Public Works Department PWD/PIPDIC"
     ]
   },
   "SCHEME_0085": {
     "documents": [
       "Aadhar Card",
-      "Applicant’s Photograph",
+      "Applicant\u00e2\u20ac\u2122s Photograph",
       "Farmers Identity Certificate",
       "Field Measurement Booking Record",
       "Sugar Mill Payments Report"

@@ -4,6 +4,22 @@ from .ai_agents_base import AIBaseAgent
 import json
 import re
 import os
+from PIL import Image
+import pytesseract
+
+# Auto-detect Tesseract on Windows
+if os.name == 'nt':  # Windows
+    possible_paths = [
+        r'C:\Program Files\Tesseract-OCR\tesseract.exe',
+        r'C:\Program Files (x86)\Tesseract-OCR\tesseract.exe',
+        r'C:\Users\shibs\AppData\Local\Tesseract-OCR\tesseract.exe',
+        r'C:\Users\shibs\Downloads\Tesseract-OCR\tesseract.exe',
+        r'C:\Users\shibs\Downloads\tesseract\tesseract.exe',
+    ]
+    for path in possible_paths:
+        if os.path.exists(path):
+            pytesseract.pytesseract.tesseract_cmd = path
+            break
 
 
 class DocumentValidationAgent(AIBaseAgent):
@@ -47,52 +63,33 @@ class DocumentValidationAgent(AIBaseAgent):
         """
         if scheme_id in self.doc_rules:
             return self.doc_rules[scheme_id]
-        
-        print(f"Extracting required documents for scheme {scheme_id}...")
+
+        # Try precomputed first
         if scheme_id in self.precomputed_docs:
-            print(f"Using precomputed documents for scheme {scheme_id}")
-            docs_list = self.precomputed_docs[scheme_id].get("documents", [])
-            # Convert list of strings to dict with default metadata
-            parsed = {"required_documents": {
-                self._normalize_doc_key(doc): {"mandatory": True, "description": doc} 
-                for doc in docs_list
-            }}
-        else:
-            # Fallback to LLM
-            
-            parsed = {"required_documents": {}}
-            print(f"⚠️ No LLM or raw text available for scheme {scheme_id}. Returning empty document rules.")
-            
+            precomp = self.precomputed_docs[scheme_id]
+            docs_list = precomp.get("documents", [])
 
-        self.doc_rules[scheme_id] = parsed
-        return parsed
+            required_documents = {}
+            for doc in docs_list:
+                # Normalize to snake_case for consistency
+                key = doc.lower().replace(" ", "_").replace("(", "").replace(")", "").strip("_")
+                required_documents[key] = {
+                    "mandatory": True,
+                    "description": doc,
+                }
 
-    def _normalize_doc_key(self, doc_name: str) -> str:
-        """
-        Converts human-readable doc name to lowercase snake_case key
-        """
-        key = doc_name.lower()
-        key = re.sub(r"[^a-z0-9]+", "_", key)
-        key = re.sub(r"_+", "_", key)
-        key = key.strip("_")
-        return key
+            self.doc_rules[scheme_id] = {"required_documents": required_documents}
+            return self.doc_rules[scheme_id]
 
+        # Fall back to LLM if needed
+        if self.llm is None:
+            return {"required_documents": {}}
 
-    def _extract_documents_from_llm(self, scheme_id: str, raw_text: str) -> dict:
-        """
-        LLM extraction fallback
-        """
         prompt = f"""
-You are an expert government policy analyst.
+Extract required documents for scheme: {scheme_id}
+Raw text: {raw_text}
 
-From the text below, extract the documents required to apply
-for this government scheme.
-
-TEXT:
-\"\"\"{raw_text}\"\"\"
-
-Return STRICT JSON only in this format:
-
+Return ONLY valid JSON:
 {{
   "required_documents": {{
     "<document_key>": {{
@@ -212,7 +209,7 @@ Rules:
 
     def validate_document_format(self, document_type: str, payload: dict):
         """
-        Deterministic format validation
+        Deterministic format validation with OCR content checking
         Supports both text values and uploaded files
         """
 
@@ -225,14 +222,28 @@ Rules:
             if not os.path.exists(file_path):
                 return "FAIL", "Uploaded file not found"
 
-            # Optional: extension check
+            # Check file extension
             allowed_ext = {".pdf", ".jpg", ".jpeg", ".png"}
             ext = os.path.splitext(file_path)[1].lower()
 
             if ext not in allowed_ext:
                 return "FAIL", f"Unsupported file type: {ext}"
 
-            return "PASS", None
+            # Extract text using OCR
+            try:
+                extracted_text = self._extract_text_from_image(file_path)
+                
+                # Validate document type based on extracted content
+                validation_result = self._validate_document_content(document_type, extracted_text)
+                
+                if validation_result:
+                    return "PASS", f"Document recognized: {document_type}"
+                else:
+                    return "FAIL", f"Could not verify {document_type} in document"
+                    
+            except Exception as e:
+                print(f"⚠️ OCR Error for {document_type}: {str(e)}")
+                return "FAIL", f"Failed to process document: {str(e)}"
 
         # ---------- VALUE-BASED DOCUMENTS ----------
         value = payload.get("value")
@@ -249,6 +260,129 @@ Rules:
             return "FAIL", "Document value missing"
 
         return "PASS", None
+
+    def _extract_text_from_image(self, file_path: str) -> str:
+        """Extract text from image using OCR (Tesseract)"""
+        try:
+            # Check if file exists
+            if not os.path.exists(file_path):
+                raise Exception(f"File not found: {file_path}")
+            
+            # Handle PDF files separately
+            ext = os.path.splitext(file_path)[1].lower()
+            if ext == '.pdf':
+                print(f"  ℹ️  PDF files require pdf2image library for OCR. Using fallback validation.")
+                raise Exception("PDF processing requires additional dependencies")
+            
+            # Open and process image
+            image = Image.open(file_path)
+            print(f"  📸 Image loaded: {image.size}")
+            
+            # Extract text using Tesseract
+            text = pytesseract.image_to_string(image)
+            text = text.lower()
+            
+            if not text or len(text.strip()) < 5:
+                print(f"  ⚠️  No meaningful text extracted from image")
+                raise Exception("No readable text found in image (blurry or invalid document)")
+            
+            print(f"  ✅ OCR extracted {len(text)} characters")
+            return text
+            
+        except Exception as e:
+            raise Exception(f"OCR extraction failed: {str(e)}")
+
+    def _validate_document_content(self, document_type: str, extracted_text: str) -> bool:
+        """
+        Validate if the extracted text matches the expected document type
+        Uses fuzzy matching to handle OCR errors
+        """
+        import difflib
+        
+        document_type = document_type.lower().strip()
+        
+        # Normalize document type (remove special chars, extra spaces)
+        normalized_type = document_type.replace("_", " ").replace(",", "").replace(".", "").strip()
+        
+        # Keywords to look for in each document type
+        keywords_map = {
+            "aadhaar": ["aadhaar", "aadhar", "unique identification", "enrollment"],
+            "aadhar": ["aadhaar", "aadhar", "unique identification", "enrollment"],
+            "aadhar card": ["aadhaar", "aadhar", "unique identification", "enrollment"],
+            "pan": ["pan", "income tax", "permanent account number"],
+            "pan card": ["pan", "income tax", "permanent account number"],
+            "passport": ["passport", "date of issue", "date of expiry"],
+            "bank account": ["account", "ifsc", "bank", "account number"],
+            "bank account details": ["account", "ifsc", "bank"],
+            "driving license": ["driving", "license", "dlr", "license number"],
+            "driving licence": ["driving", "license", "dlr"],
+            "ration card": ["ration", "cardholder", "aepds"],
+            "voter id": ["voter", "election", "electoral", "voter id"],
+            "voter id card": ["voter", "election", "electoral"],
+            "income certificate": ["income", "certificate", "issued"],
+            "caste certificate": ["caste", "certificate", "sc", "st", "obc"],
+            "land document": ["land", "deed", "property", "plot", "survey"],
+            "land ownership": ["land", "deed", "property", "owner"],
+            "land proof": ["land", "deed", "property"],
+            "death certificate": ["death", "certificate", "deceased"],
+            "marriage certificate": ["marriage", "certificate", "spouse"],
+            "birth certificate": ["birth", "certificate", "born", "date of birth"],
+            "age proof": ["birth", "certificate", "born", "date of birth", "age"],
+            "residential certificate": ["residential", "certificate", "resident"],
+            "photograph": ["photograph", "photo", "image", "jpg", "png"],
+            "gram panchayat": ["gram panchayat", "panchayat certificate"],
+            "gram panchayat certificate": ["gram panchayat", "panchayat"],
+            "passport sized photo": ["photo", "photograph", "passport"],
+            "educational certificate": ["educational", "certificate", "school", "college", "university", "marksheet"],
+            "educational marksheet": ["educational", "marksheet", "school", "college", "university"],
+            "residence nativity certificate": ["residence", "nativity", "certificate", "residential"],
+        }
+        
+        # Try exact match first
+        keywords = keywords_map.get(document_type, [])
+        
+        # If not found, try normalized version
+        if not keywords:
+            keywords = keywords_map.get(normalized_type, [])
+        
+        # Try partial matching
+        if not keywords:
+            for key in keywords_map:
+                if key in normalized_type or normalized_type in key:
+                    keywords = keywords_map[key]
+                    break
+        
+        print(f"  📄 Document Type: {document_type}")
+        print(f"  🔍 Looking for keywords: {keywords}")
+        
+        # Check if at least one keyword is found
+        if not keywords:
+            print(f"  ❌ No validation keywords for '{document_type}' - REJECTING")
+            return False
+        
+        # Fuzzy matching: find keywords even with OCR errors
+        found_keywords = []
+        for kw in keywords:
+            # Exact match
+            if kw in extracted_text:
+                found_keywords.append(kw)
+            else:
+                # Fuzzy match: check if keyword is 80% similar (handles OCR errors)
+                for word in extracted_text.split():
+                    similarity = difflib.SequenceMatcher(None, kw, word).ratio()
+                    if similarity >= 0.75:  # 75% match threshold
+                        found_keywords.append(f"{kw}(~{word})")
+                        break
+        
+        print(f"  ✅ Keywords found: {found_keywords}")
+        print(f"  📋 Extracted text (first 200 chars): {extracted_text[:200]}")
+        
+        # Require at least one keyword match
+        if len(found_keywords) > 0:
+            return True
+        else:
+            print(f"  ❌ No keywords matched (fuzzy match threshold: 75%)")
+            return False
 
     # --------------------------------------------------
     # 🔹 Utility

@@ -57,7 +57,7 @@ function RelevantSchemesDisplay({ userProfile,
 
 
   const handleSearch = () => fetchRelevantSchemes(query)
-  const handleContinue = () => navigate('/schemes')
+  const handleContinue = () => navigate('/eligible-schemes')
 
   if (loading) {
     return (

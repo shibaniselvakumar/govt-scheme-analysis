@@ -7,7 +7,38 @@ import os
 from werkzeug.utils import secure_filename
 from pymongo import MongoClient
 from bson import ObjectId
+from datetime import datetime
 import json
+
+#-------------------- MODELS --------------------
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+
+# Create Flask app instance first
+app = Flask(__name__)
+
+# Configure CORS before initializing database
+CORS(app, resources={r"/*": {"origins": "*"}}, 
+     methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+     allow_headers=["Content-Type", "Authorization"])
+
+# Replace PASSWORD with the postgres password you set in pgAdmin
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:shibani@localhost:5432/schemes_users'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db = SQLAlchemy(app)
+class User(db.Model):
+    __tablename__ = 'users'
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    age = db.Column(db.Integer, nullable=False)
+    gender = db.Column(db.String(10), nullable=False)
+    state = db.Column(db.String(50), nullable=False)
+    occupation = db.Column(db.String(50), nullable=False)
+    monthly_income = db.Column(db.Numeric, nullable=False)
+    created_at = db.Column(db.DateTime, server_default=db.func.now())
+    updated_at = db.Column(db.DateTime, server_default=db.func.now(), onupdate=db.func.now())
 
 # -------------------- IMPORT AGENTS --------------------
 import sys
@@ -19,10 +50,28 @@ from agents.eligibility_agent import EligibilityAgent
 from agents.document_validation_agent import DocumentValidationAgent
 from agents.pathway_generation_agent import PathwayGenerationAgent
 
+# -------------------- TESSERACT AUTO-DETECTION --------------------
+import pytesseract
+
+# Try to find Tesseract automatically on Windows
+if os.name == 'nt':  # Windows
+    possible_paths = [
+        r'C:\Program Files\Tesseract-OCR\tesseract.exe',
+        r'C:\Program Files (x86)\Tesseract-OCR\tesseract.exe',
+        r'C:\Users\shibs\AppData\Local\Tesseract-OCR\tesseract.exe',
+        r'C:\Users\shibs\Downloads\Tesseract-OCR\tesseract.exe',
+        r'C:\Users\shibs\Downloads\tesseract\tesseract.exe',
+    ]
+    for path in possible_paths:
+        if os.path.exists(path):
+            pytesseract.pytesseract.tesseract_cmd = path
+            print(f"✅ Found Tesseract at: {path}")
+            break
+    else:
+        print("⚠️  Tesseract not found in common locations. OCR will fail if not in PATH.")
 
 # -------------------- APP SETUP --------------------
-app = Flask(__name__)
-CORS(app)
+# Flask app and CORS already initialized above
 
 UPLOAD_FOLDER = "uploads"
 ALLOWED_EXTENSIONS = {"pdf", "png", "jpg", "jpeg"}
@@ -101,6 +150,23 @@ def initialize_agents():
 
 
 # -------------------- ROUTES --------------------
+
+@app.route("/api/users/<int:user_id>", methods=["GET"])
+def get_user(user_id):
+    user = User.query.get(user_id)
+    if not user:
+        return jsonify({"error": "User not found"}), 404
+
+    return jsonify({
+        "id": user.id,
+        "name": user.name,
+        "age": user.age,
+        "gender": user.gender,
+        "state": user.state,
+        "occupation": user.occupation,
+        "monthly_income": float(user.monthly_income)
+    })
+
 @app.route("/api/health")
 def health():
     return jsonify({"status": "ok", "agents_ready": AGENTS_READY})
@@ -109,10 +175,23 @@ def health():
 @app.route("/api/save-profile", methods=["POST"])
 def save_profile():
     initialize_agents()
-    data = get_json()
+    data = request.get_json()  # FIX: use request.get_json()
     if not data:
         return jsonify({"error": "Invalid JSON"}), 400
-    return jsonify({"status": "success", "profile": data})
+
+    # Save to database
+    user = User(
+        name=data["name"],
+        age=data["age"],
+        gender=data["gender"],
+        state=data["state"],
+        occupation=data["occupation"],
+        monthly_income=data["monthly_income"]
+    )
+    db.session.add(user)
+    db.session.commit()
+
+    return jsonify({"status": "success", "profile": data, "user_id": user.id})
 
 
 # -------------------- SEARCH SCHEMES --------------------
@@ -173,6 +252,23 @@ def search_schemes():
             if full:
                 s["description"] = full.get("description", "")
                 s["benefits_text"] = full.get("benefits_text", "")
+                s["eligibility_text"] = full.get("eligibility_text", "")
+                s["documents_required_text"] = full.get("documents_required_text", "")
+                s["scheme_name"] = full.get("scheme_name", s.get("scheme_name", ""))
+                # Add eligibility rules if present
+                if "eligibility_rules" not in s and "eligibility_rules" in full:
+                    s["eligibility_rules"] = full.get("eligibility_rules", {})
+                # Add additional metadata from the scheme
+                s["category"] = full.get("category", "")
+                s["max_income"] = full.get("max_income", "")
+                s["min_age"] = full.get("min_age", "")
+                s["max_age"] = full.get("max_age", "")
+                s["state"] = full.get("state", "")
+                s["gender"] = full.get("gender", "")
+                s["occupation"] = full.get("occupation", "")
+                s["community"] = full.get("community", "")
+                s["application_url"] = full.get("application_url", "")
+                s["ministry"] = full.get("ministry", "")
 
             enriched.append(s)
         return enriched
@@ -188,6 +284,9 @@ def search_schemes():
             "schemes_found": len(retrieved)
         }
     }
+
+    print("\n📊 SYSTEM SNAPSHOT")
+    print(json.dumps(system_snapshot, indent=2))
 
     return jsonify(serialize({
         "interaction_id": interaction_id,
@@ -233,8 +332,9 @@ def get_required_documents():
 def validate_document():
     initialize_agents()
 
+    # ===== STEP 1: VALIDATE REQUEST =====
     if "file" not in request.files:
-        return jsonify({"error": "No file"}), 400
+        return jsonify({"error": "No file provided"}), 400
 
     file = request.files["file"]
     scheme_id = request.form.get("scheme_id")
@@ -243,29 +343,76 @@ def validate_document():
     if not file or file.filename == "":
         return jsonify({"error": "Invalid file"}), 400
 
+    if not scheme_id or not document_type:
+        return jsonify({"error": "Missing scheme_id or document_type"}), 400
+
     if not allowed_file(file.filename):
-        return jsonify({"error": "File type not allowed"}), 400
+        return jsonify({"error": f"File type not allowed. Allowed: {', '.join(ALLOWED_EXTENSIONS)}"}), 400
 
+    print(f"\n📋 DOCUMENT VALIDATION START")
+    print(f"  Scheme ID: {scheme_id}")
+    print(f"  Document Type: {document_type}")
+    print(f"  File: {file.filename}")
+
+    # ===== STEP 2: SAVE FILE =====
     filename = secure_filename(file.filename)
+    timestamp = int(time.time())
+    filename = f"{timestamp}_{filename}"
     path = os.path.join(app.config["UPLOAD_FOLDER"], filename)
-    file.save(path)
+    
+    try:
+        file.save(path)
+        if not os.path.exists(path):
+            return jsonify({"error": "Failed to save file"}), 500
+        print(f"  ✅ File saved: {path}")
+    except Exception as e:
+        return jsonify({"error": f"File save failed: {str(e)}"}), 500
 
-    result = doc_agent.validate_single_document(
-        scheme_id,
-        document_type,
-        {"file_path": path}
-    )
+    # ===== STEP 3: INITIALIZE SCHEME RULES IN AGENT =====
+    try:
+        if scheme_id not in doc_agent.doc_rules:
+            print(f"  ℹ️  Initializing doc_rules for {scheme_id}...")
+            required_docs = doc_agent.get_required_documents(scheme_id, "")
+    except Exception as e:
+        print(f"  ⚠️  Warning initializing doc_rules: {str(e)}")
 
-    status_snapshot = doc_agent.get_document_validation_status(scheme_id)
+    # ===== STEP 4: VALIDATE DOCUMENT =====
+    try:
+        result = doc_agent.validate_single_document(
+            scheme_id,
+            document_type,
+            {"file_path": path}
+        )
+        print(f"  📋 Validation result: {result}")
+    except Exception as e:
+        print(f"  ❌ Validation error: {str(e)}")
+        try:
+            os.remove(path)
+        except:
+            pass
+        return jsonify({"error": f"Validation failed: {str(e)}"}), 500
 
-    print("\n📊 DOCUMENT STATUS")
-    print(json.dumps(status_snapshot, indent=2))
+    # ===== STEP 5: GET VALIDATION MATRIX =====
+    try:
+        status_snapshot = doc_agent.get_document_validation_status(scheme_id)
+        print(f"\n📊 DOCUMENT VALIDATION MATRIX")
+        print(json.dumps(status_snapshot, indent=2))
+    except Exception as e:
+        print(f"  ⚠️  Could not get validation matrix: {str(e)}")
+        status_snapshot = {}
 
-    return jsonify({
-        "status": "valid" if result["status"] == "PASS" else "invalid",
-        "reason": result.get("reason"),
-        "file_path": path
-    })
+    # ===== STEP 6: RETURN RESPONSE =====
+    response = {
+        "status": "valid" if result.get("status") == "PASS" else "invalid",
+        "reason": result.get("reason", "Document validation complete"),
+        "file_path": path,
+        "document_type": document_type,
+        "validation_matrix": status_snapshot.get("document_validation_matrix", {})
+    }
+    
+    print(f"\n✅ RESPONSE: {response}\n")
+    return jsonify(response)
+    
 
 # -------------------- PATHWAY GENERATION --------------------
 @app.route("/api/generate-guidance", methods=["POST"])

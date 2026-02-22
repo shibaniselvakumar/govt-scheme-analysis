@@ -70,6 +70,8 @@ class EligibilityAgent(AIBaseAgent):
                 continue
 
             rules = self.precomputed_rules.get(scheme_id, {})
+            if not rules:
+                print(f"⚠️ No rules found for {scheme_id}, skipping eligibility checks")
             matrix = self.build_eligibility_matrix(user, rules)
 
             failed = [

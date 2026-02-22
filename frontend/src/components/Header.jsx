@@ -21,7 +21,6 @@ function Header() {
     { path: '/guidance', label: 'Application Guide', icon: CheckCircle },
     { path: '/map', label: 'Scheme Map', icon: Map },
     { path: '/dashboard', label: 'Dashboard', icon: BarChart3 },
-    { path: '/system-ui', label: 'System UI', icon: Search }
   ]
 
   return (

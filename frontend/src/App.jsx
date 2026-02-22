@@ -5,8 +5,8 @@ import Footer from './components/Footer'
 import HomePage from './components/Home/HomePage'
 import ProfilePage from './components/Profile/ProfilePage'
 import SchemesPage from './components/RelevantSchemes/SchemesPage'
+import EligibleSchemesPage from './components/EligibleSchemes/EligibleSchemesPage'
 
-import SchemeSelection from './components/SchemeSelection'
 import DocumentUpload from './components/DocumentUpload'
 import FullGuidance from './components/FullGuidance'
 import GeographicalMap from './components/GeographicalMap'
@@ -50,14 +50,11 @@ function App() {
               }
             />
 
-
-
-            {/* Scheme Selection */}
-            <Route 
-              path="/schemes" 
+           <Route 
+              path="/eligible-schemes" 
               element={
                 userProfile ? (
-                  <SchemeSelection 
+                  <EligibleSchemesPage 
                     userProfile={userProfile}
                     onSelect={setSelectedSchemes}
                   />

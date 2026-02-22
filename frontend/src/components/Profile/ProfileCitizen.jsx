@@ -45,6 +45,25 @@ function ProfileCitizen({ onComplete }) {
   })
   const [errors, setErrors] = useState({})
 
+  const useTestUser = async () => {
+    try {
+      const response = await api.get("/api/users/1") // fetch user ID 1
+      const user = response.data
+      setFormData({
+        name: user.name,
+        age: user.age,
+        gender: user.gender,
+        state: user.state,
+        occupation: user.occupation,
+        monthly_income: user.monthly_income
+      })
+      setShowForm(true) // show form with prefilled data
+    } catch (err) {
+      console.error(err)
+      alert("Test user not found")
+    }
+  }
+
   const validate = () => {
     const e = {}
     if (!formData.name) e.name = 'Name required'
@@ -57,31 +76,31 @@ function ProfileCitizen({ onComplete }) {
     return Object.keys(e).length === 0
   }
 
-  const handleSubmit = async (e) => {
+ const handleSubmit = async (e) => {
     e.preventDefault()
 
-    let profile
+    if (!validate()) return
 
-    if (DEV_MODE) {
-      profile = {
-        name: "Test User",
-        age: 35,
-        gender: "Female",
-        state: "Uttar Pradesh",
-        occupation: "Fisherman",
-        monthly_income: 12000
-      }
-    } else {
-      if (!validate()) return
-      profile = {
+    const profile = {
         ...formData,
         age: Number(formData.age),
         monthly_income: Number(formData.monthly_income)
-      }
     }
 
-  onComplete(profile)
-  navigate('/relevant-schemes')
+    try {
+        // Send data to Flask backend
+        const response = await api.post("/api/save-profile", profile)
+        if (response.data.status === "success") {
+            console.log("Profile saved with ID:", response.data.user_id)
+            onComplete(profile)
+            navigate("/relevant-schemes")
+        } else {
+            alert("Failed to save profile")
+        }
+    } catch (err) {
+        console.error(err)
+        alert("Error connecting to server")
+    }
 }
 
 
@@ -180,6 +199,12 @@ function ProfileCitizen({ onComplete }) {
               <p className="text-blue-600">
                 This information helps us guide you accurately
               </p>
+              <button
+                onClick={useTestUser}
+                className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold"
+              >
+                Use Test User
+              </button>
             </div>
 
             {/* BASIC IDENTITY */}

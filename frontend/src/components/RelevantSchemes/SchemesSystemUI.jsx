@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import ExecutionConsole from "./ExecutionConsole";
+import ExecutionConsole from "./ExecutionDashboard";
 import AgentHero from "./AgentHero";
 
 
@@ -224,30 +224,7 @@ function SchemesSystemUI({ topSchemes = [], systemSnapshot, eligibleSchemes = []
                 )
               })}
 
-              {/* animated mover: pulse travels between mapped main agents when trace advances */}
-              {mover.from && mover.to && (() => {
-                const aFrom = mapNodeToMain(mover.from)
-                const aTo = mapNodeToMain(mover.to)
-                const idxFrom = agentPositions.findIndex(p => p.name === aFrom)
-                const idxTo = agentPositions.findIndex(p => p.name === aTo)
-                if (idxFrom === -1 || idxTo === -1) return null
-                const from = agentPositions[idxFrom]
-                const to = agentPositions[idxTo]
-                const ax = from.x
-                const ay = from.y
-                const bx = to.x
-                const by = to.y
-
-                return (
-                  <motion.div key={mover.key}
-                    className="absolute w-3 h-3 bg-blue-300 rounded-full shadow-md"
-                    style={{ left: `calc(50% + ${ax}px - 6px)`, top: `calc(50% + ${ay}px - 6px)` }}
-                    animate={{ x: bx - ax, y: by - ay }}
-                    transition={{ duration: 0.7, ease: "easeInOut" }}
-                    onAnimationComplete={() => setMover({ from: null, to: null, key: 0 })}
-                  />
-                )
-              })()}
+             
 
               {/* subtle curved connections (non-random): between core and main agents */}
               <svg className="absolute inset-0 pointer-events-none" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid meet">
@@ -277,59 +254,10 @@ function SchemesSystemUI({ topSchemes = [], systemSnapshot, eligibleSchemes = []
           </div>
         </div>
 
-        <AgentHero 
-          activeAgent={systemSnapshot?.active_agent}
-          trace={trace}
-        />
 
         <ExecutionConsole trace={trace} />
 
-        {/* ================= SNAPSHOT PANEL ================= */}
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="md:col-span-2">
-            {/* left: already rendered ranked grid above; this area can remain for results */}
-          </div>
-
-          <div className="bg-slate-900/50 border border-blue-500/20 rounded-xl p-6 backdrop-blur">
-            <div className="text-xs tracking-widest text-blue-300 mb-3">SYSTEM SNAPSHOT</div>
-            <div className="font-mono text-sm text-slate-300 space-y-2">
-              <div className="flex justify-between">
-                <span>Phase</span>
-                <span className="text-blue-400">{systemSnapshot?.active_phase || 'N/A'}</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Active Agent</span>
-                <span className="text-blue-400">{systemSnapshot?.active_agent || 'N/A'}</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Query</span>
-                <span className="text-blue-400">{systemSnapshot?.metrics?.query || '-'}</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Schemes Found</span>
-                <span className="text-blue-400">{schemesFound}</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Eligible</span>
-                <span className="text-green-400">{eligibleSchemes.length}</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Rejected</span>
-                <span className="text-red-400">{rejectedSchemes.length}</span>
-              </div>
-            </div>
-
-            <div className="mt-4 text-xs tracking-widest text-blue-300">TRACE</div>
-            <div className="mt-2 max-h-48 overflow-auto text-xs font-mono text-slate-300">
-              {(systemSnapshot?.trace || []).map((t, i) => (
-                <div key={i} className={`py-1 ${i === currentTraceIndex ? 'text-blue-200' : 'text-slate-400'}`}>
-                  <div className="font-semibold">{t.event}</div>
-                  <div className="text-xs">{t.node} • {t.details ? Object.keys(t.details).map(k=>`${k}:${t.details[k]}`).join(', ') : ''}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+       
 
         {/* ================= TRACE FOOTER ================= */}
         <div className="mt-20 text-xs font-mono text-slate-500 border-t border-white/5 pt-6 tracking-widest">

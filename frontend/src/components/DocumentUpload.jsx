@@ -78,12 +78,15 @@ function DocumentUpload({ schemes = [], eligibilityOutputs = {}, onComplete }) {
       }));
 
       setValidationStatus(prev => ({
-        ...prev,
-        [`${schemeId}_${docType}`]: {
-          status: res.data.status,
-          reason: res.data.reason,
-        },
-      }));
+  ...prev,
+  [`${schemeId}_${docType}`]: {
+    status: res.data.status,
+    reason:
+      res.data.status === "valid"
+        ? "✅ Valid Document"
+        : "❌ Improper Document",
+  },
+}));
     } catch (err) {
       console.error('[UPLOAD_ERROR]', err);
       alert('Document upload failed');
@@ -267,11 +270,19 @@ function DocumentUpload({ schemes = [], eligibilityOutputs = {}, onComplete }) {
                     />
                   )}
 
-                  {validation?.reason && (
-                    <p className="text-sm mt-2 text-gray-600">
-                      {validation.reason}
-                    </p>
-                  )}
+                  {validation && (
+  <p
+    className={`text-sm mt-2 font-medium ${
+      validation.status === "valid"
+        ? "text-green-600"
+        : "text-red-600"
+    }`}
+  >
+    {validation.status === "valid"
+      ? "✅ Valid Document"
+      : "❌ Improper Document"}
+  </p>
+)}    
                 </div>
               );
             })}
