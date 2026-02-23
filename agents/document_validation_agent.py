@@ -128,6 +128,7 @@ Rules:
     def validate_single_document(self, scheme_id: str, document_type: str, document_payload: dict) -> dict:
         """
         Validate a single uploaded document
+        Returns detailed information including OCR text and keywords
         """
         required_docs = self.doc_rules.get(scheme_id, {}).get("required_documents", {})
 
@@ -135,23 +136,34 @@ Rules:
             return {
                 "document": document_type,
                 "status": "FAIL",
-                "reason": "Document not required for this scheme"
+                "reason": "Document not required for this scheme",
+                "ocr_text": "",
+                "extracted_keywords": [],
+                "matched_keywords": [],
+                "confidence": 0.0
             }
 
-        status, reason = self.validate_document_format(document_type, document_payload)
+        status, reason, ocr_text, matched_keywords, confidence = self.validate_document_format(document_type, document_payload)
 
         self.user_documents.setdefault(scheme_id, {})
         self.user_documents[scheme_id][document_type] = {
             "mandatory": required_docs[document_type].get("mandatory", True),
             "submitted": True,
             "status": status,
-            "reason": reason
+            "reason": reason,
+            "ocr_text": ocr_text[:500] if ocr_text else "",  # Store first 500 chars
+            "matched_keywords": matched_keywords,
+            "confidence": confidence
         }
 
         return {
             "document": document_type,
             "status": status,
-            "reason": reason
+            "reason": reason,
+            "ocr_text": ocr_text[:500] if ocr_text else "",
+            "extracted_keywords": ocr_text.split() if ocr_text else [],
+            "matched_keywords": matched_keywords,
+            "confidence": confidence
         }
 
     def get_document_validation_status(self, scheme_id: str) -> dict:
@@ -211,55 +223,59 @@ Rules:
         """
         Deterministic format validation with OCR content checking
         Supports both text values and uploaded files
+        Returns: (status, reason, ocr_text, matched_keywords, confidence)
         """
 
         if not payload:
-            return "FAIL", "Empty document payload"
+            return "FAIL", "Empty document payload", "", [], 0.0
 
         # ---------- FILE-BASED DOCUMENTS ----------
         file_path = payload.get("file_path")
         if file_path:
             if not os.path.exists(file_path):
-                return "FAIL", "Uploaded file not found"
+                return "FAIL", "Uploaded file not found", "", [], 0.0
 
             # Check file extension
             allowed_ext = {".pdf", ".jpg", ".jpeg", ".png"}
             ext = os.path.splitext(file_path)[1].lower()
 
             if ext not in allowed_ext:
-                return "FAIL", f"Unsupported file type: {ext}"
+                return "FAIL", f"Unsupported file type: {ext}", "", [], 0.0
 
             # Extract text using OCR
             try:
                 extracted_text = self._extract_text_from_image(file_path)
                 
                 # Validate document type based on extracted content
-                validation_result = self._validate_document_content(document_type, extracted_text)
+                is_valid, matched_keywords, confidence = self._validate_document_content_detailed(
+                    document_type,
+                    extracted_text
+                )
                 
-                if validation_result:
-                    return "PASS", f"Document recognized: {document_type}"
+                if is_valid:
+                    return "PASS", f"Document recognized: {document_type}", extracted_text, matched_keywords, confidence
                 else:
-                    return "FAIL", f"Could not verify {document_type} in document"
+                    return "FAIL", f"Could not verify {document_type} in document", extracted_text, matched_keywords, confidence
                     
             except Exception as e:
                 print(f"⚠️ OCR Error for {document_type}: {str(e)}")
-                return "FAIL", f"Failed to process document: {str(e)}"
+                return "FAIL", f"Failed to process document: {str(e)}", "", [], 0.0
 
         # ---------- VALUE-BASED DOCUMENTS ----------
         value = payload.get("value")
 
         if document_type == "aadhaar":
             if not value or not re.fullmatch(r"\d{12}", str(value)):
-                return "FAIL", "Invalid Aadhaar format (12 digits required)"
+                return "FAIL", "Invalid Aadhaar format (12 digits required)", value, ["aadhaar"], 0.0
 
         elif document_type == "pan":
             if not value or not re.fullmatch(r"[A-Z]{5}[0-9]{4}[A-Z]", str(value)):
-                return "FAIL", "Invalid PAN format"
+                return "FAIL", "Invalid PAN format", value, ["pan"], 0.0
 
         elif value is None:
-            return "FAIL", "Document value missing"
+            return "FAIL", "Document value missing", "", [], 0.0
 
-        return "PASS", None
+        return "PASS", None, str(value), [document_type], 1.0
 
     def _extract_text_from_image(self, file_path: str) -> str:
         """Extract text from image using OCR (Tesseract)"""
@@ -295,6 +311,15 @@ Rules:
     def _validate_document_content(self, document_type: str, extracted_text: str) -> bool:
         """
         Validate if the extracted text matches the expected document type
+        Uses fuzzy matching to handle OCR errors
+        """
+        is_valid, _, _ = self._validate_document_content_detailed(document_type, extracted_text)
+        return is_valid
+
+    def _validate_document_content_detailed(self, document_type: str, extracted_text: str) -> tuple:
+        """
+        Validate if the extracted text matches the expected document type
+        Returns: (is_valid, matched_keywords, confidence_score)
         Uses fuzzy matching to handle OCR errors
         """
         import difflib
@@ -358,7 +383,7 @@ Rules:
         # Check if at least one keyword is found
         if not keywords:
             print(f"  ❌ No validation keywords for '{document_type}' - REJECTING")
-            return False
+            return False, [], 0.0
         
         # Fuzzy matching: find keywords even with OCR errors
         found_keywords = []
@@ -367,7 +392,7 @@ Rules:
             if kw in extracted_text:
                 found_keywords.append(kw)
             else:
-                # Fuzzy match: check if keyword is 80% similar (handles OCR errors)
+                # Fuzzy match: check if keyword is 75% similar (handles OCR errors)
                 for word in extracted_text.split():
                     similarity = difflib.SequenceMatcher(None, kw, word).ratio()
                     if similarity >= 0.75:  # 75% match threshold
@@ -377,12 +402,15 @@ Rules:
         print(f"  ✅ Keywords found: {found_keywords}")
         print(f"  📋 Extracted text (first 200 chars): {extracted_text[:200]}")
         
+        # Calculate confidence
+        confidence = min(len(found_keywords) / max(len(keywords), 1), 1.0)
+        
         # Require at least one keyword match
         if len(found_keywords) > 0:
-            return True
+            return True, found_keywords, confidence
         else:
             print(f"  ❌ No keywords matched (fuzzy match threshold: 75%)")
-            return False
+            return False, [], 0.0
 
     # --------------------------------------------------
     # 🔹 Utility

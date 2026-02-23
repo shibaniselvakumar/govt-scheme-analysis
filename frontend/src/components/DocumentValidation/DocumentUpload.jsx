@@ -236,7 +236,7 @@ function DocumentUpload({
      UI
   ============================ */
   return (
-    <div className="min-h-screen p-6">
+    <div className="min-h-screen p-6 bg-white">
       {schemes.map(scheme => {
         const schemeId = scheme.scheme_id || scheme._id;
         const docs = requiredDocs[schemeId] || {};
@@ -293,18 +293,18 @@ function DocumentUpload({
                   )}
 
                   {validation && (
-  <p
-    className={`text-sm mt-2 font-medium ${
-      validation.status === "valid"
-        ? "text-green-600"
-        : "text-red-600"
-    }`}
-  >
-    {validation.status === "valid"
-      ? "✅ Valid Document"
-      : "❌ Improper Document"}
-  </p>
-)}    
+                    <p
+                      className={`text-sm mt-2 font-medium ${
+                        validation.status === "valid"
+                          ? "text-green-600"
+                          : "text-red-600"
+                      }`}
+                    >
+                      {validation.status === "valid"
+                        ? "✅ Valid Document"
+                        : "❌ Improper Document"}
+                    </p>
+                  )}    
                 </div>
               );
             })}

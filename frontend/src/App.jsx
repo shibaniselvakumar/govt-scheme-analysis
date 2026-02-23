@@ -7,7 +7,7 @@ import ProfilePage from './components/Profile/ProfilePage'
 import SchemesPage from './components/RelevantSchemes/SchemesPage'
 import EligibleSchemesPage from './components/EligibleSchemes/EligibleSchemesPage'
 
-import DocumentUpload from './components/DocumentUpload'
+import DocumentValidationPage from './components/DocumentValidation/DocumentValidationPage'
 import FullGuidance from './components/FullGuidance'
 import GeographicalMap from './components/GeographicalMap'
 import Dashboard from './components/Dashboard'
@@ -69,7 +69,7 @@ function App() {
               path="/documents" 
               element={
                 selectedSchemes.length > 0 && userProfile ? (
-                  <DocumentUpload 
+                  <DocumentValidationPage 
                     schemes={selectedSchemes}
                     eligibilityOutputs={eligibilityOutputs}
                     userProfile={userProfile}

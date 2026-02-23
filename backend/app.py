@@ -401,13 +401,33 @@ def validate_document():
         print(f"  ⚠️  Could not get validation matrix: {str(e)}")
         status_snapshot = {}
 
-    # ===== STEP 6: RETURN RESPONSE =====
+    # ===== STEP 6: EXTRACT OCR DETAILS FROM RESULT =====
+    ocr_text = result.get("ocr_text", "")
+    extracted_keywords = result.get("extracted_keywords", [])
+    file_size = os.path.getsize(path) if os.path.exists(path) else 0
+    file_type = os.path.splitext(path)[1].lower()
+
+    # ===== STEP 7: RETURN ENHANCED RESPONSE =====
     response = {
         "status": "valid" if result.get("status") == "PASS" else "invalid",
         "reason": result.get("reason", "Document validation complete"),
         "file_path": path,
+        "file_type": file_type,
+        "file_size": file_size,
         "document_type": document_type,
-        "validation_matrix": status_snapshot.get("document_validation_matrix", {})
+        "scheme_id": scheme_id,
+        "validation_matrix": status_snapshot.get("document_validation_matrix", {}),
+        "ocr_text": ocr_text[:500],  # First 500 chars of OCR
+        "ocr_text_length": len(ocr_text),
+        "extracted_keywords": extracted_keywords,
+        "matching_keywords": result.get("matched_keywords", []),
+        "fuzzy_match_threshold": 0.75,
+        "processing_timestamp": int(time.time()),
+        "validation_details": {
+            "document_recognized": result.get("status") == "PASS",
+            "keywords_found": len(result.get("matched_keywords", [])) > 0,
+            "confidence_score": result.get("confidence", 0.0)
+        }
     }
     
     print(f"\n✅ RESPONSE: {response}\n")
