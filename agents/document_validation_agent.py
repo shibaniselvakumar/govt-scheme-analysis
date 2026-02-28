@@ -58,8 +58,7 @@ class DocumentValidationAgent(AIBaseAgent):
     def extract_required_documents(self, scheme_id: str, raw_text: str = "") -> dict:
         """
         Returns structured document rules for a scheme.
-        Uses precomputed JSON first; falls back to LLM if missing.
-        Adapts to 'documents' list format from your JSON.
+        Uses precomputed JSON first; falls back to default documents if missing.
         """
         if scheme_id in self.doc_rules:
             return self.doc_rules[scheme_id]
@@ -68,6 +67,10 @@ class DocumentValidationAgent(AIBaseAgent):
         if scheme_id in self.precomputed_docs:
             precomp = self.precomputed_docs[scheme_id]
             docs_list = precomp.get("documents", [])
+
+            # If docs_list is empty or None, use default documents
+            if not docs_list:
+                docs_list = ["Aadhaar Card", "Income Certificate", "Ration Card"]
 
             required_documents = {}
             for doc in docs_list:
@@ -81,39 +84,18 @@ class DocumentValidationAgent(AIBaseAgent):
             self.doc_rules[scheme_id] = {"required_documents": required_documents}
             return self.doc_rules[scheme_id]
 
-        # Fall back to LLM if needed
-        if self.llm is None:
-            return {"required_documents": {}}
-
-        prompt = f"""
-Extract required documents for scheme: {scheme_id}
-Raw text: {raw_text}
-
-Return ONLY valid JSON:
-{{
-  "required_documents": {{
-    "<document_key>": {{
-      "mandatory": true or false,
-      "description": "<short description>"
-    }}
-  }}
-}}
-
-Rules:
-- Use lowercase snake_case keys (aadhaar, pan, income_certificate, etc.)
-- If mandatory status is unclear, assume mandatory = true
-- Do NOT add explanations or extra text
-"""
-
-        llm_output = self.llm.generate(prompt, max_tokens=400)
-        cleaned = self.clean_json_text(llm_output)
-
-        try:
-            parsed = json.loads(cleaned)
-        except Exception:
-            parsed = {"required_documents": {}}
-
-        return parsed
+        # Fall back to default documents if scheme not in precomputed
+        default_docs = ["Aadhaar Card", "Income Certificate", "Ration Card"]
+        required_documents = {}
+        for doc in default_docs:
+            key = doc.lower().replace(" ", "_").replace("(", "").replace(")", "").strip("_")
+            required_documents[key] = {
+                "mandatory": True,
+                "description": doc,
+            }
+        
+        self.doc_rules[scheme_id] = {"required_documents": required_documents}
+        return self.doc_rules[scheme_id]
 
     # --------------------------------------------------
     # 🔹 Public API
@@ -126,10 +108,7 @@ Rules:
         return scheme_rules.get("required_documents", {})
 
     def validate_single_document(self, scheme_id: str, document_type: str, document_payload: dict) -> dict:
-        """
-        Validate a single uploaded document
-        Returns detailed information including OCR text and keywords
-        """
+
         required_docs = self.doc_rules.get(scheme_id, {}).get("required_documents", {})
 
         if document_type not in required_docs:

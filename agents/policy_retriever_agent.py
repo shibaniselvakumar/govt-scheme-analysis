@@ -45,7 +45,7 @@ class PolicyRetrieverAgent(AIBaseAgent):
     self,
     query: str,
     user_profile: dict,
-    top_k: int = 5,
+    top_k: int = 25,
     system_trace: list | None = None
 ) -> list[dict]:
 
@@ -78,9 +78,7 @@ class PolicyRetrieverAgent(AIBaseAgent):
             step_start
         )
 
-        # -------------------------
-        # STEP 3 — Embedding
-        # -------------------------
+        # Embedding
         step_start = time.time()
         query_vector = self.llm.get_embedding(full_query)
 
@@ -93,10 +91,6 @@ class PolicyRetrieverAgent(AIBaseAgent):
             },
             step_start
         )
-
-        # -------------------------
-        # STEP 4 — Mongo Pre-filter
-        # -------------------------
         step_start = time.time()
 
         state = user_profile.get("state")
@@ -104,14 +98,12 @@ class PolicyRetrieverAgent(AIBaseAgent):
         db_filter = {}
 
         if state:
-
-            # Case-insensitive regex match
             db_filter = {
                 "$or": [
                     {"state": {"$regex": f"^{state}$", "$options": "i"}},
                     {"states": {"$regex": f"^{state}$", "$options": "i"}},
                     {"states": {"$elemMatch": {"$regex": f"^{state}$", "$options": "i"}}},
-                    {"state": None},          # allow national
+                    {"state": None},          
                     {"states": None}
                 ]
             }
@@ -119,7 +111,7 @@ class PolicyRetrieverAgent(AIBaseAgent):
             cursor = self.collection.find(db_filter, {"_id": 1}).limit(300)
             candidate_ids = [doc["_id"] for doc in cursor]
 
-        # 🔁 Fallback: If nothing matched, use full corpus (but limit)
+
         if not candidate_ids:
             fallback_cursor = self.collection.find({}, {"_id": 1}).limit(300)
             candidate_ids = [doc["_id"] for doc in fallback_cursor]
@@ -174,27 +166,21 @@ class PolicyRetrieverAgent(AIBaseAgent):
         )
 
         # -------------------------
-        # STEP 6 — Intersection
+        # STEP 6 — Return all FAISS results (semantic relevance only)
         # -------------------------
         step_start = time.time()
 
-        if candidate_ids:
-            filtered = [
-                (doc_ids[i], scores[i])
-                for i in range(len(doc_ids))
-                if doc_ids[i] in candidate_ids
-            ]
-        else:
-            filtered = list(zip(doc_ids, scores))
-
-        doc_ids = [f[0] for f in filtered]
-        scores = [f[1] for f in filtered]
+        # Return all FAISS results without state filtering
+        # State filtering will be applied in eligibility validation
+        final_doc_ids = doc_ids
+        final_scores = scores
 
         self._trace(system_trace, 6,
-            "SEMANTIC_CONTEXT_INTERSECTION",
+            "FAISS_RESULTS_ACCEPTED",
             "POLICY_RETRIEVER",
             {
-                "final_match_count": len(doc_ids)
+                "final_match_count": len(final_doc_ids),
+                "note": "All FAISS matches returned - state filtering applied in eligibility"
             },
             step_start
         )
@@ -206,17 +192,15 @@ class PolicyRetrieverAgent(AIBaseAgent):
 
         results = []
 
-        for i, doc_id in enumerate(doc_ids):
+        for i, doc_id in enumerate(final_doc_ids):
             scheme = self.collection.find_one({"_id": doc_id})
             if not scheme:
                 continue
 
-            
-
             results.append({
                 "scheme_id": str(scheme["_id"]),
                 "scheme_name": scheme.get("scheme_name"),
-                "similarity_score": float(scores[i]),
+                "similarity_score": float(final_scores[i]),
                 "rank": i + 1
             })
 

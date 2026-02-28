@@ -20,7 +20,7 @@ function Header() {
     { path: '/documents', label: 'Upload Documents', icon: Upload },
     { path: '/guidance', label: 'Application Guide', icon: CheckCircle },
     { path: '/map', label: 'Scheme Map', icon: Map },
-    { path: '/dashboard', label: 'Dashboard', icon: BarChart3 },
+ 
   ]
 
   return (

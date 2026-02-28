@@ -8,6 +8,7 @@ import SchemesPage from './components/RelevantSchemes/SchemesPage'
 import EligibleSchemesPage from './components/EligibleSchemes/EligibleSchemesPage'
 
 import DocumentValidationPage from './components/DocumentValidation/DocumentValidationPage'
+import GuidancePage from './components/PathwayGeneration/GuidancePage'
 import FullGuidance from './components/FullGuidance'
 import GeographicalMap from './components/GeographicalMap'
 import Dashboard from './components/Dashboard'
@@ -16,6 +17,7 @@ import SystemUIPage from './components/SystemUI/SystemUIPage'
 function App() {
   const [userProfile, setUserProfile] = useState(null)
   const [selectedSchemes, setSelectedSchemes] = useState([])
+  const [eligibleSchemes, setEligibleSchemes] = useState([])
   const [eligibilityOutputs, setEligibilityOutputs] = useState({})
   const [uploadedDocuments, setUploadedDocuments] = useState({})
   const [guidanceData, setGuidanceData] = useState([])
@@ -56,7 +58,10 @@ function App() {
                 userProfile ? (
                   <EligibleSchemesPage 
                     userProfile={userProfile}
-                    onSelect={setSelectedSchemes}
+                    onSelect={(schemes) => {
+                      setSelectedSchemes(schemes)
+                      setEligibleSchemes(schemes)
+                    }}
                   />
                 ) : (
                   <Navigate to="/profile" replace />
@@ -84,14 +89,17 @@ function App() {
               } 
             />
 
-            {/* Guidance */}
+            {/* Pathway Generation - NEW SYSTEM UI */}
             <Route 
               path="/guidance" 
               element={
-                guidanceData.length > 0 ? (
-                  <FullGuidance guidanceData={guidanceData} />
+                eligibleSchemes.length > 0 && userProfile ? (
+                  <GuidancePage 
+                    userProfile={userProfile}
+                    eligibleSchemes={eligibleSchemes}
+                  />
                 ) : (
-                  <Navigate to="/documents" replace />
+                  <Navigate to="/eligible-schemes" replace />
                 )
               }
             />

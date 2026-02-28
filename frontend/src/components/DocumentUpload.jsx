@@ -95,8 +95,8 @@ function DocumentUpload({
           status: res.data.status,
           reason:
             res.data.status === "valid"
-              ? "✅ Valid Document"
-              : "❌ Improper Document",
+              ? "Valid Document"
+              : "Invalid Document",
           ocr_text: res.data.ocr_text || "",
           ocr_text_length: res.data.ocr_text_length || 0,
           extracted_keywords: res.data.extracted_keywords || [],
@@ -301,8 +301,8 @@ function DocumentUpload({
     }`}
   >
     {validation.status === "valid"
-      ? "✅ Valid Document"
-      : "❌ Improper Document"}
+      ? "Valid Document"
+      : "Invalid Document"}
   </p>
 )}    
                 </div>

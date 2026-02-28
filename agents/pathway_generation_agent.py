@@ -41,48 +41,63 @@ class PathwayGenerationAgent(AIBaseAgent):
                 [f"- Acquire {doc} as per scheme instructions" for doc in missing_docs]
             )
 
-        # Build the prompt
-        prompt = f"""
-You are a government scheme guidance assistant.
+        # Extract ONLY essential scheme details to avoid LLM slowdown
+        scheme_details = eligibility_output.get("scheme_details", {})
+        scheme_name = eligibility_output.get("scheme_name", "the scheme")
+        scheme_description = scheme_details.get("description", "")[:200]  # Limit to 200 chars
+        scheme_benefits = scheme_details.get("benefits_text", "")[:300]  # Limit to 300 chars
+        application_url = scheme_details.get("application_url", "")
+
+        # Build the prompt with concise scheme context
+        prompt = f"""You are a government scheme guidance assistant helping citizens navigate the application process.
+
+SCHEME: {scheme_name}
+Brief: {scheme_description}
+Key Benefits: {scheme_benefits}
+URL: {application_url}
+
+USER ELIGIBILITY STATUS:
+{json.dumps(eligibility_output, indent=2)}
+
+DOCUMENT STATUS:
+{json.dumps(document_status, indent=2)}
 
 Your task:
-- ALWAYS generate FULL guidance.
+- Generate FULL guidance specific to {scheme_name}
 - FULL guidance means:
-  - Pre-Application steps
-  - Application steps
-  - Post-Application steps
+  - Pre-Application steps (what to prepare)
+  - Application steps (how to apply)
+  - Post-Application steps (what happens next)
   - Missing Documents section:
     - INCLUDE only if document status is INCOMPLETE
     - SKIP if document status is COMPLETE
 
 Important rules:
 - NEVER leave Pre-Application, Application Steps, or Post-Application empty
-- Steps must be actionable and scheme-specific
+- Steps must be SPECIFIC to {scheme_name}
+- Steps must be ACTIONABLE
+- Consider the user's eligibility status
+- Reference the document requirements and benefits
 
 STRICT OUTPUT FORMAT (use these exact headers):
 
 PRE_APPLICATION:
-- Provide actionable pre-application steps
+- Provide actionable pre-application steps specific to {scheme_name}
 
 {missing_docs_block}
 
 APPLICATION_STEPS:
-- Provide actionable application steps
+- Provide actionable application steps for {scheme_name}
 
 POST_APPLICATION:
 - Provide post-application steps
-
-Eligibility Data:
-{json.dumps(eligibility_output, indent=2)}
-
-Document Status:
-{json.dumps(document_status, indent=2)}
 
 Formatting rules:
 - Use '-' bullets only
 - Do NOT number steps
 - Do NOT return JSON
 - Do NOT add explanations outside sections
+- Be specific and scheme-aware
 """
 
         print("\n================ LLM PROMPT =================")

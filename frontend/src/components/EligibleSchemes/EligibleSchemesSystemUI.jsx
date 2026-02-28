@@ -152,11 +152,11 @@ function EligibleSchemesSystemUI({ userProfile = {}, schemes = [], eligibleSchem
                           <div>Status: <span className={isEligible ? 'text-green-400' : 'text-red-400'}>
                             {isEligible ? 'ELIGIBLE' : 'REJECTED'}
                           </span></div>
-                          <div>Matrix: {matrixStatus.passed}/{matrixStatus.total} passed</div>
+                          {!isEligible && <div>Matrix: {matrixStatus.passed}/{matrixStatus.total} passed</div>}
                           <div className="text-slate-500">{getEligibilityReason(schemeData)}</div>
                           
-                          {/* ELIGIBILITY MATRIX */}
-                          {schemeData.eligibility_matrix && (
+                          {/* ELIGIBILITY MATRIX - ONLY FOR REJECTED */}
+                          {!isEligible && schemeData.eligibility_matrix && (
                             <div className="mt-3 pt-2 border-t border-slate-700/40">
                               {Object.keys(schemeData.eligibility_matrix).length > 0 ? (
                                 <div className="grid grid-cols-2 gap-2">

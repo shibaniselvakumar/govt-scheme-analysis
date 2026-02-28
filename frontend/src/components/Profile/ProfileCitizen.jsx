@@ -107,6 +107,19 @@ function ProfileCitizen({ onComplete }) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100">
 
+      {/* floating test-user button (corner) */}
+      {DEV_MODE && (
+        <button
+          onClick={useTestUser}
+          className="fixed top-6 right-6 z-[9999]
+            bg-green-600 hover:bg-green-700
+            text-white px-4 py-2 rounded-full
+            shadow-lg transition"
+        >
+          Use Test User
+        </button>
+      )}
+
       {/* HERO / CONTEXT */}
       {!showForm && (
         <section className="max-w-7xl mx-auto px-6 py-24 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
@@ -199,12 +212,6 @@ function ProfileCitizen({ onComplete }) {
               <p className="text-blue-600">
                 This information helps us guide you accurately
               </p>
-              <button
-                onClick={useTestUser}
-                className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold"
-              >
-                Use Test User
-              </button>
             </div>
 
             {/* BASIC IDENTITY */}

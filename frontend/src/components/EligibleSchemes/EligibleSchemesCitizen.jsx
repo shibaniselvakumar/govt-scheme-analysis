@@ -12,6 +12,7 @@ function EligibleSchemesCitizen({ userProfile, onSelect, onDataUpdate }) {
   const [selectedSchemes, setSelectedSchemes] = useState([])
   const [loading, setLoading] = useState(true)
   const [searching, setSearching] = useState(false)
+  const [showTop10, setShowTop10] = useState(false)
 
   // Update parent component when data changes
   useEffect(() => {
@@ -23,6 +24,27 @@ function EligibleSchemesCitizen({ userProfile, onSelect, onDataUpdate }) {
       })
     }
   }, [schemes, eligibleSchemes, rejectedSchemes, onDataUpdate])
+
+  // Load initial schemes on component mount
+  useEffect(() => {
+    const loadInitialSchemes = async () => {
+      try {
+        setLoading(true)
+        const response = await api.post('/api/search-schemes', {
+          query: 'all',
+          userProfile
+        })
+        setSchemes(response.data.top_schemes || [])
+        setEligibleSchemes(response.data.eligible_schemes || [])
+        setRejectedSchemes(response.data.rejected_schemes || [])
+      } catch (error) {
+        console.error('Error loading schemes:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+    loadInitialSchemes()
+  }, [userProfile])
 
 
 
@@ -114,28 +136,18 @@ function EligibleSchemesCitizen({ userProfile, onSelect, onDataUpdate }) {
       </div>
     </div>
 
-    {/* SEARCH */}
-    <div className="bg-white rounded-2xl border border-blue-200 p-6 shadow-lg">
-      <div className="flex gap-4">
-        <div className="flex-1 relative">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
-          <input
-            value={query}
-            onChange={e => setQuery(e.target.value)}
-            onKeyDown={e => e.key === 'Enter' && handleSearch()}
-            placeholder="Refine schemes (education, housing, agriculture...)"
-            className="input-field pl-12"
-          />
-        </div>
-        <button
-          onClick={handleSearch}
-          disabled={searching}
-          className="bg-blue-600 hover:bg-blue-700 text-white px-6 rounded-xl font-medium flex items-center gap-2"
-        >
-          {searching ? <Loader2 className="animate-spin" /> : <Search />}
-          Refine
-        </button>
-      </div>
+    {/* FILTER */}
+    <div className="flex justify-end">
+      <button
+        onClick={() => setShowTop10(!showTop10)}
+        className={`px-6 py-2 rounded-xl font-medium transition-colors ${
+          showTop10
+            ? 'bg-purple-600 hover:bg-purple-700 text-white'
+            : 'bg-gray-200 hover:bg-gray-300 text-gray-800'
+        }`}
+      >
+        {showTop10 ? 'Show All' : 'Top 10'}
+      </button>
     </div>
 
     {/* ELIGIBLE SCHEMES */}
@@ -147,7 +159,7 @@ function EligibleSchemesCitizen({ userProfile, onSelect, onDataUpdate }) {
         </h2>
 
         <div className="grid gap-6">
-          {eligibleSchemes.map(scheme => {
+          {eligibleSchemes.slice(0, showTop10 ? 10 : eligibleSchemes.length).map(scheme => {
             const id = scheme.scheme_id || scheme._id
             const selected = selectedSchemes.find(s => (s.scheme_id || s._id) === id)
 
@@ -194,7 +206,7 @@ function EligibleSchemesCitizen({ userProfile, onSelect, onDataUpdate }) {
         </h2>
 
         <div className="grid gap-4">
-          {rejectedSchemes.map(scheme => (
+          {rejectedSchemes.slice(0, showTop10 ? 10 : rejectedSchemes.length).map(scheme => (
             <div
               key={scheme.scheme_id}
               className="bg-white border border-gray-200 rounded-xl p-4"

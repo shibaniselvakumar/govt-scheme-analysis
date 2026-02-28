@@ -14,6 +14,7 @@ function RelevantSchemesDisplay({ userProfile,
   const [loading, setLoading] = useState(false)
   const [searching, setSearching] = useState(false)
   const [query, setQuery] = useState('')
+  const [showTop10, setShowTop10] = useState(false)
   const [stats, setStats] = useState({
     totalSchemes: 0,
     averageMatch: 0
@@ -34,12 +35,12 @@ function RelevantSchemesDisplay({ userProfile,
       setRejectedSchemes(response.data.rejected_schemes || [])
       setSystemSnapshot(response.data._system || {})
 
-
-
+      // Display top_schemes if no search query, otherwise use search results
       const allSchemes = response.data.top_schemes || []
       const eligibleSchemes = response.data.eligible_schemes || []
 
       setSchemes(allSchemes)
+      setShowTop10(false) // Reset filter to show all results
       setStats({
         totalSchemes: allSchemes.length,
         averageMatch: allSchemes.length > 0
@@ -53,6 +54,11 @@ function RelevantSchemesDisplay({ userProfile,
       setSearching(false)
     }
   }
+
+  // Load initial schemes on component mount
+  useEffect(() => {
+    fetchRelevantSchemes()
+  }, [])
 
 
 
@@ -120,33 +126,43 @@ function RelevantSchemesDisplay({ userProfile,
                 value={query}
                 onChange={e => setQuery(e.target.value)}
                 onKeyDown={e => e.key === 'Enter' && handleSearch()}
-                placeholder="Search schemes (education, housing, agriculture...)"
+                placeholder="Refine schemes (education, housing, agriculture...)"
                 className="input-field pl-12"
               />
             </div>
             <button
               onClick={handleSearch}
-              disabled={searching || !query.trim()}
+              disabled={searching}
               className="bg-blue-600 hover:bg-blue-700 text-white px-6 rounded-xl font-medium flex items-center gap-2"
             >
               {searching ? <Loader2 className="animate-spin" /> : <Search />}
-              Search
+              Refine
+            </button>
+            <button
+              onClick={() => setShowTop10(!showTop10)}
+              className={`px-6 rounded-xl font-medium transition-colors ${
+                showTop10
+                  ? 'bg-purple-600 hover:bg-purple-700 text-white'
+                  : 'bg-gray-200 hover:bg-gray-300 text-gray-800'
+              }`}
+            >
+              {showTop10 ? 'Show All' : 'Top 10'}
             </button>
           </div>
         </div>
 
        {/* SCHEMES LIST */}
-{!loading && query.trim() && schemes.length > 0 && (
+{!loading && schemes.length > 0 && (
   <div className="space-y-6">
-    {schemes.map((scheme) => (
+    {schemes.slice(0, showTop10 ? 10 : schemes.length).map((scheme) => (
       <SchemeCard key={scheme.scheme_id || scheme._id} scheme={scheme} />
     ))}
   </div>
 )}
 
-{/* Optional: show "No schemes found" if search returns empty */}
-{!loading && query.trim() && schemes.length === 0 && (
-  <p className="text-center text-gray-500 mt-6">No schemes found for "{query}"</p>
+{/* Show "No schemes found" if no search and no initial schemes */}
+{!loading && schemes.length === 0 && (
+  <p className="text-center text-gray-500 mt-6">No relevant schemes found based on your profile</p>
 )}
 
 

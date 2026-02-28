@@ -13,7 +13,26 @@ function SchemeSelection({ userProfile, onSelect }) {
   const [loading, setLoading] = useState(true)
   const [searching, setSearching] = useState(false)
 
-
+  // Load initial schemes on mount
+  useEffect(() => {
+    const loadInitialSchemes = async () => {
+      try {
+        setLoading(true)
+        const response = await api.post('/api/search-schemes', {
+          query: 'all',
+          userProfile
+        })
+        setSchemes(response.data.top_schemes || [])
+        setEligibleSchemes(response.data.eligible_schemes || [])
+        setRejectedSchemes(response.data.rejected_schemes || [])
+      } catch (error) {
+        console.error('Error loading schemes:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+    loadInitialSchemes()
+  }, [userProfile])
 
  const handleSearch = async () => {
   if (!query.trim()) return

@@ -150,77 +150,95 @@ function DocumentUpload({
     setGeneratingGuidance(true);
 
     try {
+      console.log('[GENERATING_GUIDANCE] Calling backend API...');
+
       const guidanceResults = [];
 
+      // Generate guidance for each scheme
       for (const scheme of schemes) {
         const schemeId = scheme.scheme_id || scheme._id;
-        const schemeDocs = requiredDocs[schemeId] || {};
+        const eligibilityOutput = eligibilityOutputs[schemeId] || {};
+        const docStatus = validationStatus[schemeId] || { final_document_status: 'UNKNOWN' };
 
-        console.log(`\n[SCHEME_START] ${schemeId}`, scheme);
-
-        /* ---- BUILD DOCUMENT STATUS (BACKEND FORMAT) ---- */
-        const document_validation_matrix = {};
-
-        Object.entries(schemeDocs).forEach(([docType, docInfo]) => {
-          const frontendKey = `${schemeId}_${docType}`;
-          const validation = validationStatus[frontendKey];
-
-          document_validation_matrix[docType] = {
-            mandatory: docInfo.mandatory !== false,
-            user_submitted: !!validation,
-            status: validation?.status === 'valid' ? 'PASS' : 'FAIL',
-            reason:
-              validation?.reason ||
-              (!validation ? 'Document not submitted' : null),
-          };
-        });
-
-        const final_document_status = Object.values(document_validation_matrix)
-          .some(d => d.mandatory && d.status === 'FAIL')
-          ? 'INCOMPLETE'
-          : 'COMPLETE';
-
-        const document_status = {
-          scheme_id: schemeId,
-          document_validation_matrix,
-          final_document_status,
+        // Enrich eligibility output with ONLY essential scheme details for LLM (avoid slowdown)
+        const enrichedEligibilityOutput = {
+          ...eligibilityOutput,
+          // Add minimal scheme metadata
+          scheme_details: {
+            description: scheme.description || '',
+            benefits_text: scheme.benefits_text || '',
+            application_url: scheme.application_url || ''
+          }
         };
 
-        console.log('[DOCUMENT_STATUS]', document_status);
+        console.log(`[GUIDANCE_REQUEST] Scheme: ${schemeId}`);
 
-        /* ---- CALL BACKEND ---- */
-        console.log('[API_CALL] /api/generate-guidance payload:', {
-          eligibility_output: scheme,
-          document_status,
-        });
+        try {
+          const response = await axios.post('/api/generate-guidance', {
+            eligibility_output: enrichedEligibilityOutput,
+            document_status: docStatus,
+          }, { timeout: 600000 });
 
-        const res = await axios.post('/api/generate-guidance', {
-          eligibility_output: scheme,
-          document_status,
-        });
+          console.log(`[GUIDANCE_SUCCESS] ${schemeId}:`, response.data);
 
-        console.log('[API_RESPONSE] Guidance:', res.data);
-
-        guidanceResults.push({
-          scheme_id: schemeId,
-          scheme_name: scheme.scheme_name,
-          guidance: res.data.pathway || res.data,
-          document_status,
-        });
+          if (response.data.success && response.data.pathway) {
+            // Ensure pathway has the expected structure
+            const pathway = response.data.pathway;
+            const schemeInfo = response.data.scheme || {};
+            console.log(`[PATHWAY_DATA] ${schemeId}:`, {
+              pre_application: pathway.pre_application?.length,
+              application_steps: pathway.application_steps?.length,
+              missing_documents: pathway.missing_documents?.length,
+              post_application: pathway.post_application?.length
+            });
+            
+            guidanceResults.push({
+              scheme_id: schemeId,
+              scheme_name: schemeInfo.scheme_name || scheme.scheme_name,
+              description: schemeInfo.description || scheme.description || '',
+              scheme_benefits: schemeInfo.benefits_text || scheme.benefits_text || '',
+              benefits_text: schemeInfo.benefits_text || scheme.benefits_text || '',
+              category: schemeInfo.category || scheme.category || '',
+              ministry: schemeInfo.ministry || scheme.ministry || '',
+              max_income: schemeInfo.max_income || scheme.max_income || '',
+              state: schemeInfo.state || scheme.state || '',
+              application_url: schemeInfo.application_url || scheme.application_url || '',
+              guidance: pathway || {},
+              _system: response.data._system || {},
+            });
+          } else {
+            console.warn(`[PATHWAY_MISSING] ${schemeId}: No pathway in response`, response.data);
+            guidanceResults.push({
+              scheme_id: schemeId,
+              scheme_name: scheme.scheme_name,
+              guidance: {},
+              error: 'No pathway data returned',
+            });
+          }
+        } catch (err) {
+          console.warn(`[GUIDANCE_ERROR] ${schemeId}:`, err.message);
+          guidanceResults.push({
+            scheme_id: schemeId,
+            scheme_name: scheme.scheme_name,
+            guidance: {},
+            error: err.message,
+          });
+        }
       }
 
-      console.log('[FINAL_GUIDANCE_RESULTS]', guidanceResults);
-
-      console.log('[NAVIGATE] Passing guidanceData to /guidance');
+      console.log('[GUIDANCE_COMPLETE]', guidanceResults);
 
       onComplete({
         documents: uploadedFiles,
         guidanceData: guidanceResults,
       });
 
-      navigate('/guidance');
-
-
+      // Pass guidance data through route state
+      navigate('/guidance', { 
+        state: { 
+          guidanceData: guidanceResults 
+        } 
+      });
     } catch (err) {
       console.error('[GUIDANCE_ERROR]', err);
       alert('Failed to generate guidance');
@@ -317,7 +335,16 @@ function DocumentUpload({
         disabled={uploading || generatingGuidance}
         className="btn-primary flex items-center gap-2"
       >
-        {generatingGuidance ? 'Generating...' : 'Continue'} <ArrowRight />
+        {generatingGuidance ? (
+          <>
+            <Loader2 className="w-4 h-4 animate-spin" />
+            Generating Guidance... (This may take up to 2 minutes)
+          </>
+        ) : (
+          <>
+            Continue <ArrowRight />
+          </>
+        )}
       </button>
     </div>
   );

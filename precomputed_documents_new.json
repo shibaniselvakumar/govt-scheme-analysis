@@ -1,0 +1,35 @@
+{
+  "SCHEME_0001": {
+    "documents": [
+      "Photograph of the Family (Legal Heir) of the Missing Fisherman",
+      "Residential Certificate of the Missing Fishermen",
+      "Declaration That the Missing Fisherman Was Not a Beneficiary of the Old Age Pension Scheme",
+      "Membership Certificate from the President/Administrator of Fishermen/Fisherwoman Co-operative Society",
+      "Electoral Identity Card (Attested Copy)",
+      "Ration Card (Attested Copy)",
+      "Panchayathar’s Letter of Village Concerned"
+    ]
+  },
+  "SCHEME_0002": {
+    "documents": [
+      "Aadhaar Card",
+      "Passport Size Photograph",
+      "Ration Card"
+    ]
+  },
+  "SCHEME_0003": {
+    "documents": [
+      "Aadhaar Card",
+      "Passport Size Photograph",
+      "Residence Certificate",
+      "Ration Card",
+      "Bank account details",
+      "Death Certificate",
+      "Regular registration certificate of the worker",
+      "Nominee/legal heir certificate",
+      "F.I.R.",
+      "Panchnama",
+      "Post-mortem report"
+    ]
+  }
+}

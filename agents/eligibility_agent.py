@@ -12,26 +12,24 @@ class EligibilityAgent(AIBaseAgent):
     Agent 2: Deterministic eligibility validation + explainable matrix
     """
 
-    def __init__(self, faiss_indexes=None, llm=None, precomputed_rules_file="precomputed_rules.json"):
+    def __init__(self, faiss_indexes=None, llm=None, precomputed_rules_file="precomputed_rules_new.json"):
         super().__init__(faiss_indexes or {}, llm)
 
         client = MongoClient("mongodb://localhost:27017/")
         self.db = client["policy_db"]
         self.collection = self.db["schemes"]
 
-        # ✅ Resolve project root (one level above agents/)
         agents_dir = os.path.dirname(os.path.abspath(__file__))
         project_root = os.path.dirname(agents_dir)
 
         precomputed_path = os.path.join(project_root, precomputed_rules_file)
 
-        # Load precomputed rules
         try:
             with open(precomputed_path, "r", encoding="utf-8") as f:
                 self.precomputed_rules = json.load(f)
-                print(f"✅ Loaded precomputed rules for {len(self.precomputed_rules)} schemes")
+                print(f"Loaded precomputed rules for {len(self.precomputed_rules)} schemes")
         except FileNotFoundError:
-            print("⚠️ Precomputed rules file not found. Falling back to LLM extraction.")
+            print("Precomputed rules file not found. Falling back to LLM extraction.")
             self.precomputed_rules = {}
 
     # --------------------------------------------------
@@ -71,7 +69,7 @@ class EligibilityAgent(AIBaseAgent):
 
             rules = self.precomputed_rules.get(scheme_id, {})
             if not rules:
-                print(f"⚠️ No rules found for {scheme_id}, skipping eligibility checks")
+                print(f"No rules found for {scheme_id}, skipping eligibility checks")
             matrix = self.build_eligibility_matrix(user, rules)
 
             failed = [
@@ -79,6 +77,17 @@ class EligibilityAgent(AIBaseAgent):
                 for k, v in matrix.items()
                 if v["status"] == "FAIL"
             ]
+
+            # Print eligibility matrix for this scheme
+            print(f"\n{'='*80}")
+            print(f"📋 ELIGIBILITY MATRIX FOR: {scheme_data.get('scheme_name')}")
+            print(f"   Scheme ID: {scheme_id}")
+            print(f"{'='*80}")
+            for criterion, result in matrix.items():
+                status_icon = "✅" if result["status"] == "PASS" else "❌"
+                print(f"{status_icon} {criterion}: {result['status']}")
+                print(f"   Reason: {result['reason']}")
+            print(f"{'='*80}\n")
 
             if not failed:
                 eligible.append({
