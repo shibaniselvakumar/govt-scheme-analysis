@@ -1,0 +1,27 @@
+# Core Flask and Web Framework
+flask==3.0.0
+flask-cors==4.0.0
+flask-sqlalchemy
+werkzeug==3.0.1
+
+# Database
+pymongo==4.6.0
+
+# LLM and AI
+gpt4all>=2.8.0
+sentence-transformers>=3.0.0
+
+# Vector Database and Search
+faiss-cpu>=1.8.0
+
+# Scientific Computing
+numpy>=2.0.0
+
+# Image Processing and OCR
+pillow
+pytesseract
+opencv-python
+
+# Utilities
+python-dotenv
+requests

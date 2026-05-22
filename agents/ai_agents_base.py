@@ -30,21 +30,10 @@ class AIBaseAgent:
         query_vector = np.asarray(query_vector, dtype="float32").reshape(1, -1)
         
         
-        # 🔍 Oversample because we may filter later
-        search_k = top_k *50
+        # Oversample because callers may apply additional reranking/filtering.
+        search_k = max(top_k * max(oversample_factor, 1), top_k)
 
         distances, indices = index.search(query_vector, search_k)
-
-        distances, indices = index.search(query_vector, search_k)
-
-        print("Raw FAISS indices (top 20):", indices[0][:20])
-
-        mapped_ids = []
-        for i in indices[0][:20]:
-            if i != -1 and i < len(ids):
-                mapped_ids.append(ids[i])
-
-        print("Mapped scheme IDs (top 20):", mapped_ids)
 
     
        
@@ -60,11 +49,9 @@ class AIBaseAgent:
 
             doc_ids.append(ids[i])
 
-            # Convert FAISS distance → similarity
-            # If using cosine (normalized vectors) distance ≈ 1 - similarity
             distance = float(distances[0][rank])
 
-# Convert L2 distance → bounded similarity (0–1)
+            # Convert L2 distance → bounded similarity (0–1)
             similarity_score = 1 / (1 + distance)
             scores.append(similarity_score)
 

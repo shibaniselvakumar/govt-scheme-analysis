@@ -134,6 +134,32 @@ function DocumentUpload({
     });
   };
 
+  const buildDocumentStatusForScheme = (schemeId) => {
+    const matrix = {};
+    const schemeDocs = requiredDocs[schemeId] || {};
+
+    Object.entries(schemeDocs).forEach(([docType, docInfo]) => {
+      const key = `${schemeId}_${docType}`;
+      const validation = validationStatus[key];
+      const status = validation?.status === 'valid' ? 'PASS' : 'FAIL';
+
+      matrix[docType] = {
+        status,
+        mandatory: docInfo?.mandatory !== false,
+        reason: validation?.reason || null,
+      };
+    });
+
+    const hasFailingMandatory = Object.values(matrix).some(
+      (entry) => entry.mandatory !== false && entry.status !== 'PASS'
+    );
+
+    return {
+      final_document_status: hasFailingMandatory ? 'INCOMPLETE' : 'COMPLETE',
+      document_validation_matrix: matrix,
+    };
+  };
+
   /* ===========================
      CONTINUE → GENERATE GUIDANCE
   ============================ */
@@ -158,7 +184,7 @@ function DocumentUpload({
       for (const scheme of schemes) {
         const schemeId = scheme.scheme_id || scheme._id;
         const eligibilityOutput = eligibilityOutputs[schemeId] || {};
-        const docStatus = validationStatus[schemeId] || { final_document_status: 'UNKNOWN' };
+        const docStatus = buildDocumentStatusForScheme(schemeId);
 
         // Enrich eligibility output with ONLY essential scheme details for LLM (avoid slowdown)
         const enrichedEligibilityOutput = {

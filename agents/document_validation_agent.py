@@ -130,7 +130,7 @@ class DocumentValidationAgent(AIBaseAgent):
             "submitted": True,
             "status": status,
             "reason": reason,
-            "ocr_text": ocr_text[:500] if ocr_text else "",  # Store first 500 chars
+            "ocr_text": ocr_text[:500] if ocr_text else "",  
             "matched_keywords": matched_keywords,
             "confidence": confidence
         }

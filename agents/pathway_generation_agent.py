@@ -15,7 +15,32 @@ class PathwayGenerationAgent(AIBaseAgent):
         """
         Agent responsible for generating user-friendly guidance pathways
         """
+        super().__init__({}, llm)
         self.llm = llm
+
+    def _as_dict(self, value):
+        return value if isinstance(value, dict) else {}
+
+    def _fallback_pathway(self, eligibility_output: dict, missing_docs: list[str]) -> dict:
+        scheme_name = eligibility_output.get("scheme_name", "the selected scheme")
+        fallback = {
+            "pre_application": [
+                f"Review eligibility conditions for {scheme_name} and keep profile details ready.",
+                "Keep ID/address/income proofs ready in clear scanned copies.",
+            ],
+            "missing_documents": [f"Acquire {doc} as per scheme instructions." for doc in missing_docs],
+            "application_steps": [
+                "Open the official application portal or visit the nearest service center.",
+                "Fill all mandatory fields exactly as per your official documents.",
+                "Upload required documents and submit the application.",
+            ],
+            "post_application": [
+                "Save the application acknowledgement/ID for tracking.",
+                "Track status regularly and respond to verification requests promptly.",
+            ],
+        }
+
+        return fallback
 
     def generate_pathway(self, eligibility_output: dict, document_status: dict) -> dict:
         """
@@ -25,27 +50,29 @@ class PathwayGenerationAgent(AIBaseAgent):
         - Post-Application
         - Missing Documents ONLY if documents are incomplete
         """
+        eligibility_output = self._as_dict(eligibility_output)
+        document_status = self._as_dict(document_status)
 
-        # Determine if documents are incomplete
-        final_status = document_status.get("final_document_status", "INCOMPLETE")
+        final_status = str(document_status.get("final_document_status", "INCOMPLETE"))
         missing_docs = []
         if final_status.upper() != "COMPLETE":
-            for doc, info in document_status.get("document_validation_matrix", {}).items():
+            validation_matrix = self._as_dict(document_status.get("document_validation_matrix", {}))
+            for doc, info in validation_matrix.items():
+                info = self._as_dict(info)
                 if info.get("status") != "PASS" and info.get("mandatory", True):
                     missing_docs.append(doc)
 
-        # Build missing docs block outside f-string to avoid syntax errors
         missing_docs_block = ""
         if missing_docs:
             missing_docs_block = "MISSING_DOCUMENTS:\n" + "\n".join(
                 [f"- Acquire {doc} as per scheme instructions" for doc in missing_docs]
             )
 
-        # Extract ONLY essential scheme details to avoid LLM slowdown
-        scheme_details = eligibility_output.get("scheme_details", {})
+
+        scheme_details = self._as_dict(eligibility_output.get("scheme_details", {}))
         scheme_name = eligibility_output.get("scheme_name", "the scheme")
-        scheme_description = scheme_details.get("description", "")[:200]  # Limit to 200 chars
-        scheme_benefits = scheme_details.get("benefits_text", "")[:300]  # Limit to 300 chars
+        scheme_description = scheme_details.get("description", "")[:200]  
+        scheme_benefits = scheme_details.get("benefits_text", "")[:300] 
         application_url = scheme_details.get("application_url", "")
 
         # Build the prompt with concise scheme context
@@ -104,14 +131,30 @@ Formatting rules:
         print(prompt)
         print("============================================\n")
 
-        llm_output = self.llm.generate(prompt, max_tokens=600) #Increase tokens during demo
+        try:
+            llm_output = self.llm.generate(prompt, max_tokens=600)
+        except Exception as e:
+            print(f"[PATHWAY_LLM_ERROR] {e}")
+            return self._fallback_pathway(eligibility_output, missing_docs)
 
         print("\n================ LLM RAW OUTPUT ==============")
         print(llm_output)
         print("============================================\n")
 
         # Parse LLM output into sections
-        return self._parse_sections(llm_output)
+        parsed = self._parse_sections(llm_output)
+
+        if (
+            not parsed.get("pre_application")
+            and not parsed.get("application_steps")
+            and not parsed.get("post_application")
+        ):
+            return self._fallback_pathway(eligibility_output, missing_docs)
+
+        if missing_docs and not parsed.get("missing_documents"):
+            parsed["missing_documents"] = [f"Acquire {doc} as per scheme instructions." for doc in missing_docs]
+
+        return parsed
 
     def _parse_sections(self, text: str) -> dict:
         """

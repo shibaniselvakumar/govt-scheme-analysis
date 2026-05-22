@@ -1,161 +1,174 @@
-import { useState, useEffect } from 'react'
-import { ChevronDown, ChevronUp, Loader2, AlertCircle, CheckCircle2, Clock, FileText, ArrowRight, Award, Zap, BookOpen } from 'lucide-react'
-import api from '../../utils/api'
+import { useState, useEffect, useMemo } from 'react'
+import {
+  Loader2,
+  AlertCircle,
+  BookOpen,
+  Sparkles,
+  Search,
+  ExternalLink,
+  Building2,
+  MapPin,
+  BadgeCheck,
+  IndianRupee,
+  ListChecks,
+  FileWarning,
+  Clock3,
+  CheckCircle2,
+  ArrowRight,
+} from 'lucide-react'
 
-// MOCK GUIDANCE DATA FOR TESTING
-const MOCK_GUIDANCE_DATA = [
+const FALLBACK_GUIDANCE_DATA = [
   {
-    scheme_id: 'SCHEME_001',
-    scheme_name: 'Pradhan Mantri Awas Yojana (Housing for All)',
+    scheme_id: 'DEMO_001',
+    scheme_name: 'Sample Guidance Pathway',
+    description: 'Guidance will appear here when scheme pathways are generated.',
     guidance: {
-      pre_application: [
-        'Verify that your household income is below ₹30 lakhs annually',
-        'Ensure you own a valid Aadhaar card or government-issued ID',
-        'Check if you have not received any housing scheme benefit in the past',
-        'Gather documents: Income certificate, property ownership papers, ID proof',
-        'Identify the approved lender or housing finance company',
-        'Calculate your eligible loan amount based on income'
-      ],
-      application_steps: [
-        'Visit the official PM Awas Yojana website or nearest bank branch',
-        'Fill out the application form with accurate personal and financial details',
-        'Submit required documents including income certificate and ID proof',
-        'Wait for document verification (usually 5-7 days)',
-        'Get approval and visit the bank for loan processing',
-        'Complete the KYC verification at the bank',
-        'Sign the loan agreement and receive the sanction letter',
-        'Submit the sanction letter to the property seller'
-      ],
-      missing_documents: [
-        'Income Certificate from Gram Panchayat/Municipal Corporation',
-        'Property ownership deed or possession certificate',
-        'Bank statement for the last 6 months'
-      ],
-      post_application: [
-        'Monitor your loan status through the online portal',
-        'Maintain regular communication with your assigned bank officer',
-        'Complete property registration within the specified timeline',
-        'Ensure timely payment of EMI after loan disbursal',
-        'Keep all documents and receipts for future reference',
-        'Attend possession ceremony when property is ready'
-      ]
-    }
+      pre_application: ['Verify profile details and gather core documents.'],
+      application_steps: ['Submit your application through the official channel.'],
+      missing_documents: ['Upload mandatory identity and income documents if pending.'],
+      post_application: ['Track status regularly and keep acknowledgement number ready.'],
+    },
   },
-  {
-    scheme_id: 'SCHEME_002',
-    scheme_name: 'Skill India - National Apprenticeship Promotion Scheme',
-    guidance: {
-      pre_application: [
-        'Confirm you are between 18-35 years old and a citizen of India',
-        'Have completed at least 10th standard education',
-        'Identify a suitable trade or skill aligned with your interests',
-        'Search for apprenticeship providers in your area',
-        'Review the eligibility criteria for your chosen trade',
-        'Prepare your resume and educational certificates'
-      ],
-      application_steps: [
-        'Register on the Apprenticeship portal or visit an approved training center',
-        'Browse available apprenticeship opportunities and select one',
-        'Submit your application with required documents',
-        'Appear for the selection interview or assessment',
-        'Sign the apprenticeship agreement with the training provider',
-        'Report on the designated starting date for training',
-        'Complete the training period (typically 6-24 months based on trade)'
-      ],
-      post_application: [
-        'Attend training sessions regularly and maintain 80% attendance',
-        'Complete assigned projects and practical tasks',
-        'Pass the competency assessment at the end of training',
-        'Receive the national apprenticeship certificate',
-        'Explore job opportunities with partner companies',
-        'Continue updating your skills through refresher courses'
-      ]
-    }
-  },
-  {
-    scheme_id: 'SCHEME_003',
-    scheme_name: 'Pradhan Mantri Kisan Samman Nidhi (PM-KISAN)',
-    guidance: {
-      pre_application: [
-        'Confirm you are a farmer with cultivable land in your name',
-        'Verify you have not received benefits from other agricultural schemes',
-        'Gather your land ownership documents or lease deed',
-        'Note down your bank account details (preferably in your name)',
-        'Check if your state participates in PM-KISAN scheme',
-        'Prepare your Aadhaar number and mobile number for registration'
-      ],
-      application_steps: [
-        'Visit your nearest Common Service Center (CSC) or Gram Panchayat office',
-        'Provide your land details and agricultural information',
-        'Submit your Aadhaar number and bank account information',
-        'Fill out the PM-KISAN application form with accurate details',
-        'Verify all information with the official',
-        'Receive confirmation receipt with your registration details',
-        'Wait for approval (usually processed within 1 month)'
-      ],
-      missing_documents: [],
-      post_application: [
-        'Check your registration status on the PM-KISAN portal using your Aadhaar',
-        'Verify your bank account linkage for fund transfers',
-        'Receive ₹2,000 in your account three times per year (every 4 months)',
-        'Report any changes in your land ownership immediately',
-        'Keep your mobile number and Aadhaar linked to avoid benefit interruption',
-        'Contact your local authorities if you do not receive payment within expected time'
-      ]
-    }
-  }
 ]
 
+const SECTION_CONFIG = {
+  pre_application: {
+    label: 'Pre-Application',
+    subtitle: 'Preparation and checklist',
+    icon: ListChecks,
+    badge: 'bg-blue-50 text-blue-700 border-blue-200',
+    iconBg: 'bg-blue-600',
+  },
+  application_steps: {
+    label: 'Application',
+    subtitle: 'Execution workflow',
+    icon: ArrowRight,
+    badge: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+    iconBg: 'bg-emerald-600',
+  },
+  missing_documents: {
+    label: 'Missing Docs',
+    subtitle: 'Required before submission',
+    icon: FileWarning,
+    badge: 'bg-rose-50 text-rose-700 border-rose-200',
+    iconBg: 'bg-rose-600',
+  },
+  post_application: {
+    label: 'Post-Application',
+    subtitle: 'Follow-up and tracking',
+    icon: Clock3,
+    badge: 'bg-violet-50 text-violet-700 border-violet-200',
+    iconBg: 'bg-violet-600',
+  },
+}
+
+function normalizeItem(item) {
+  const guidance = item?.guidance || {}
+  return {
+    ...item,
+    scheme_id: item?.scheme_id || item?._id || `SCHEME_${Math.random().toString(36).slice(2, 8)}`,
+    scheme_name: item?.scheme_name || 'Unnamed Scheme',
+    guidance: {
+      pre_application: Array.isArray(guidance.pre_application) ? guidance.pre_application : [],
+      application_steps: Array.isArray(guidance.application_steps) ? guidance.application_steps : [],
+      missing_documents: Array.isArray(guidance.missing_documents) ? guidance.missing_documents : [],
+      post_application: Array.isArray(guidance.post_application) ? guidance.post_application : [],
+    },
+  }
+}
+
+function getCompletionScore(item) {
+  const g = item.guidance
+  const sections = [
+    g.pre_application?.length > 0,
+    g.application_steps?.length > 0,
+    g.post_application?.length > 0,
+  ]
+  const completed = sections.filter(Boolean).length
+  return Math.round((completed / sections.length) * 100)
+}
+
 function GuidanceCitizen({ userProfile, eligibleSchemes = [], setSystemSnapshot, setGuidanceData }) {
-  const [guidanceData, setLocalGuidanceData] = useState([])
+  const [localGuidanceData, setLocalGuidanceData] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
-  const [expandedScheme, setExpandedScheme] = useState(null)
-  const [selectedScheme, setSelectedScheme] = useState(null)
+  const [searchTerm, setSearchTerm] = useState('')
+  const [selectedSchemeId, setSelectedSchemeId] = useState(null)
+  const [activeSection, setActiveSection] = useState('pre_application')
 
-  // Load guidance data from props (passed from DocumentUpload via GuidancePage)
   useEffect(() => {
     try {
       setLoading(true)
       setError(null)
 
-      // Use guidance data passed from DocumentUpload if available
       if (Array.isArray(eligibleSchemes) && eligibleSchemes.length > 0) {
-        console.log('📋 Using guidance data from backend')
-        setLocalGuidanceData(eligibleSchemes)
-        setGuidanceData(eligibleSchemes)
-
-        // Extract system snapshot from first scheme if available
-        if (eligibleSchemes[0]?._system) {
-          setSystemSnapshot(eligibleSchemes[0]._system)
+        const cleaned = eligibleSchemes.map(normalizeItem)
+        setLocalGuidanceData(cleaned)
+        setGuidanceData(cleaned)
+        if (cleaned[0]?._system) {
+          setSystemSnapshot(cleaned[0]._system)
         }
       } else {
-        // Fallback to mock data if no schemes provided
-        console.log('📋 Loading mock guidance data (fallback)')
-        const mockData = MOCK_GUIDANCE_DATA.slice(0, 3)
-        setLocalGuidanceData(mockData)
-        setGuidanceData(mockData)
+        setLocalGuidanceData(FALLBACK_GUIDANCE_DATA.map(normalizeItem))
+        setGuidanceData(FALLBACK_GUIDANCE_DATA.map(normalizeItem))
       }
-
-      setLoading(false)
     } catch (err) {
       console.error('Error loading guidance:', err)
       setError('Failed to load guidance pathways')
+    } finally {
       setLoading(false)
     }
-  }, [eligibleSchemes])
+  }, [eligibleSchemes, setGuidanceData, setSystemSnapshot])
+
+  useEffect(() => {
+    if (!selectedSchemeId && localGuidanceData.length > 0) {
+      setSelectedSchemeId(localGuidanceData[0].scheme_id)
+    }
+  }, [localGuidanceData, selectedSchemeId])
+
+  const filteredSchemes = useMemo(() => {
+    const q = searchTerm.trim().toLowerCase()
+    if (!q) return localGuidanceData
+    return localGuidanceData.filter((item) => {
+      const blob = [
+        item.scheme_name,
+        item.description,
+        item.category,
+        item.ministry,
+        item.state,
+      ]
+        .filter(Boolean)
+        .join(' ')
+        .toLowerCase()
+      return blob.includes(q)
+    })
+  }, [localGuidanceData, searchTerm])
+
+  const selectedScheme = useMemo(
+    () => filteredSchemes.find((item) => item.scheme_id === selectedSchemeId) || filteredSchemes[0] || null,
+    [filteredSchemes, selectedSchemeId]
+  )
+
+  const metrics = useMemo(() => {
+    const schemeCount = localGuidanceData.length
+    const totalSteps = localGuidanceData.reduce((acc, item) => {
+      const g = item.guidance
+      return acc + g.pre_application.length + g.application_steps.length + g.post_application.length
+    }, 0)
+    const totalMissing = localGuidanceData.reduce((acc, item) => acc + item.guidance.missing_documents.length, 0)
+    const avgReadiness = schemeCount
+      ? Math.round(localGuidanceData.reduce((acc, item) => acc + getCompletionScore(item), 0) / schemeCount)
+      : 0
+    return { schemeCount, totalSteps, totalMissing, avgReadiness }
+  }, [localGuidanceData])
 
   if (loading) {
     return (
       <div className="min-h-screen bg-gradient-to-b from-slate-50 via-blue-50 to-white flex items-center justify-center">
-        <div className="text-center">
-          <Loader2 className="w-16 h-16 animate-spin text-blue-600 mx-auto mb-6" />
-          <h2 className="text-2xl font-bold text-slate-900 mb-2">
-            Generating Your Guidance
-          </h2>
-          <p className="text-slate-600">
-            Creating personalized application roadmaps for your eligible schemes…
-          </p>
+        <div className="text-center px-6">
+          <Loader2 className="w-14 h-14 animate-spin text-blue-600 mx-auto mb-4" />
+          <h2 className="text-2xl font-semibold text-slate-900">Building your guidance workspace</h2>
+          <p className="text-slate-600 mt-2">Preparing deployable guidance cards and actionable pathways...</p>
         </div>
       </div>
     )
@@ -163,298 +176,247 @@ function GuidanceCitizen({ userProfile, eligibleSchemes = [], setSystemSnapshot,
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-slate-50 via-blue-50 to-white flex items-center justify-center px-4">
-        <div className="bg-white rounded-2xl shadow-lg p-12 border border-red-200 max-w-md">
-          <AlertCircle className="w-16 h-16 text-red-600 mx-auto mb-6" />
-          <h2 className="text-2xl font-bold text-slate-900 mb-3 text-center">Error</h2>
-          <p className="text-slate-600 text-center">{error}</p>
+      <div className="min-h-screen bg-gradient-to-b from-slate-50 via-blue-50 to-white flex items-center justify-center px-6">
+        <div className="max-w-lg w-full bg-white border border-rose-200 rounded-2xl p-8 text-center shadow-lg">
+          <AlertCircle className="w-12 h-12 text-rose-500 mx-auto mb-4" />
+          <h2 className="text-2xl font-semibold text-slate-900 mb-2">Guidance module unavailable</h2>
+          <p className="text-slate-600">{error}</p>
         </div>
       </div>
     )
   }
 
   return (
-    <div className="bg-gradient-to-b from-slate-50 via-blue-50 to-white min-h-screen">
-      {/* SCHEME DASHBOARD BANNER */}
-      {selectedScheme && (
-        <div className="bg-gradient-to-r from-blue-700 to-blue-600 text-white">
-          <div className="max-w-6xl mx-auto px-6 py-12">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* LEFT: Scheme Overview */}
-              <div className="md:col-span-2">
-                <div className="flex items-start gap-4 mb-6">
-                  <div className="p-3 bg-white bg-opacity-20 rounded-lg">
-                    <Award className="w-8 h-8" />
-                  </div>
-                  <div>
-                    <h1 className="text-4xl font-bold mb-2">{selectedScheme.scheme_name}</h1>
-                    <p className="text-blue-100">Scheme ID: {selectedScheme.scheme_id}</p>
-                  </div>
-                </div>
-
-                {/* Description */}
-                {(selectedScheme.description || selectedScheme.scheme_details?.description) && (
-                  <div className="bg-white bg-opacity-10 rounded-lg p-4 mb-6 backdrop-blur-sm">
-                    <p className="text-blue-50 leading-relaxed">
-                      {selectedScheme.description || selectedScheme.scheme_details?.description}
-                    </p>
-                  </div>
-                )}
-
-                {/* Quick Info Grid */}
-                <div className="grid grid-cols-2 gap-4">
-                  {selectedScheme.category && (
-                    <div className="bg-white bg-opacity-10 rounded-lg p-3">
-                      <p className="text-blue-100 text-xs uppercase tracking-wide">Category</p>
-                      <p className="text-white font-semibold">{selectedScheme.category}</p>
-                    </div>
-                  )}
-                  {selectedScheme.ministry && (
-                    <div className="bg-white bg-opacity-10 rounded-lg p-3">
-                      <p className="text-blue-100 text-xs uppercase tracking-wide">Ministry</p>
-                      <p className="text-white font-semibold truncate">{selectedScheme.ministry}</p>
-                    </div>
-                  )}
-                  {selectedScheme.max_income && (
-                    <div className="bg-white bg-opacity-10 rounded-lg p-3">
-                      <p className="text-blue-100 text-xs uppercase tracking-wide">Max Income</p>
-                      <p className="text-white font-semibold">{selectedScheme.max_income}</p>
-                    </div>
-                  )}
-                  {selectedScheme.state && (
-                    <div className="bg-white bg-opacity-10 rounded-lg p-3">
-                      <p className="text-blue-100 text-xs uppercase tracking-wide">State</p>
-                      <p className="text-white font-semibold">{selectedScheme.state}</p>
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              {/* RIGHT: Benefits Card */}
-              <div className="bg-white bg-opacity-10 rounded-2xl p-6 backdrop-blur-sm border border-white border-opacity-20">
-                <div className="flex items-center gap-2 mb-4">
-                  <Zap className="w-6 h-6 text-yellow-300" />
-                  <h3 className="text-lg font-bold">Key Benefits</h3>
-                </div>
-                <div className="space-y-3">
-                  {selectedScheme.scheme_benefits || selectedScheme.benefits_text ? (
-                    <p className="text-blue-50 text-sm leading-relaxed">
-                      {selectedScheme.scheme_benefits || selectedScheme.benefits_text}
-                    </p>
-                  ) : (
-                    <p className="text-blue-100 text-sm italic">Explore the application process for detailed benefits</p>
-                  )}
-                </div>
-
-                {/* CTA Button */}
-                {selectedScheme.application_url && (
-                  <a
-                    href={selectedScheme.application_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-6 w-full bg-white text-blue-700 hover:bg-blue-50 font-semibold py-2 px-4 rounded-lg inline-flex items-center justify-center gap-2 transition"
-                  >
-                    Visit Official Site
-                    <ArrowRight className="w-4 h-4" />
-                  </a>
-                )}
-              </div>
-            </div>
-
-            {/* Close Banner Button */}
-            <button
-              onClick={() => setSelectedScheme(null)}
-              className="absolute top-4 right-4 text-white opacity-70 hover:opacity-100 transition"
-            >
-              <AlertCircle className="w-6 h-6 rotate-45" />
-            </button>
-          </div>
-        </div>
-      )}
-
-      {/* Main Content */}
-      <div className="py-12">
-        <div className="max-w-6xl mx-auto px-6">
-        {/* HEADER */}
-        <div className="text-center mb-12">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <div className="p-3 bg-blue-100 rounded-lg">
-              <BookOpen className="w-6 h-6 text-blue-700" />
-            </div>
-            <span className="text-blue-700 font-semibold tracking-wide">PERSONALIZED GUIDANCE</span>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-4 text-slate-900">
-            Application Roadmaps
-          </h1>
-          <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-            Click on any scheme to view its benefits and details, then follow the personalized steps
-          </p>
-        </div>
-
-        {/* GUIDANCE CARDS */}
-        {guidanceData.length > 0 ? (
-          <div className="space-y-8">
-            {guidanceData.map((item) => (
-              <div
-                key={item.scheme_id}
-                className="bg-white rounded-2xl shadow-sm hover:shadow-xl transition border border-slate-200 overflow-hidden"
-              >
-                {/* CARD HEADER */}
-                <div className="flex items-center gap-4">
-                  <button
-                    onClick={() => setSelectedScheme(item)}
-                    className="flex-1 text-left cursor-pointer bg-gradient-to-r from-blue-700 to-blue-600 text-white p-8 hover:from-blue-600 hover:to-blue-500 transition rounded-t-2xl group"
-                  >
-                    <div className="flex items-start justify-between">
-                      <div className="flex-1">
-                        <h2 className="text-2xl md:text-3xl font-bold mb-2 group-hover:translate-x-1 transition">{item.scheme_name}</h2>
-                        {item.scheme_benefits || item.description ? (
-                          <p className="text-sm opacity-90 line-clamp-2">
-                            {item.scheme_benefits || item.description}
-                          </p>
-                        ) : null}
-                      </div>
-                      <Award className="w-6 h-6 text-blue-200 flex-shrink-0 ml-4" />
-                    </div>
-                  </button>
-
-                  <button
-                    onClick={() =>
-                      setExpandedScheme(
-                        expandedScheme === item.scheme_id ? null : item.scheme_id
-                      )
-                    }
-                    className="bg-gradient-to-r from-blue-700 to-blue-600 text-white p-8 hover:from-blue-600 hover:to-blue-500 transition rounded-t-2xl flex-shrink-0 flex items-center justify-center"
-                  >
-                    {expandedScheme === item.scheme_id ? (
-                      <ChevronUp className="w-7 h-7" />
-                    ) : (
-                      <ChevronDown className="w-7 h-7" />
-                    )}
-                  </button>
-                </div>
-
-                {/* EXPANDED CONTENT */}
-                {expandedScheme === item.scheme_id && (
-                  <div className="p-8 space-y-10">
-                    {/* SCHEME DETAILS SECTION */}
-                    {(item.description || item.scheme_benefits || item.scheme_details?.description) && (
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pb-8 border-b border-slate-200">
-                        <div>
-                          <h3 className="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-2">About This Scheme</h3>
-                          <p className="text-slate-700 leading-relaxed">
-                            {item.description || item.scheme_details?.description || 'Learn more about this government scheme and how it can benefit you.'}
-                          </p>
-                        </div>
-                        {(item.scheme_benefits || item.scheme_details?.benefits_text) && (
-                          <div>
-                            <h3 className="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-2">Key Benefits</h3>
-                            <p className="text-slate-700 leading-relaxed">
-                              {item.scheme_benefits || item.scheme_details?.benefits_text}
-                            </p>
-                          </div>
-                        )}
-                      </div>
-                    )}
-                    {item.guidance && Object.keys(item.guidance).length > 0 ? (
-                      <>
-                        <GuidanceSection
-                          title="Pre-Application Checklist"
-                          description="Things you must verify and prepare before starting your application."
-                          data={item.guidance?.pre_application || []}
-                          accent="blue"
-                        />
-
-                        <GuidanceSection
-                          title="Application Process"
-                          description="Step-by-step instructions to successfully apply for the scheme."
-                          data={item.guidance?.application_steps || []}
-                          accent="green"
-                        />
-
-                        {item.guidance?.missing_documents &&
-                          item.guidance.missing_documents.length > 0 && (
-                            <GuidanceSection
-                              title="Missing Documents"
-                              description="Documents that are commonly missing or required during verification."
-                              data={item.guidance.missing_documents}
-                              accent="red"
-                            />
-                          )}
-
-                        <GuidanceSection
-                          title="Post-Application Guidance"
-                          description="What to do after submitting your application."
-                          data={item.guidance?.post_application || []}
-                          accent="purple"
-                        />
-                      </>
-                    ) : (
-                      <div className="text-center py-8 text-gray-500">
-                        <p>No guidance data available for this scheme.</p>
-                        <p className="text-sm mt-2">Please try again or contact support.</p>
-                      </div>
-                    )}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className="bg-white rounded-2xl shadow-lg p-16 text-center border border-slate-200">
-            <AlertCircle className="w-16 h-16 text-slate-300 mx-auto mb-6" />
-            <p className="text-slate-600 text-lg font-medium">
-              No eligible schemes found. Please go back and check your eligibility.
-            </p>
-            <p className="text-slate-500 mt-2">
-              Try searching with different criteria or updating your profile information.
-            </p>
-          </div>
-        )}
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 via-blue-50 to-white text-slate-900 relative overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute -top-32 -left-24 h-80 w-80 rounded-full bg-blue-200/70 blur-3xl" />
+        <div className="absolute top-48 -right-20 h-72 w-72 rounded-full bg-indigo-200/70 blur-3xl" />
       </div>
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+        <header className="bg-gradient-to-r from-blue-700 to-blue-600 border border-blue-300 rounded-3xl p-8 shadow-xl text-white">
+          <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/30 bg-white/15 text-white text-xs font-semibold tracking-wide mb-4">
+                <Sparkles className="w-4 h-4" />
+                AI GUIDANCE MODULE
+              </div>
+              <h1 className="text-3xl md:text-4xl font-bold leading-tight text-white">Personalized Scheme Guidance Workspace</h1>
+              <p className="text-blue-100 mt-3 max-w-3xl">
+                Professional decision-ready guidance with structured pre-checks, application workflows, and post-submission actions.
+              </p>
+            </div>
+
+            <div className="bg-white/15 border border-white/30 rounded-2xl p-4 min-w-[260px] backdrop-blur-sm">
+              <div className="text-xs text-blue-100 mb-2">PROFILE SNAPSHOT</div>
+              <div className="text-sm text-white space-y-1">
+                <p><span className="text-blue-100">Citizen:</span> {userProfile?.name || 'N/A'}</p>
+                <p><span className="text-blue-100">Occupation:</span> {userProfile?.occupation || 'N/A'}</p>
+                <p><span className="text-blue-100">State:</span> {userProfile?.state || 'N/A'}</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
+            <MetricCard label="Eligible Schemes" value={metrics.schemeCount} tone="blue" />
+            <MetricCard label="Action Steps" value={metrics.totalSteps} tone="emerald" />
+            <MetricCard label="Missing Docs" value={metrics.totalMissing} tone="rose" />
+            <MetricCard label="Readiness Score" value={`${metrics.avgReadiness}%`} tone="violet" />
+          </div>
+        </header>
+
+        <div className="grid grid-cols-1 xl:grid-cols-12 gap-6">
+          <aside className="xl:col-span-4">
+            <div className="bg-white border border-slate-200 rounded-2xl p-4 sticky top-6 shadow-sm">
+              <div className="relative mb-4">
+                <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                <input
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  placeholder="Search schemes..."
+                  className="w-full bg-white border border-slate-300 rounded-xl py-2.5 pl-9 pr-3 text-sm text-slate-700 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+
+              <div className="space-y-3 max-h-[68vh] overflow-auto pr-1">
+                {filteredSchemes.map((item) => {
+                  const isActive = selectedScheme?.scheme_id === item.scheme_id
+                  const readiness = getCompletionScore(item)
+                  return (
+                    <button
+                      key={item.scheme_id}
+                      onClick={() => {
+                        setSelectedSchemeId(item.scheme_id)
+                        setActiveSection('pre_application')
+                      }}
+                      className={`w-full text-left rounded-xl p-4 border transition ${
+                        isActive
+                          ? 'bg-blue-50 border-blue-300 shadow-md'
+                          : 'bg-white border-slate-200 hover:border-blue-200'
+                      }`}
+                    >
+                      <h3 className="font-semibold text-sm text-slate-900">{item.scheme_name}</h3>
+                      <p className="text-xs text-slate-500 mt-1">ID: {item.scheme_id}</p>
+                      <div className="mt-3">
+                        <div className="flex justify-between text-xs text-slate-500 mb-1">
+                          <span>Readiness</span>
+                          <span>{readiness}%</span>
+                        </div>
+                        <div className="h-1.5 rounded bg-slate-200 overflow-hidden">
+                          <div className="h-full bg-gradient-to-r from-blue-500 to-violet-500" style={{ width: `${readiness}%` }} />
+                        </div>
+                      </div>
+                    </button>
+                  )
+                })}
+              </div>
+            </div>
+          </aside>
+
+          <section className="xl:col-span-8 space-y-6">
+            {selectedScheme ? (
+              <>
+                <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                  <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
+                    <div>
+                      <h2 className="text-2xl font-bold text-slate-900">{selectedScheme.scheme_name}</h2>
+                      <p className="text-slate-600 mt-2 leading-relaxed">
+                        {selectedScheme.description || 'Structured guidance for this scheme is available below.'}
+                      </p>
+                    </div>
+                    {selectedScheme.application_url && (
+                      <a
+                        href={selectedScheme.application_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-700 transition"
+                      >
+                        Official portal
+                        <ExternalLink className="w-4 h-4" />
+                      </a>
+                    )}
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-5">
+                    <InfoChip icon={BadgeCheck} label="Category" value={selectedScheme.category || 'General'} />
+                    <InfoChip icon={Building2} label="Ministry" value={selectedScheme.ministry || 'Not specified'} />
+                    <InfoChip icon={MapPin} label="State" value={selectedScheme.state || 'All India'} />
+                    <InfoChip icon={IndianRupee} label="Income cap" value={selectedScheme.max_income || 'As per norms'} />
+                    <InfoChip icon={BookOpen} label="Scheme ID" value={selectedScheme.scheme_id} />
+                    <InfoChip icon={CheckCircle2} label="Status" value="Guidance Ready" />
+                  </div>
+                </div>
+
+                <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+                  <div className="flex flex-wrap gap-2">
+                    {Object.entries(SECTION_CONFIG).map(([key, config]) => {
+                      const count = selectedScheme.guidance[key]?.length || 0
+                      const Icon = config.icon
+                      const isActive = activeSection === key
+                      return (
+                        <button
+                          key={key}
+                          onClick={() => setActiveSection(key)}
+                          className={`inline-flex items-center gap-2 border rounded-xl px-4 py-2 text-sm transition ${
+                            isActive ? 'bg-blue-600 text-white border-blue-600' : `${config.badge} bg-opacity-100`
+                          }`}
+                        >
+                          <Icon className="w-4 h-4" />
+                          {config.label}
+                          <span className="text-xs px-2 py-0.5 rounded-full bg-black/10">{count}</span>
+                        </button>
+                      )
+                    })}
+                  </div>
+                </div>
+
+                <GuidanceSection
+                  title={SECTION_CONFIG[activeSection].label}
+                  subtitle={SECTION_CONFIG[activeSection].subtitle}
+                  steps={selectedScheme.guidance[activeSection] || []}
+                  iconBg={SECTION_CONFIG[activeSection].iconBg}
+                />
+
+                {activeSection !== 'missing_documents' && selectedScheme.guidance.missing_documents?.length > 0 && (
+                  <div className="bg-rose-50 border border-rose-200 rounded-2xl p-5">
+                    <div className="flex items-center gap-2 mb-2 text-rose-700">
+                      <FileWarning className="w-5 h-5" />
+                      <h3 className="font-semibold">Pending document actions</h3>
+                    </div>
+                    <ul className="list-disc pl-6 space-y-1 text-sm text-rose-700">
+                      {selectedScheme.guidance.missing_documents.map((doc, idx) => (
+                        <li key={`${doc}-${idx}`}>{doc}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </>
+            ) : (
+              <div className="bg-white border border-slate-200 rounded-2xl p-10 text-center text-slate-600 shadow-sm">
+                No matching scheme found.
+              </div>
+            )}
+          </section>
+        </div>
       </div>
     </div>
   )
 }
 
-/* ---------- GUIDANCE SECTION COMPONENT ---------- */
-function GuidanceSection({ title, description, data = [], accent }) {
-  const iconMap = {
-    blue: { icon: FileText, color: 'text-blue-700', bg: 'bg-blue-100' },
-    green: { icon: CheckCircle2, color: 'text-green-700', bg: 'bg-green-100' },
-    red: { icon: AlertCircle, color: 'text-red-700', bg: 'bg-red-100' },
-    purple: { icon: Clock, color: 'text-purple-700', bg: 'bg-purple-100' },
+function MetricCard({ label, value, tone = 'blue' }) {
+  const toneMap = {
+    blue: 'from-blue-50 to-blue-100 border-blue-200 text-blue-800',
+    emerald: 'from-green-50 to-green-100 border-green-200 text-green-800',
+    rose: 'from-rose-50 to-rose-100 border-rose-200 text-rose-800',
+    violet: 'from-violet-50 to-violet-100 border-violet-200 text-violet-800',
   }
-
-  const current = iconMap[accent] || iconMap.blue
-  const Icon = current.icon
-
   return (
-    <div>
+    <div className={`rounded-xl border bg-gradient-to-r p-4 ${toneMap[tone] || toneMap.blue}`}>
+      <p className="text-xs uppercase tracking-wide opacity-80">{label}</p>
+      <p className="text-2xl font-bold mt-1 text-slate-900">{value}</p>
+    </div>
+  )
+}
+
+function InfoChip({ icon: Icon, label, value }) {
+  return (
+    <div className="bg-slate-50 border border-slate-200 rounded-xl px-3 py-2">
+      <div className="text-xs text-slate-500 flex items-center gap-1 mb-1">
+        <Icon className="w-3.5 h-3.5" />
+        {label}
+      </div>
+      <p className="text-sm text-slate-800 truncate">{value}</p>
+    </div>
+  )
+}
+
+function GuidanceSection({ title, subtitle, steps, iconBg }) {
+  return (
+    <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
       <div className="flex items-center gap-3 mb-6">
-        <div className={`p-2 rounded-lg ${current.bg}`}>
-          <Icon className={`w-6 h-6 ${current.color}`} />
+        <div className={`w-9 h-9 rounded-lg ${iconBg} flex items-center justify-center`}>
+          <CheckCircle2 className="w-5 h-5 text-white" />
         </div>
         <div>
-          <h3 className="text-xl font-bold text-slate-900">{title}</h3>
-          <p className="text-sm text-slate-600">{description}</p>
+          <h3 className="text-xl font-semibold text-slate-900">{title}</h3>
+          <p className="text-sm text-slate-500">{subtitle}</p>
         </div>
       </div>
 
-      <div className="space-y-4 ml-11">
-        {Array.isArray(data) && data.length > 0 ? (
-          data.map((step, index) => (
-            <div key={index} className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-sm font-bold text-slate-700">
-                {index + 1}
+      {steps.length > 0 ? (
+        <div className="space-y-4">
+          {steps.map((step, idx) => (
+            <div key={`${step}-${idx}`} className="flex items-start gap-4 p-4 rounded-xl border border-slate-200 bg-slate-50/80">
+              <div className="w-8 h-8 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center text-sm font-semibold">
+                {idx + 1}
               </div>
-              <p className="text-slate-700 leading-relaxed pt-0.5">{step}</p>
+              <p className="text-slate-700 leading-relaxed">{step}</p>
             </div>
-          ))
-        ) : (
-          <p className="text-sm text-slate-400 italic ml-4">No information available.</p>
-        )}
-      </div>
+          ))}
+        </div>
+      ) : (
+        <p className="text-slate-500 italic">No steps available for this section.</p>
+      )}
     </div>
   )
 }
