@@ -175,7 +175,7 @@ def health():
 @app.route("/api/save-profile", methods=["POST"])
 def save_profile():
     initialize_agents()
-    data = request.get_json()  # FIX: use request.get_json()
+    data = request.get_json() 
     if not data:
         return jsonify({"error": "Invalid JSON"}), 400
 

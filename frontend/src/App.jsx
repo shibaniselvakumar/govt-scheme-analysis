@@ -9,7 +9,6 @@ import EligibleSchemesPage from './components/EligibleSchemes/EligibleSchemesPag
 
 import DocumentValidationPage from './components/DocumentValidation/DocumentValidationPage'
 import GuidancePage from './components/PathwayGeneration/GuidancePage'
-import FullGuidance from './components/FullGuidance'
 import GeographicalMap from './components/GeographicalMap'
 import Dashboard from './components/Dashboard'
 import SystemUIPage from './components/SystemUI/SystemUIPage'
